@@ -1,4 +1,4 @@
-import { Connection, PublicKey } from '@solana/web3.js';
+import { Connection, PublicKey } from '@safecoin/web3.js';
 import {
   BidderMetadata,
   BidRedemptionTicket,
@@ -6,12 +6,12 @@ import {
   PrizeTrackingTicket,
   sendTransactions,
   TokenAccount,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 
 import { claimUnusedPrizes } from '../../../actions/claimUnusedPrizes';
 import { endAuction } from '../../../models/metaplex/endAuction';
 import { AuctionView } from '../../../hooks';
-import { WalletContextState } from '@solana/wallet-adapter-react';
+import { WalletContextState } from '@j0nnyboi/wallet-adapter-react';
 
 interface EndSaleParams {
   auctionView: AuctionView;

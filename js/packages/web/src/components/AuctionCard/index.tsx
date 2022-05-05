@@ -23,11 +23,11 @@ import {
   useWalletModal,
   VaultState,
   BidStateType,
-  WRAPPED_SOL_MINT,
+  WRAPPED_SAFE_MINT,
   Bid,
   BidderPot,
   shortenAddress,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import {
   AuctionView,
   AuctionViewState,
@@ -35,7 +35,7 @@ import {
   useCreators,
   useUserBalance,
 } from '../../hooks';
-import { useWallet } from '@solana/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { sendPlaceBid } from '../../actions/sendPlaceBid';
 import { AuctionCountdown, AuctionNumbers } from '../AuctionNumbers';
 import {
@@ -47,18 +47,18 @@ import { startAuctionManually } from '../../actions/startAuctionManually';
 import BN from 'bn.js';
 import { Confetti } from '../Confetti';
 import { QUOTE_MINT } from '../../constants';
-import { Connection, LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { Connection, LAMPORTS_PER_SAFE } from '@safecoin/web3.js';
 import { useMeta } from '../../contexts';
 import moment from 'moment';
 import { AmountLabel } from '../AmountLabel';
 import { HowAuctionsWorkModal } from '../HowAuctionsWorkModal';
-import { AccountLayout, MintLayout } from '@solana/spl-token';
+import { AccountLayout, MintLayout } from '@safecoin/safe-token';
 import { findEligibleParticipationBidsForRedemption } from '../../actions/claimUnusedPrizes';
 import {
   BidRedemptionTicket,
   MAX_PRIZE_TRACKING_TICKET_SIZE,
   WinningConfigType,
-} from '@oyster/common/dist/lib/models/metaplex/index';
+} from '@j0nnyboi/common/dist/lib/models/metaplex/index';
 import { useActionButtonContent } from './hooks/useActionButtonContent';
 import { endSale } from './utils/endSale';
 import { useInstantSaleState } from './hooks/useInstantSaleState';
@@ -245,13 +245,13 @@ export const AuctionCard = ({
   )[0];
   const symbol = tokenInfo
     ? tokenInfo.symbol
-    : mintKey == WRAPPED_SOL_MINT.toBase58()
-    ? 'SOL'
+    : mintKey == WRAPPED_SAFE_MINT.toBase58()
+    ? 'safe'
     : 'CUSTOM';
 
   const LAMPORTS_PER_MINT = tokenInfo
     ? Math.ceil(10 ** tokenInfo.decimals)
-    : LAMPORTS_PER_SOL;
+    : LAMPORTS_PER_SAFE;
 
   //console.log("[--P]AuctionCard", tokenInfo, mintKey)
   const myPayingAccount = balance.accounts[0];

@@ -1,14 +1,14 @@
-import { calculate } from '@metaplex/arweave-cost';
-import { LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { calculate } from '@j0nnyboi/arweave-cost';
+import { LAMPORTS_PER_SAFE } from '@safecoin/web3.js';
 
-export const LAMPORT_MULTIPLIER = LAMPORTS_PER_SOL;
+export const LAMPORT_MULTIPLIER = LAMPORTS_PER_SAFE;
 
 export const ARWEAVE_UPLOAD_ENDPOINT =
-  'https://us-central1-metaplex-studios.cloudfunctions.net/uploadFile';
+  'http://www.metaplex.darkartlabs.tech:5000';
 
 export async function getAssetCostToStore(files: { size: number }[]) {
   const sizes = files.map(f => f.size);
   const result = await calculate(sizes);
 
-  return LAMPORTS_PER_SOL * result.solana;
+  return LAMPORTS_PER_SAFE * result.safecoin;
 }

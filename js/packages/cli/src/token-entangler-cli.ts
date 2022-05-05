@@ -10,9 +10,9 @@ import {
   loadTokenEntanglementProgream,
   loadWalletKey,
 } from './helpers/accounts';
-import { BN, web3, Program } from '@project-serum/anchor';
-import { TOKEN_PROGRAM_ID, WRAPPED_SOL_MINT } from './helpers/constants';
-import { ASSOCIATED_TOKEN_PROGRAM_ID, Token } from '@solana/spl-token';
+import { BN, web3, Program } from '@j0nnyboi/anchor';
+import { TOKEN_PROGRAM_ID, WRAPPED_SAFE_MINT } from './helpers/constants';
+import { ASSOCIATED_TOKEN_PROGRAM_ID, Token } from '@safecoin/safe-token';
 import { getPriceWithMantissa } from './helpers/various';
 import { sendTransactionWithRetryWithKeypair } from './helpers/transactions';
 import { decodeMetadata, Metadata } from './helpers/schema';
@@ -94,7 +94,7 @@ programCommand('show')
 programCommand('create_entanglement')
   .option(
     '-tm, --treasury-mint <string>',
-    'Mint address of treasury. If not used, default to SOL.',
+    'Mint address of treasury. If not used, default to SAFE.',
   )
   .option('-a, --authority <string>', 'Authority, defaults to keypair')
   .option('-p, --price <string>', 'Price for a swap')
@@ -143,8 +143,8 @@ programCommand('create_entanglement')
     const mintBKey = new web3.PublicKey(mintB);
 
     if (!treasuryMint) {
-      log.info('No treasury mint detected, using SOL.');
-      tMintKey = WRAPPED_SOL_MINT;
+      log.info('No treasury mint detected, using SAFE.');
+      tMintKey = WRAPPED_SAFE_MINT;
     } else {
       tMintKey = new web3.PublicKey(treasuryMint);
     }
@@ -285,7 +285,7 @@ programCommand('swap')
     const signers = [transferAuthority];
 
     //@ts-ignore
-    const isNative = epObj.treasuryMint.equals(WRAPPED_SOL_MINT);
+    const isNative = epObj.treasuryMint.equals(WRAPPED_SAFE_MINT);
 
     //@ts-ignore
     const paymentAccount = isNative
@@ -497,12 +497,12 @@ function programCommand(name: string) {
     .command(name)
     .option(
       '-e, --env <string>',
-      'Solana cluster env name',
+      'Safecoin cluster env name',
       'devnet', //mainnet-beta, testnet, devnet
     )
     .option(
       '-k, --keypair <path>',
-      `Solana wallet location`,
+      `Safecoin wallet location`,
       '--keypair not provided',
     )
     .option('-l, --log-level <string>', 'log level', setLogLevel);

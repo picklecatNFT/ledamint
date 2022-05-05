@@ -1,5 +1,5 @@
-import { initPackSet } from '@oyster/common';
-import { TransactionInstruction } from '@solana/web3.js';
+import { initPackSet } from '@j0nnyboi/common';
+import { TransactionInstruction } from '@safecoin/web3.js';
 import { BN } from 'bn.js';
 
 import { GetInitPackSetParams } from './interface';

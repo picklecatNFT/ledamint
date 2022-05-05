@@ -8,7 +8,7 @@ import { signers, bundleAndSignData, createData, DataItem } from 'arbundles';
 import { ArweaveSigner, Signer } from 'arbundles/src/signing';
 import log from 'loglevel';
 import { StorageType } from '../storage-type';
-import { Keypair } from '@solana/web3.js';
+import { Keypair } from '@safecoin/web3.js';
 import { getType, getExtension } from 'mime';
 import { AssetKey } from '../../types';
 import { sleep } from '../various';
@@ -478,7 +478,7 @@ export async function* makeArweaveBundleUploadGenerator(
   const storageType: StorageType = storage;
   if (storageType === StorageType.ArweaveSol && !walletKeyPair) {
     throw new Error(
-      'To pay for uploads with SOL, you need to pass a Solana Keypair',
+      'To pay for uploads with SAFE, you need to pass a Safecoin Keypair',
     );
   }
   if (storageType === StorageType.ArweaveBundle && !jwk) {
@@ -497,16 +497,16 @@ export async function* makeArweaveBundleUploadGenerator(
       ? env === 'mainnet-beta'
         ? new Bundlr(
             'https://node1.bundlr.network',
-            'solana',
+            'safecoin',
             walletKeyPair.secretKey,
             {
               timeout: 60000,
-              providerUrl: rpcUrl ?? 'https://api.metaplex.solana.com',
+              providerUrl: rpcUrl ?? 'https://api.metaplex.safecoin.com',
             },
           )
         : new Bundlr(
             'https://devnet.bundlr.network',
-            'solana',
+            'safecoin',
             walletKeyPair.secretKey,
             {
               timeout: 60000,
@@ -535,10 +535,10 @@ export async function* makeArweaveBundleUploadGenerator(
       (a, b) => a + b,
       0,
     );
-    const cost = await bundlr.utils.getPrice('solana', bytes);
+    const cost = await bundlr.utils.getPrice('safecoin', bytes);
     const bufferCost = cost.multipliedBy(3).dividedToIntegerBy(2);
     log.info(
-      `${bufferCost.toNumber() / LAMPORTS} SOL to upload ${sizeMB(
+      `${bufferCost.toNumber() / LAMPORTS} SAFE to upload ${sizeMB(
         bytes,
       )}MB with buffer`,
     );
@@ -715,7 +715,7 @@ export async function* makeArweaveBundleUploadGenerator(
 export const withdrawBundlr = async (walletKeyPair: Keypair) => {
   const bundlr = new Bundlr(
     'https://node1.bundlr.network',
-    'solana',
+    'safecoin',
     walletKeyPair.secretKey,
   );
   const balance = await bundlr.getLoadedBalance();
@@ -723,13 +723,13 @@ export const withdrawBundlr = async (walletKeyPair: Keypair) => {
     log.error(
       `Error: Balance in Bundlr node (${balance.dividedBy(
         LAMPORTS,
-      )} SOL) is too low to withdraw.`,
+      )} SAFE) is too low to withdraw.`,
     );
   } else {
     log.info(
       `Requesting a withdrawal of ${balance
         .minus(5000)
-        .dividedBy(LAMPORTS)} SOL from Bundlr...`,
+        .dividedBy(LAMPORTS)} SAFE from Bundlr...`,
     );
     try {
       const withdrawResponse = await bundlr.withdrawBalance(
@@ -739,7 +739,7 @@ export const withdrawBundlr = async (walletKeyPair: Keypair) => {
         log.info(
           `Successfully withdrew ${
             withdrawResponse.data.final / LAMPORTS
-          } SOL.`,
+          } SAFE.`,
         );
       } else if (withdrawResponse.status == 400) {
         log.info(withdrawResponse.data);

@@ -28,7 +28,7 @@ import {
   StoreIndexer,
   WhitelistedCreator,
 } from '../../models/metaplex';
-import { Connection, PublicKey } from '@solana/web3.js';
+import { Connection, PublicKey } from '@safecoin/web3.js';
 import {
   AccountAndPubkey,
   MetaState,
@@ -58,7 +58,7 @@ import { getCardsByPackSet } from '../../models/packs/accounts/PackCard';
 import { processPackCards } from './processPackCards';
 import { getProvingProcessByPackSetAndWallet } from '../../models/packs/accounts/ProvingProcess';
 import { processProvingProcess } from './processProvingProcess';
-import { MetadataData } from '@metaplex-foundation/mpl-token-metadata';
+import { MetadataData } from '@j0nnyboi/mpl-token-metadata';
 
 const MULTIPLE_ACCOUNT_BATCH_SIZE = 100;
 

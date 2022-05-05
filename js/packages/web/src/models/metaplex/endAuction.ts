@@ -5,12 +5,12 @@ import {
   programIds,
   toPublicKey,
   SCHEMA,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import {
   PublicKey,
   SYSVAR_CLOCK_PUBKEY,
   TransactionInstruction,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import { serialize } from 'borsh';
 
 export async function endAuction(

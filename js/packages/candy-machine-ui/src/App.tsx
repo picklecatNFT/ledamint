@@ -1,23 +1,23 @@
 import './App.css';
 import { useMemo } from 'react';
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 import Home from './Home';
 import { DEFAULT_TIMEOUT } from './connection';
-import { clusterApiUrl } from '@solana/web3.js';
-import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
+import { clusterApiUrl } from '@safecoin/web3.js';
+import { WalletAdapterNetwork } from '@j0nnyboi/wallet-adapter-base';
 import {
   getPhantomWallet,
   getSlopeWallet,
   getSolflareWallet,
   getSolletWallet,
   getSolletExtensionWallet,
-} from '@solana/wallet-adapter-wallets';
+} from '@j0nnyboi/wallet-adapter-wallets';
 
 import {
   ConnectionProvider,
   WalletProvider,
-} from '@solana/wallet-adapter-react';
-import { WalletDialogProvider } from '@solana/wallet-adapter-material-ui';
+} from '@j0nnyboi/wallet-adapter-react';
+import { WalletDialogProvider } from '@j0nnyboi/wallet-adapter-material-ui';
 
 import { ThemeProvider, createTheme } from '@material-ui/core';
 
@@ -41,8 +41,8 @@ const getCandyMachineId = (): anchor.web3.PublicKey | undefined => {
 };
 
 const candyMachineId = getCandyMachineId();
-const network = process.env.REACT_APP_SOLANA_NETWORK as WalletAdapterNetwork;
-const rpcHost = process.env.REACT_APP_SOLANA_RPC_HOST!;
+const network = process.env.REACT_APP_SAFECOIN_NETWORK as WalletAdapterNetwork;
+const rpcHost = process.env.REACT_APP_SAFECOIN_RPC_HOST!;
 const connection = new anchor.web3.Connection(
   rpcHost ? rpcHost : anchor.web3.clusterApiUrl('devnet'),
 );
@@ -71,7 +71,6 @@ const App = () => {
               connection={connection}
               txTimeout={DEFAULT_TIMEOUT}
               rpcHost={rpcHost}
-              network={network}
             />
           </WalletDialogProvider>
         </WalletProvider>

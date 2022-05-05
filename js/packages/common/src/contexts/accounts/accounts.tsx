@@ -1,10 +1,10 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { useWallet } from '@solana/wallet-adapter-react';
-import { AccountInfo, Connection, PublicKey } from '@solana/web3.js';
-import { AccountLayout, MintInfo, u64 } from '@solana/spl-token';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { AccountInfo, Connection, PublicKey } from '@safecoin/web3.js';
+import { AccountLayout, MintInfo, u64 } from '@safecoin/safe-token';
 import { useConnection } from '../../contexts/connection';
 import { TokenAccount } from '../../models';
-import { StringPublicKey, WRAPPED_SOL_MINT } from '../../utils/ids';
+import { StringPublicKey, WRAPPED_SAFE_MINT } from '../../utils/ids';
 import { programIds } from '../../utils/programIds';
 import { genericCache, cache } from './cache';
 import { deserializeAccount } from './deserialize';
@@ -33,7 +33,7 @@ function wrapNativeAccount(
     account,
     info: {
       address: key,
-      mint: WRAPPED_SOL_MINT,
+      mint: WRAPPED_SAFE_MINT,
       owner: key,
       amount: new u64(account.lamports),
       delegate: null,

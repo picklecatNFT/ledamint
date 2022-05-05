@@ -3,13 +3,13 @@ import {
   Keypair,
   PublicKey,
   TransactionInstruction,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 
 import {
   AccountInfo as TokenAccountInfo,
   Token,
   TOKEN_PROGRAM_ID,
-} from '@solana/spl-token';
+} from '@safecoin/safe-token';
 const BufferLayout = require('buffer-layout');
 
 export interface TokenAccount {

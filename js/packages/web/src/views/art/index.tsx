@@ -14,8 +14,8 @@ import { useParams } from 'react-router-dom';
 import { useArt, useExtendedArt } from '../../hooks';
 
 import { ArtContent } from '../../components/ArtContent';
-import { shortenAddress, useConnection } from '@oyster/common';
-import { useWallet } from '@solana/wallet-adapter-react';
+import { shortenAddress, useConnection } from '@j0nnyboi/common';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { MetaAvatar } from '../../components/MetaAvatar';
 import { sendSignMetadata } from '../../actions/sendSignMetadata';
 import { ViewOn } from '../../components/ViewOn';

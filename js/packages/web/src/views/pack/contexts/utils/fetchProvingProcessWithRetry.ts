@@ -3,12 +3,12 @@ import {
   ParsedAccount,
   sleep,
   StringPublicKey,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import {
   getProvingProcessByPubkey,
   ProvingProcess,
-} from '@oyster/common/dist/lib/models/packs/accounts/ProvingProcess';
-import { Connection } from '@solana/web3.js';
+} from '@j0nnyboi/common/dist/lib/models/packs/accounts/ProvingProcess';
+import { Connection } from '@safecoin/web3.js';
 
 interface FetchProvingProcessWithRetryParams {
   provingProcessKey: StringPublicKey;

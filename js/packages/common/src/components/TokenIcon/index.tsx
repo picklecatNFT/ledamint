@@ -1,5 +1,5 @@
 import React from 'react';
-import { PublicKey } from '@solana/web3.js';
+import { PublicKey } from '@safecoin/web3.js';
 import { getTokenIcon, KnownTokenMap } from '../../utils';
 import { useConnectionConfig } from '../../contexts/connection';
 import { Identicon } from '../Identicon';

@@ -1,5 +1,5 @@
-import { addCardToPack } from '@oyster/common';
-import { TransactionInstruction } from '@solana/web3.js';
+import { addCardToPack } from '@j0nnyboi/common';
+import { TransactionInstruction } from '@safecoin/web3.js';
 
 import { GetAddCardToPackParams } from './interface';
 

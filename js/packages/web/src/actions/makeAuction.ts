@@ -1,4 +1,4 @@
-import { Keypair, TransactionInstruction } from '@solana/web3.js';
+import { Keypair, TransactionInstruction } from '@safecoin/web3.js';
 import {
   utils,
   findProgramAddress,
@@ -7,12 +7,12 @@ import {
   StringPublicKey,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import {
   AUCTION_PREFIX,
   createAuction,
-} from '@oyster/common/dist/lib/actions/auction';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
+} from '@j0nnyboi/common/dist/lib/actions/auction';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 // This command makes an auction
 export async function makeAuction(

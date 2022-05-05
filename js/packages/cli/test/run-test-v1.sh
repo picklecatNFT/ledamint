@@ -36,7 +36,7 @@ esac
 # RPC server can be specified from the command-line with the flag "-r"
 # Otherwise the default public one will be used
 
-RPC="https://api.${ENV_URL}.solana.com"
+RPC="https://api.${ENV_URL}.safecoin.com"
 
 while getopts r: flag; do
     case "${flag}" in
@@ -180,7 +180,7 @@ read -r -d '' METADATA <<-EOM
     "properties": {
         "creators": [
         {
-            "address": "$(solana address)",
+            "address": "$(safecoin address)",
             "share": 100
         }],
         "files": [{"uri":"%s.%s", "type":"image/%s"}]
@@ -210,7 +210,7 @@ fi
 
 # Wallet keypair file
 
-WALLET_KEY="$(solana config get keypair | cut -d : -f 2)"
+WALLET_KEY="$(safecoin config get keypair | cut -d : -f 2)"
 CACHE_NAME="test"
 
 #-------------------------------------------#

@@ -1,8 +1,8 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { useWallet } from '@solana/wallet-adapter-react';
-import { LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { LAMPORTS_PER_SAFE, PublicKey } from '@safecoin/web3.js';
 import { Button, Popover, Select } from 'antd';
 import {
   ENDPOINTS,
@@ -16,13 +16,13 @@ import {
   useNativeAccount,
   useWalletModal,
   useQuerySearch,
-  WRAPPED_SOL_MINT,
-} from '@oyster/common';
+  WRAPPED_SAFE_MINT,
+} from '@j0nnyboi/common';
 import { useMeta, useSolPrice } from '../../contexts';
 import { useTokenList } from '../../contexts/tokenList';
 import { TokenCircle } from '../Custom';
 
-('@solana/wallet-adapter-base');
+('@j0nnyboi/wallet-adapter-base');
 
 const btnStyle: React.CSSProperties = {
   border: 'none',
@@ -112,7 +112,7 @@ const AddFundsModal = (props: {
       }}
     >
       <div style={{ maxWidth: '100%' }}>
-        <p style={{ color: 'white' }}>
+        <p style={{ color: 'black' }}>
           We partner with <b>FTX</b> to make it simple to start purchasing
           digital collectibles.
         </p>
@@ -144,7 +144,7 @@ const AddFundsModal = (props: {
             >
               <img src="/sol.svg" width="10" />
             </span>{' '}
-            SOL
+            SAFE
           </span>
         </div>
         <p>
@@ -166,7 +166,7 @@ const AddFundsModal = (props: {
         <Button
           onClick={() => {
             window.open(
-              `https://ftx.com/pay/request?coin=SOL&address=${props.publicKey?.toBase58()}&tag=&wallet=sol&memoIsRequired=false`,
+              `https://ftx.com/pay/request?coin=safe-coin-2&address=${props.publicKey?.toBase58()}&tag=&wallet=safe&memoIsRequired=false`,
               '_blank',
               'resizable,width=680,height=860',
             );
@@ -210,13 +210,13 @@ export const CurrentUserBadge = (props: {
   const solPrice = useSolPrice();
   const [showAddFundsModal, setShowAddFundsModal] = useState<Boolean>(false);
   const tokenList = useTokenList();
-
+  console.log('useTokenList ', tokenList);
   if (!wallet || !publicKey) {
     return null;
   }
-  const balance = (account?.lamports || 0) / LAMPORTS_PER_SOL;
+  const balance = (account?.lamports || 0) / LAMPORTS_PER_SAFE;
   const balanceInUSD = balance * solPrice;
-  const solMintInfo = tokenList.tokenMap.get(WRAPPED_SOL_MINT.toString());
+  const solMintInfo = tokenList.tokenMap.get(WRAPPED_SAFE_MINT.toString());
   const iconStyle: React.CSSProperties = {
     display: 'flex',
     width: props.iconSize,
@@ -239,7 +239,8 @@ export const CurrentUserBadge = (props: {
     <div className="wallet-wrapper">
       {props.showBalance && (
         <span>
-          {formatNumber.format((account?.lamports || 0) / LAMPORTS_PER_SOL)} SOL
+          {formatNumber.format((account?.lamports || 0) / LAMPORTS_PER_SAFE)}{' '}
+          SAFE
         </span>
       )}
 
@@ -256,7 +257,7 @@ export const CurrentUserBadge = (props: {
               >
                 <h5
                   style={{
-                    color: 'rgba(255, 255, 255, 0.7)',
+                    color: 'rgba(0, 0, 0, 0.7)',
                     letterSpacing: '0.02em',
                   }}
                 >
@@ -274,15 +275,15 @@ export const CurrentUserBadge = (props: {
                   <span
                     style={{
                       fontWeight: 600,
-                      color: '#FFFFFF',
+                      color: '#000000',
                     }}
                   >
-                    {formatNumber.format(balance)} SOL
+                    {formatNumber.format(balance)} SAFE
                   </span>
                   &nbsp;
                   <span
                     style={{
-                      color: 'rgba(255, 255, 255, 0.5)',
+                      color: 'rgba(0, 0, 0, 0.5)',
                     }}
                   >
                     {formatUSD.format(balanceInUSD)}
@@ -437,7 +438,7 @@ export const CurrentUserBadgeMobile = (props: {
   if (!wallet || !publicKey) {
     return null;
   }
-  const balance = (account?.lamports || 0) / LAMPORTS_PER_SOL;
+  const balance = (account?.lamports || 0) / LAMPORTS_PER_SAFE;
   const balanceInUSD = balance * solPrice;
 
   const iconStyle: React.CSSProperties = {
@@ -467,6 +468,7 @@ export const CurrentUserBadgeMobile = (props: {
             style={{
               marginLeft: '0.5rem',
               fontWeight: 600,
+              color: '#000000',
             }}
           >
             {name}
@@ -479,7 +481,7 @@ export const CurrentUserBadgeMobile = (props: {
           <span className="sol-img-wrapper">
             <img src="/sol.svg" width="10" />
           </span>{' '}
-          {formatNumber.format(balance)}&nbsp;&nbsp; SOL{' '}
+          {formatNumber.format(balance)}&nbsp;&nbsp; SAFE{' '}
           <span
             style={{
               marginLeft: 5,

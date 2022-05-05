@@ -1,4 +1,4 @@
-import { SystemProgram, TransactionInstruction } from '@solana/web3.js';
+import { SystemProgram, TransactionInstruction } from '@safecoin/web3.js';
 import { GetCreateAccountParams } from './interface';
 
 export const getCreateAccount = async ({

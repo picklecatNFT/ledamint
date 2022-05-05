@@ -6,8 +6,8 @@ echo "| WARNING: This will burn all spl-tokens from the wallet. |"
 echo "+---------------------------------------------------------+"
 echo ""
 echo "Wallet config:"
-echo "  -> $(solana config get keypair)"
-echo "  -> $(solana config get json_rpc_url)"
+echo "  -> $(safecoin config get keypair)"
+echo "  -> $(safecoin config get json_rpc_url)"
 echo ""
 echo -n "Continue? [Y/n] (default 'n'): "
 read BURN
@@ -20,7 +20,7 @@ if [ "$BURN" = "Y" ]; then
     ACCOUNTS=`spl-token accounts -v`
     TOTAL=`echo "$ACCOUNTS" | tail -n +3 | wc -l | tr -d ' '`
     echo ""
-    echo "[$(date "+%T")] Wallet: $(solana address)"
+    echo "[$(date "+%T")] Wallet: $(safecoin address)"
     echo "[$(date "+%T")] Burning/Closing $TOTAL token account(s)"
 
     # ignores the header lines (3 lines)

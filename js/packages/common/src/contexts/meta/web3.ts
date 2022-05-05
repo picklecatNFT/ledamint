@@ -1,4 +1,4 @@
-import { AccountInfo, Connection } from '@solana/web3.js';
+import { AccountInfo, Connection } from '@safecoin/web3.js';
 import { StringPublicKey } from '../../utils/ids';
 import { AccountAndPubkey } from './types';
 

@@ -1,4 +1,4 @@
-import { Keypair, Connection, TransactionInstruction } from '@solana/web3.js';
+import { Keypair, Connection, TransactionInstruction } from '@safecoin/web3.js';
 import {
   ParsedAccount,
   sendTransactions,
@@ -13,9 +13,9 @@ import {
   programIds,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
-import { Token } from '@solana/spl-token';
+} from '@j0nnyboi/common';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { Token } from '@safecoin/safe-token';
 
 const BATCH_SIZE = 10;
 const CONVERT_TRANSACTION_SIZE = 10;

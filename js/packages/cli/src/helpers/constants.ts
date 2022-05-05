@@ -1,4 +1,4 @@
-import { PublicKey, clusterApiUrl } from '@solana/web3.js';
+import { PublicKey, clusterApiUrl } from '@safecoin/web3.js';
 export const CANDY_MACHINE = 'candy_machine';
 export const AUCTION_HOUSE = 'auction_house';
 export const TOKEN_ENTANGLER = 'token_entangler';
@@ -13,35 +13,35 @@ export const MAX_SYMBOL_LENGTH = 10;
 export const MAX_CREATOR_LEN = 32 + 1 + 1;
 export const MAX_CREATOR_LIMIT = 5;
 export const ARWEAVE_PAYMENT_WALLET = new PublicKey(
-  '6FKvsq4ydWFci6nGq9ckbjYMtnmaqAoatz5c9XWjiDuS',
+  'HBShEqqNHyWwaw2WFKyVKvvGxWMsxEvsivm5pCL9fHFp',
 );
 export const CANDY_MACHINE_PROGRAM_ID = new PublicKey(
-  'cndyAnrLdpjq1Ssp1z8xxDsB8dxe7u4HL5Nxi2K5WXZ',
+  'KMQvpFxDaFt58rsPeLc1kPSYbdAHUrpETiBiNUb8SGT',
 );
 
 export const CANDY_MACHINE_PROGRAM_V2_ID = new PublicKey(
   'cndy3Z4yapfJBmL3ShUp5exZKqR3z33thTzeNMm2gRZ',
 );
 export const TOKEN_METADATA_PROGRAM_ID = new PublicKey(
-  'metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s',
+  'WbMTNyvtk8vSMu2AmXV7mKuYrADRNw9GSkNtWKsZ7qe',
 );
 export const SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID = new PublicKey(
   'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL',
 );
 export const TOKEN_PROGRAM_ID = new PublicKey(
-  'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+  'ToKLx75MGim1d1jRusuVX8xvdvvbSDESVaNXpRA9PHN',
 );
 export const FAIR_LAUNCH_PROGRAM_ID = new PublicKey(
-  'faircnAB9k59Y4TXmLabBULeuTLgV7TkGMGNkjnA15j',
+  'CVMCPbaiDevfaRZUTWSLPvS2RJuRYheYXPpLgk57drwP',
 );
 export const AUCTION_HOUSE_PROGRAM_ID = new PublicKey(
-  'hausS13jsjafwWwGqZTUQRmWyvyxn9EQpqMwV1PBBmk',
+  'Co8pmAyxUyCwep4zhnPWzkL6fwvPPHU59r1t5eM6gXjZ',
 );
 export const TOKEN_ENTANGLEMENT_PROGRAM_ID = new PublicKey(
   'qntmGodpGkrM42mN68VCZHXnKqDCT8rdY23wFcXCLPd',
 );
-export const WRAPPED_SOL_MINT = new PublicKey(
-  'So11111111111111111111111111111111111111112',
+export const WRAPPED_SAFE_MINT = new PublicKey(
+  'Safe111111111111111111111111111111111111111',
 );
 
 export const CONFIG_ARRAY_START =
@@ -121,7 +121,7 @@ type Cluster = {
 export const CLUSTERS: Cluster[] = [
   {
     name: 'mainnet-beta',
-    url: 'https://api.metaplex.solana.com/',
+    url: 'https://api.mainnet-beta.safecoin.org/',
   },
   {
     name: 'testnet',

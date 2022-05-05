@@ -1,4 +1,4 @@
-import { Connection, PublicKey } from '@solana/web3.js';
+import { Connection, PublicKey } from '@safecoin/web3.js';
 import { deserializeUnchecked } from 'borsh';
 
 import { PackKey, MAX_PACK_PROVING_PROCESS_SIZE } from '..';

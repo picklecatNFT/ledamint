@@ -2,15 +2,15 @@ import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import { CandyMachineAccount } from './candy-machine';
 import { CircularProgress } from '@material-ui/core';
-import { GatewayStatus, useGateway } from '@civic/solana-gateway-react';
+import { GatewayStatus, useGateway } from '@civic/safecoin-gateway-react';
 import { useEffect, useState, useRef } from 'react';
-import { useConnection, useWallet } from '@solana/wallet-adapter-react';
+import { useConnection, useWallet } from '@j0nnyboi/wallet-adapter-react';
 import {
   findGatewayToken,
   getGatewayTokenAddressForOwnerAndGatekeeperNetwork,
   onGatewayTokenChange,
   removeAccountChangeListener,
-} from '@identity.com/solana-gateway-ts';
+} from '@identity.com/safecoin-gateway-ts';
 
 export const CTAButton = styled(Button)`
   width: 100%;

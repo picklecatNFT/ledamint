@@ -1,12 +1,12 @@
-import { Keypair, TransactionInstruction } from '@solana/web3.js';
+import { Keypair, TransactionInstruction } from '@safecoin/web3.js';
 import {
   deprecatedCreateReservationList,
   StringPublicKey,
   WalletSigner,
-} from '@oyster/common';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
+} from '@j0nnyboi/common';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import { SafetyDepositInstructionTemplate } from './addTokensToVault';
-import { WinningConfigType } from '@oyster/common/dist/lib/models/metaplex/index';
+import { WinningConfigType } from '@j0nnyboi/common/dist/lib/models/metaplex/index';
 
 const BATCH_SIZE = 10;
 // This command batches out creating reservation lists for those tokens who are being sold in PrintingV1 mode.

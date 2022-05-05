@@ -1,4 +1,4 @@
-import { Connection } from '@solana/web3.js';
+import { Connection } from '@safecoin/web3.js';
 import {
   getAuctionCache,
   loadAccounts,
@@ -11,7 +11,7 @@ import {
   sendTransactions,
   SequenceType,
   WalletSigner,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { cacheAuctionIndexer } from './cacheAuctionInIndexer';
 import { buildListWhileNonZero } from '../hooks';
 import { BN } from 'bn.js';

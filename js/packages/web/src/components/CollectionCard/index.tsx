@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArtContent } from '../ArtContent';
-import { shortenAddress, StringPublicKey } from '@oyster/common';
+import { shortenAddress, StringPublicKey } from '@j0nnyboi/common';
 import { useArt, useExtendedArt } from '../../hooks';
 import { MetaAvatar } from '../MetaAvatar';
 

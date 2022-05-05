@@ -1,5 +1,5 @@
-import { PublicKey } from '@solana/web3.js';
-import { AccountLayout, MintInfo, MintLayout, u64 } from '@solana/spl-token';
+import { PublicKey } from '@safecoin/web3.js';
+import { AccountLayout, MintInfo, MintLayout, u64 } from '@safecoin/safe-token';
 
 // TODO: expose in spl package
 export const deserializeAccount = (data: Buffer) => {

@@ -3,7 +3,7 @@ import {
   PublicKey,
   SystemProgram,
   AccountInfo,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import {
   CANDY_MACHINE,
   CANDY_MACHINE_PROGRAM_ID,
@@ -15,7 +15,7 @@ import {
   AUCTION_HOUSE,
   FEE_PAYER,
   TREASURY,
-  WRAPPED_SOL_MINT,
+  WRAPPED_SAFE_MINT,
   TOKEN_ENTANGLEMENT_PROGRAM_ID,
   TOKEN_ENTANGLER,
   ESCROW,
@@ -23,12 +23,12 @@ import {
   A,
   CANDY_MACHINE_PROGRAM_V2_ID,
 } from './constants';
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 import fs from 'fs';
 import { createCandyMachineV2Account } from './instructions';
-import { web3 } from '@project-serum/anchor';
+import { web3 } from '@j0nnyboi/anchor';
 import log from 'loglevel';
-import { AccountLayout, u64 } from '@solana/spl-token';
+import { AccountLayout, u64 } from '@safecoin/safe-token';
 import { getCluster } from './various';
 export type AccountAndPubkey = {
   pubkey: string;
@@ -654,7 +654,7 @@ export async function getTokenAmount(
   mint: anchor.web3.PublicKey,
 ): Promise<number> {
   let amount = 0;
-  if (!mint.equals(WRAPPED_SOL_MINT)) {
+  if (!mint.equals(WRAPPED_SAFE_MINT)) {
     try {
       const token =
         await anchorProgram.provider.connection.getTokenAccountBalance(account);

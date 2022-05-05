@@ -1,5 +1,5 @@
-import { AccountInfo, Connection, PublicKey } from '@solana/web3.js';
-import { MintInfo } from '@solana/spl-token';
+import { AccountInfo, Connection, PublicKey } from '@safecoin/web3.js';
+import { MintInfo } from '@safecoin/safe-token';
 import { TokenAccount } from '../../models';
 import { EventEmitter } from '../../utils/eventEmitter';
 import { ParsedAccountBase, AccountParser } from './types';

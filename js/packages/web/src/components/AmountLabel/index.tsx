@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Statistic } from 'antd';
 import { useSolPrice, useAllSplPrices } from '../../contexts';
-import { formatAmount, formatUSD, WRAPPED_SOL_MINT } from '@oyster/common';
+import { formatAmount, formatUSD, WRAPPED_SAFE_MINT } from '@j0nnyboi/common';
 import { TokenCircle } from '../Custom';
-import { TokenInfo } from '@solana/spl-token-registry';
+import { TokenInfo } from '@j0nnyboi/safe-token-registry';
 
 interface IAmountLabel {
   amount: number | string;
@@ -43,7 +43,7 @@ export const AmountLabel = (props: IAmountLabel) => {
     a => a.tokenMint == tokenInfo?.address,
   )[0]?.tokenPrice;
   const tokenPrice =
-    tokenInfo?.address == WRAPPED_SOL_MINT.toBase58() ? solPrice : altSplPrice;
+    tokenInfo?.address == WRAPPED_SAFE_MINT.toBase58() ? solPrice : altSplPrice;
 
   const [priceUSD, setPriceUSD] = useState<number | undefined>(undefined);
 

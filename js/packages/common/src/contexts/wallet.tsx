@@ -1,17 +1,17 @@
-import { WalletAdapter, WalletError } from '@solana/wallet-adapter-base';
+import { WalletAdapter, WalletError } from '@j0nnyboi/wallet-adapter-base';
 import {
   useWallet,
   WalletProvider as BaseWalletProvider,
-} from '@solana/wallet-adapter-react';
+} from '@j0nnyboi/wallet-adapter-react';
 import {
-  getLedgerWallet,
+ /* getLedgerWallet,
   getMathWallet,
   getPhantomWallet,
   getSlopeWallet,
-  getSolflareWallet,
+  getSolflareWallet,*/
   getSolletWallet,
-  getSolongWallet,
-} from '@solana/wallet-adapter-wallets';
+ // getSolongWallet,
+} from '@j0nnyboi/wallet-adapter-wallets';
 import { Button, Collapse } from 'antd';
 import React, {
   createContext,
@@ -48,7 +48,8 @@ export const WalletModal: FC = () => {
     setVisible(false);
   }, [setVisible]);
 
-  const phatomWallet = useMemo(() => getPhantomWallet(), []);
+ // const phatomWallet = useMemo(() => getPhantomWallet(), []);
+ const SolletWallet = useMemo(() => getSolletWallet(), []);
 
   return (
     <MetaplexModal title="Connect Wallet" visible={visible} onCancel={close}>
@@ -68,14 +69,15 @@ export const WalletModal: FC = () => {
       <Button
         className="phantom-button metaplex-button"
         onClick={() => {
-          console.log(phatomWallet.name);
-          select(phatomWallet.name);
+          console.log(SolletWallet.name);
+          select(SolletWallet.name);
           close();
         }}
       >
-        <img src={phatomWallet?.icon} style={{ width: '1.2rem' }} />
-        &nbsp;Connect to Phantom
+        <img src={SolletWallet?.icon} style={{ width: '1.2rem' }} />
+        &nbsp;Connect to Safecoin
       </Button>
+	  
       <Collapse
         ghost
         expandIcon={panelProps =>
@@ -131,7 +133,7 @@ export const WalletModal: FC = () => {
           key="1"
         >
           {wallets.map((wallet, idx) => {
-            if (wallet.name === 'Phantom') return null;
+          if (wallet.name === 'Sollet') return null;
 
             return (
               <Button
@@ -206,9 +208,7 @@ export const WalletModalProvider: FC<{ children: ReactNode }> = ({
 export const WalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const wallets = useMemo(
     () => [
-      getPhantomWallet(),
-      getSolflareWallet(),
-      getSlopeWallet(),
+
       // getTorusWallet({
       //   options: {
       //     // @FIXME: this should be changed for Metaplex, and by each Metaplex storefront
@@ -216,9 +216,7 @@ export const WalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
       //       'BOM5Cl7PXgE9Ylq1Z1tqzhpydY0RVr8k90QQ85N7AKI5QGSrr9iDC-3rvmy0K_hF0JfpLMiXoDhta68JwcxS1LQ',
       //   },
       // }),
-      getLedgerWallet(),
-      getSolongWallet(),
-      getMathWallet(),
+
       getSolletWallet(),
     ],
     [],

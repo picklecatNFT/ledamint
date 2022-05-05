@@ -9,11 +9,11 @@ export const footerConf = {
       links: [
         {
           label: 'About',
-          url: 'www.solana.com',
+          url: 'www.safecoin.com',
         },
         {
           label: 'Terms of service',
-          url: 'www.solana.com',
+          url: 'www.safecoin.com',
         },
       ],
     },
@@ -22,19 +22,19 @@ export const footerConf = {
       links: [
         {
           label: 'FAQ',
-          url: 'www.solana.com',
+          url: 'www.safecoin.com',
         },
         {
           label: 'Support',
-          url: 'www.solana.com',
+          url: 'www.safecoin.com',
         },
         {
           label: 'Privacy policy',
-          url: 'www.solana.com',
+          url: 'www.safecoin.com',
         },
         {
           label: 'Your purchases',
-          url: 'www.solana.com',
+          url: 'www.safecoin.com',
         },
       ],
     },
@@ -43,15 +43,15 @@ export const footerConf = {
       links: [
         {
           label: 'Instagram',
-          url: 'www.solana.com',
+          url: 'www.safecoin.com',
         },
         {
           label: 'Twitter',
-          url: 'www.solana.com',
+          url: 'www.safecoin.com',
         },
         {
           label: 'Discord',
-          url: 'www.solana.com',
+          url: 'www.safecoin.com',
         },
       ],
     },

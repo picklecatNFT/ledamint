@@ -1,4 +1,4 @@
-import { PublicKey, TransactionInstruction } from '@solana/web3.js';
+import { PublicKey, TransactionInstruction } from '@safecoin/web3.js';
 import { serialize } from 'borsh';
 
 import { programIds, toPublicKey } from '../../../utils';

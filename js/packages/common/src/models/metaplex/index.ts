@@ -1,4 +1,4 @@
-import { AccountInfo, SystemProgram } from '@solana/web3.js';
+import { AccountInfo, SystemProgram } from '@safecoin/web3.js';
 import BN from 'bn.js';
 import bs58 from 'bs58';
 import { deserializeUnchecked } from 'borsh';

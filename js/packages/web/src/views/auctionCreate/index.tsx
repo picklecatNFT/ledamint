@@ -34,25 +34,25 @@ import {
   IPartialCreateAuctionArgs,
   MetadataKey,
   StringPublicKey,
-  WRAPPED_SOL_MINT,
+  WRAPPED_SAFE_MINT,
   shortenAddress,
   useNativeAccount,
-} from '@oyster/common';
-import { Connection, LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js';
-import { useWallet } from '@solana/wallet-adapter-react';
-import { MintInfo, MintLayout } from '@solana/spl-token';
+} from '@j0nnyboi/common';
+import { Connection, LAMPORTS_PER_SAFE, PublicKey } from '@safecoin/web3.js';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { MintInfo, MintLayout } from '@safecoin/safe-token';
 import { useHistory, useParams } from 'react-router-dom';
 import {
   WinningConfigType,
   AmountRange,
-} from '@oyster/common/dist/lib/models/metaplex/index';
+} from '@j0nnyboi/common/dist/lib/models/metaplex/index';
 import moment from 'moment';
 import {
   createAuctionManager,
   SafetyDepositDraft,
 } from '../../actions/createAuctionManager';
 import BN from 'bn.js';
-import { constants } from '@oyster/common';
+import { constants } from '@j0nnyboi/common';
 import { DateTimePicker } from '../../components/DateTimePicker';
 import { AmountLabel } from '../../components/AmountLabel';
 import { useMeta } from '../../contexts';
@@ -60,7 +60,7 @@ import useWindowDimensions from '../../utils/layout';
 import { PlusCircleOutlined } from '@ant-design/icons';
 import TokenDialog, { TokenButton } from '../../components/TokenDialog';
 import { useTokenList } from '../../contexts/tokenList';
-import { TokenInfo } from '@solana/spl-token-registry';
+import { TokenInfo } from '@j0nnyboi/safe-token-registry';
 import { FundsIssueModal } from '../../components/FundsIssueModal';
 
 const { Option } = Select;
@@ -445,8 +445,8 @@ export const AuctionCreateView = () => {
       attributes.priceFloor === attributes.instantSalePrice;
 
     const LAMPORTS_PER_TOKEN =
-      attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()
-        ? LAMPORTS_PER_SOL
+      attributes.quoteMintAddress == WRAPPED_SAFE_MINT.toBase58()
+        ? LAMPORTS_PER_SAFE
         : Math.pow(10, attributes.quoteMintInfo.decimals || 0);
 
     const auctionSettings: IPartialCreateAuctionArgs = {
@@ -801,7 +801,7 @@ const InstantSaleStep = ({
   confirm: () => void;
 }) => {
   const [showTokenDialog, setShowTokenDialog] = useState(false);
-  const [mint, setMint] = useState<PublicKey>(WRAPPED_SOL_MINT);
+  const [mint, setMint] = useState<PublicKey>(WRAPPED_SAFE_MINT);
   // give default value to mint
 
   const { hasOtherTokens, tokenMap } = useTokenList();
@@ -966,7 +966,7 @@ const CopiesStep = (props: {
   confirm: () => void;
 }) => {
   const [showTokenDialog, setShowTokenDialog] = useState(false);
-  const [mint, setMint] = useState<PublicKey>(WRAPPED_SOL_MINT);
+  const [mint, setMint] = useState<PublicKey>(WRAPPED_SAFE_MINT);
   const { hasOtherTokens } = useTokenList();
 
   props.attributes.quoteMintAddress = mint
@@ -1081,7 +1081,7 @@ const NumberOfWinnersStep = (props: {
   confirm: () => void;
 }) => {
   const [showTokenDialog, setShowTokenDialog] = useState(false);
-  const [mint, setMint] = useState<PublicKey>(WRAPPED_SOL_MINT);
+  const [mint, setMint] = useState<PublicKey>(WRAPPED_SAFE_MINT);
   const { hasOtherTokens } = useTokenList();
 
   props.attributes.quoteMintAddress = mint
@@ -1177,17 +1177,17 @@ const PriceAuction = (props: {
         <h2>Price</h2>
         <p>
           Set the price for your auction.
-          {props.attributes.quoteMintAddress != WRAPPED_SOL_MINT.toBase58() &&
+          {props.attributes.quoteMintAddress != WRAPPED_SAFE_MINT.toBase58() &&
             ` Warning! the auction quote mint is `}
-          {props.attributes.quoteMintAddress != WRAPPED_SOL_MINT.toBase58() && (
+          {props.attributes.quoteMintAddress != WRAPPED_SAFE_MINT.toBase58() && (
             <a
-              href={`https://explorer.solana.com/address/${props.attributes?.quoteMintAddress}`}
+              href={`https://explorer.safecoin.org/address/${props.attributes?.quoteMintAddress}`}
               target="_blank"
               rel="noreferrer"
             >
               {' '}
               {props.attributes?.quoteMintAddress !=
-                WRAPPED_SOL_MINT.toBase58() &&
+                WRAPPED_SAFE_MINT.toBase58() &&
                 `${quoteMintName} (${quoteMintExt})`}
             </a>
           )}
@@ -1213,8 +1213,8 @@ const PriceAuction = (props: {
                   props.attributes.quoteMintInfoExtended
                     ? props.attributes.quoteMintInfoExtended.symbol
                     : props.attributes.quoteMintAddress ==
-                      WRAPPED_SOL_MINT.toBase58()
-                    ? 'SOL'
+                      WRAPPED_SAFE_MINT.toBase58()
+                    ? 'safe'
                     : 'CUSTOM'
                 }
                 onChange={info =>
@@ -1245,8 +1245,8 @@ const PriceAuction = (props: {
                   props.attributes.quoteMintInfoExtended
                     ? props.attributes.quoteMintInfoExtended.symbol
                     : props.attributes.quoteMintAddress ==
-                      WRAPPED_SOL_MINT.toBase58()
-                    ? 'SOL'
+                      WRAPPED_SAFE_MINT.toBase58()
+                    ? 'safe'
                     : 'CUSTOM'
                 }
                 onChange={info =>
@@ -1271,8 +1271,8 @@ const PriceAuction = (props: {
                 props.attributes.quoteMintInfoExtended
                   ? props.attributes.quoteMintInfoExtended.symbol
                   : props.attributes.quoteMintAddress ==
-                    WRAPPED_SOL_MINT.toBase58()
-                  ? 'SOL'
+                    WRAPPED_SAFE_MINT.toBase58()
+                  ? 'safe'
                   : 'your custom currency'
               }`}
               prefix="◎"
@@ -1280,8 +1280,8 @@ const PriceAuction = (props: {
                 props.attributes.quoteMintInfoExtended
                   ? props.attributes.quoteMintInfoExtended.symbol
                   : props.attributes.quoteMintAddress ==
-                    WRAPPED_SOL_MINT.toBase58()
-                  ? 'SOL'
+                    WRAPPED_SAFE_MINT.toBase58()
+                  ? 'safe'
                   : 'CUSTOM'
               }
               onChange={info =>
@@ -1921,8 +1921,8 @@ const ParticipationStep = (props: {
                 props.attributes.quoteMintInfoExtended
                   ? props.attributes.quoteMintInfoExtended.symbol
                   : props.attributes.quoteMintAddress ==
-                    WRAPPED_SOL_MINT.toBase58()
-                  ? 'SOL'
+                    WRAPPED_SAFE_MINT.toBase58()
+                  ? 'safe'
                   : 'CUSTOM'
               }
               onChange={info =>
@@ -1967,7 +1967,7 @@ const ReviewStep = (props: {
     // TODO: add
   }, [setCost]);
 
-  const balance = (account?.lamports || 0) / LAMPORTS_PER_SOL;
+  const balance = (account?.lamports || 0) / LAMPORTS_PER_SAFE;
 
   const item = props.attributes.items?.[0];
 
@@ -2007,7 +2007,7 @@ const ReviewStep = (props: {
               title="Cost to Create"
               amount={cost}
               tokenInfo={useTokenList().tokenMap.get(
-                WRAPPED_SOL_MINT.toString(),
+                WRAPPED_SAFE_MINT.toString(),
               )}
             />
           ) : (
@@ -2134,7 +2134,7 @@ const Congrats = (props: {
       }/#/auction/${props.auction?.auction.toString()}`,
       hashtags: 'NFT,Crypto,Metaplex',
       // via: "Metaplex",
-      related: 'Metaplex,Solana',
+      related: 'Metaplex,Safecoin',
     };
     const queryParams = new URLSearchParams(params).toString();
     return `https://twitter.com/intent/tweet?${queryParams}`;

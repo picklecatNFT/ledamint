@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { PublicKey } from '@solana/web3.js';
+import { PublicKey } from '@safecoin/web3.js';
 import BN from 'bn.js';
 import * as BufferLayout from 'buffer-layout';
 

@@ -2,8 +2,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button, Card, Carousel, Col, List, Row, Skeleton } from 'antd';
 import { AuctionCard } from '../../components/AuctionCard';
-import { Connection } from '@solana/web3.js';
-import { AuctionViewItem } from '@oyster/common/dist/lib/models/metaplex/index';
+import { Connection } from '@safecoin/web3.js';
+import { AuctionViewItem } from '@j0nnyboi/common/dist/lib/models/metaplex/index';
 import {
   AuctionView as Auction,
   useArt,
@@ -29,10 +29,10 @@ import {
   useMint,
   useMeta,
   BidStateType,
-} from '@oyster/common';
-import { useWallet } from '@solana/wallet-adapter-react';
-import { MintInfo } from '@solana/spl-token';
-import { getHandleAndRegistryKey } from '@solana/spl-name-service';
+} from '@j0nnyboi/common';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { MintInfo } from '@safecoin/safe-token';
+import { getHandleAndRegistryKey } from '@safecoin/safe-name-service';
 import useWindowDimensions from '../../utils/layout';
 import { CheckOutlined } from '@ant-design/icons';
 import { ArtType } from '../../types';
@@ -254,7 +254,7 @@ export const AuctionView = () => {
                   const cluster = endpoint.name;
                   const explorerURL = new URL(
                     `account/${art?.mint || ''}`,
-                    'https://explorer.solana.com',
+                    'https://explorer.safecoin.org',
                   );
                   if (!cluster.includes('mainnet')) {
                     explorerURL.searchParams.set('cluster', cluster);
@@ -262,7 +262,7 @@ export const AuctionView = () => {
                   window.open(explorerURL.href, '_blank');
                 }}
               >
-                Solana
+                Safecoin
               </Button>
             </div>
           </div>
@@ -396,7 +396,7 @@ export const AuctionView = () => {
                         const cluster = endpoint.name;
                         const explorerURL = new URL(
                           `account/${art?.mint || ''}`,
-                          'https://explorer.solana.com',
+                          'https://explorer.safecoin.org',
                         );
                         if (!cluster.includes('mainnet')) {
                           explorerURL.searchParams.set('cluster', cluster);
@@ -404,7 +404,7 @@ export const AuctionView = () => {
                         window.open(explorerURL.href, '_blank');
                       }}
                     >
-                      Solana
+                      Safecoin
                     </Button>
                   </div>
                 </div>

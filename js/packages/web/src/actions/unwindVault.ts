@@ -1,4 +1,4 @@
-import { Keypair, Connection, TransactionInstruction } from '@solana/web3.js';
+import { Keypair, Connection, TransactionInstruction } from '@safecoin/web3.js';
 import {
   Vault,
   ParsedAccount,
@@ -12,11 +12,11 @@ import {
   findProgramAddress,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 
 import BN from 'bn.js';
 import { closeVault } from './closeVault';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 const BATCH_SIZE = 1;
 

@@ -154,7 +154,7 @@ fi
 # Otherwise the default public one will be used
 
 if [ -z ${RPC+x} ]; then
-    RPC="https://api.${ENV_URL}.solana.com"
+    RPC="https://api.${ENV_URL}.safecoin.com"
 fi
 
 while getopts r: flag; do
@@ -369,7 +369,7 @@ fi
 
 # Wallet keypair file
 
-WALLET_KEY="$(solana config get keypair | cut -d : -f 2)"
+WALLET_KEY="$(safecoin config get keypair | cut -d : -f 2)"
 CACHE_NAME="test"
 CACHE_FILE="$CACHE_DIR/${ENV_URL}-${CACHE_NAME}.json"
 LAST_INDEX=$((ITEMS - 1))
@@ -388,7 +388,7 @@ read -r -d '' METADATA <<-EOM
     "properties": {
         "creators": [
         {
-            "address": "$(solana address)",
+            "address": "$(safecoin address)",
             "share": 100
         }],
         "files": []
@@ -467,7 +467,7 @@ cat >$CONFIG_FILE <<-EOM
     "price": 0.1,
     "number": $ITEMS,
     "gatekeeper": null,
-    "solTreasuryAccount": "$(solana address)",
+    "solTreasuryAccount": "$(safecoin address)",
     "splTokenAccount": null,
     "splToken": null,
     "goLiveDate": "$(date "+%d %b %Y %T %Z")",

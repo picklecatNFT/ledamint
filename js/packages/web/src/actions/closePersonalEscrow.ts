@@ -1,16 +1,16 @@
-import { Connection, Keypair, TransactionInstruction } from '@solana/web3.js';
+import { Connection, Keypair, TransactionInstruction } from '@safecoin/web3.js';
 import {
   utils,
   sendTransactionWithRetry,
   StringPublicKey,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
-import { Token } from '@solana/spl-token';
+} from '@j0nnyboi/common';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { Token } from '@safecoin/safe-token';
 // When you are an artist and you receive royalties, due to the design of the system
-// it is to a permanent ATA WSOL account. This is because the auctioneer can't transfer monies
-// from your WSOL to your SOL wallet since you own both, and having the auctioneer temporarily
+// it is to a permanent ATA WSAFE account. This is because the auctioneer can't transfer monies
+// from your WSAFE to your SAFE wallet since you own both, and having the auctioneer temporarily
 // own your WSOL account to the transfer is one hell of a security vulnerability for a little convenience.
 // Instead we make the WSOL permanent, and you have to accept it on the UI via your "unsettled funds"
 // notification. All we do is then transfer the lamports out of the account.

@@ -1,5 +1,5 @@
-import { useMeta } from '@oyster/common';
-import { useWallet } from '@solana/wallet-adapter-react';
+import { useMeta } from '@j0nnyboi/common';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 
 import { useCreatorArts } from '../../../hooks';
 import { ArtworkViewState, Item } from '../types';

@@ -1,7 +1,8 @@
 import {
+  Strategy,
   TokenListContainer,
   TokenListProvider,
-} from '@solana/spl-token-registry';
+} from '@j0nnyboi/safe-token-registry';
 
 let _cachedTokenListContainerPromise: Promise<TokenListContainer> | null;
 

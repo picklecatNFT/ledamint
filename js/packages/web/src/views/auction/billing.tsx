@@ -24,9 +24,9 @@ import {
   StringPublicKey,
   toPublicKey,
   WalletSigner,
-  WRAPPED_SOL_MINT,
-} from '@oyster/common';
-import { useWallet } from '@solana/wallet-adapter-react';
+  WRAPPED_SAFE_MINT,
+} from '@j0nnyboi/common';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { useMeta } from '../../contexts';
 import {
   getBidderKeys,
@@ -34,10 +34,10 @@ import {
   NonWinningConstraint,
   PayoutTicket,
   WinningConstraint,
-} from '@oyster/common/dist/lib/models/metaplex/index';
-import { Connection } from '@solana/web3.js';
+} from '@j0nnyboi/common/dist/lib/models/metaplex/index';
+import { Connection } from '@safecoin/web3.js';
 import { settle } from '../../actions/settle';
-import { MintInfo } from '@solana/spl-token';
+import { MintInfo } from '@safecoin/safe-token';
 const { Content } = Layout;
 
 export const BillingView = () => {
@@ -424,7 +424,7 @@ export const InnerBillingView = ({
             <div className="info-header">TOTAL AUCTION VALUE</div>
             <div className="escrow">
               {auctionView.auctionManager.acceptPayment ==
-              WRAPPED_SOL_MINT.toBase58()
+              WRAPPED_SAFE_MINT.toBase58()
                 ? '◎'
                 : ''}
               {fromLamports(
@@ -436,7 +436,7 @@ export const InnerBillingView = ({
             <div className="info-header">TOTAL AUCTION REDEEMED VALUE</div>
             <div className="escrow">
               {auctionView.auctionManager.acceptPayment ==
-              WRAPPED_SOL_MINT.toBase58()
+              WRAPPED_SAFE_MINT.toBase58()
                 ? '◎'
                 : ''}
               {fromLamports(
@@ -452,7 +452,7 @@ export const InnerBillingView = ({
             </div>
             <div className="escrow">
               {auctionView.auctionManager.acceptPayment ==
-              WRAPPED_SOL_MINT.toBase58()
+              WRAPPED_SAFE_MINT.toBase58()
                 ? '◎'
                 : ''}
               {fromLamports(
@@ -467,7 +467,7 @@ export const InnerBillingView = ({
             <div className="info-header">TOTAL UNSETTLED</div>
             <div className="escrow">
               {auctionView.auctionManager.acceptPayment ==
-              WRAPPED_SOL_MINT.toBase58()
+              WRAPPED_SAFE_MINT.toBase58()
                 ? '◎'
                 : ''}
               {fromLamports(
@@ -484,7 +484,7 @@ export const InnerBillingView = ({
               {escrowBalance !== undefined ? (
                 `${
                   auctionView.auction.info.tokenMint ==
-                  WRAPPED_SOL_MINT.toBase58()
+                  WRAPPED_SAFE_MINT.toBase58()
                     ? '◎'
                     : ''
                 } ${escrowBalance}`
@@ -500,7 +500,7 @@ export const InnerBillingView = ({
                 </div>
                 <div className="outstanding-open-editions">
                   {auctionView.auctionManager.acceptPayment ==
-                  WRAPPED_SOL_MINT.toBase58()
+                  WRAPPED_SAFE_MINT.toBase58()
                     ? '◎'
                     : ''}
                   {fromLamports(participationUnredeemedTotal, mint)}

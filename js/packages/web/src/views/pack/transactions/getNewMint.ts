@@ -1,7 +1,7 @@
-import { Connection, Keypair, TransactionInstruction } from '@solana/web3.js';
-import { MintLayout } from '@solana/spl-token';
-import { WalletContextState } from '@solana/wallet-adapter-react';
-import { StringPublicKey } from '@oyster/common';
+import { Connection, Keypair, TransactionInstruction } from '@safecoin/web3.js';
+import { MintLayout } from '@safecoin/safe-token';
+import { WalletContextState } from '@j0nnyboi/wallet-adapter-react';
+import { StringPublicKey } from '@j0nnyboi/common';
 
 import { createMintAndAccountWithOne } from '../../../actions/createMintAndAccountWithOne';
 

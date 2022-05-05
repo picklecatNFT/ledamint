@@ -1,15 +1,15 @@
-import { AccountLayout, MintLayout, Token } from '@solana/spl-token';
+import { AccountLayout, MintLayout, Token } from '@safecoin/safe-token';
 import {
   Keypair,
   PublicKey,
   SystemProgram,
   SYSVAR_RENT_PUBKEY,
   TransactionInstruction,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import {
   SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID,
   TOKEN_PROGRAM_ID,
-  WRAPPED_SOL_MINT,
+  WRAPPED_SAFE_MINT,
 } from '../utils/ids';
 import { programIds } from '../utils/programIds';
 import { TokenAccount } from '../models/account';
@@ -38,7 +38,7 @@ export function ensureSplAccount(
   instructions.push(
     Token.createInitAccountInstruction(
       TOKEN_PROGRAM_ID,
-      WRAPPED_SOL_MINT,
+      WRAPPED_SAFE_MINT,
       account,
       payer,
     ),
@@ -258,7 +258,7 @@ export function ensureWrappedAccount(
   instructions.push(
     Token.createInitAccountInstruction(
       TOKEN_PROGRAM_ID,
-      WRAPPED_SOL_MINT,
+      WRAPPED_SAFE_MINT,
       account.publicKey,
       payer,
     ),
@@ -302,7 +302,7 @@ export function findOrCreateAccountByMint(
         acc.info.owner.toBase58() === ownerKey &&
         (excluded === undefined || !excluded.has(acc.pubkey)),
     );
-  const isWrappedSol = accountToFind === WRAPPED_SOL_MINT.toBase58();
+  const isWrappedSol = accountToFind === WRAPPED_SAFE_MINT.toBase58();
 
   let toAccount: PublicKey;
   if (account && !isWrappedSol) {

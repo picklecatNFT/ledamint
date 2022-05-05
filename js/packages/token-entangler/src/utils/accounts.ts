@@ -1,11 +1,11 @@
-import * as anchor from '@project-serum/anchor';
-import { Connection, PublicKey } from '@solana/web3.js';
+import * as anchor from '@j0nnyboi/anchor';
+import { Connection, PublicKey } from '@safecoin/web3.js';
 import {
   AccountLayout,
   MintInfo,
   MintLayout,
   TOKEN_PROGRAM_ID,
-} from '@solana/spl-token';
+} from '@safecoin/safe-token';
 import BN from 'bn.js';
 
 import log from 'loglevel';
@@ -14,7 +14,7 @@ import {
   SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID,
   TOKEN_METADATA_PROGRAM_ID,
   TOKEN_ENTANGLEMENT_PROGRAM_ID,
-  WRAPPED_SOL_MINT,
+  WRAPPED_SAFE_MINT,
 } from './ids';
 
 export const TOKEN_ENTANGLER = 'token_entangler';
@@ -242,7 +242,7 @@ export async function getTokenAmount(
   mint: anchor.web3.PublicKey,
 ): Promise<number> {
   let amount = 0;
-  if (!mint.equals(WRAPPED_SOL_MINT)) {
+  if (!mint.equals(WRAPPED_SAFE_MINT)) {
     try {
       const token =
         await anchorProgram.provider.connection.getTokenAccountBalance(account);

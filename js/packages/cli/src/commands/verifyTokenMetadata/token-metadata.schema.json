@@ -47,13 +47,13 @@
         },
         "creators": {
           "type": "array",
-          "description": "Contains list of creators, each with Solana address and share of the NFT",
+          "description": "Contains list of creators, each with Safecoin address and share of the NFT",
           "items": {
             "type": "object",
             "properties": {
               "address": {
                 "type": "string",
-                "description": "A Solana address",
+                "description": "A Safecoin address",
                 "pattern": "[1-9A-HJ-NP-Za-km-z]{32,44}"
               },
               "share": {

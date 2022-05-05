@@ -14,9 +14,9 @@ import {
   loadAuctionHouseProgram,
   loadWalletKey,
 } from './helpers/accounts';
-import { BN, web3 } from '@project-serum/anchor';
-import { TOKEN_PROGRAM_ID, WRAPPED_SOL_MINT } from './helpers/constants';
-import { ASSOCIATED_TOKEN_PROGRAM_ID, Token } from '@solana/spl-token';
+import { BN, web3 } from '@j0nnyboi/anchor';
+import { TOKEN_PROGRAM_ID, WRAPPED_SAFE_MINT } from './helpers/constants';
+import { ASSOCIATED_TOKEN_PROGRAM_ID, Token } from '@safecoin/safe-token';
 import { getPriceWithMantissa } from './helpers/various';
 import { sendTransactionWithRetryWithKeypair } from './helpers/transactions';
 import { decodeMetadata, Metadata } from './helpers/schema';
@@ -120,7 +120,7 @@ programCommand('withdraw')
     );
 
     //@ts-ignore
-    const isNative = auctionHouseObj.treasuryMint.equals(WRAPPED_SOL_MINT);
+    const isNative = auctionHouseObj.treasuryMint.equals(WRAPPED_SAFE_MINT);
 
     const ata = (
       await getAtaForMint(
@@ -348,7 +348,7 @@ programCommand('sell')
 programCommand('withdraw_from_treasury')
   .option(
     '-tm, --treasury-mint <string>',
-    'Optional. Mint address of treasury. If not used, default to SOL. Ignored if providing -ah arg',
+    'Optional. Mint address of treasury. If not used, default to SAFE. Ignored if providing -ah arg',
   )
   .option(
     '-ah, --auction-house <string>',
@@ -366,7 +366,7 @@ programCommand('withdraw_from_treasury')
     let tMintKey;
     if (!treasuryMint) {
       log.info('No treasury mint detected, using SOL.');
-      tMintKey = WRAPPED_SOL_MINT;
+      tMintKey = WRAPPED_SAFE_MINT;
     } else {
       tMintKey = new web3.PublicKey(treasuryMint);
     }
@@ -450,7 +450,7 @@ programCommand('withdraw_from_fees')
     let tMintKey;
     if (!treasuryMint) {
       log.info('No treasury mint detected, using SOL.');
-      tMintKey = WRAPPED_SOL_MINT;
+      tMintKey = WRAPPED_SAFE_MINT;
     } else {
       tMintKey = new web3.PublicKey(treasuryMint);
     }
@@ -703,7 +703,7 @@ programCommand('execute_sale')
     const sellerWalletKey = new web3.PublicKey(sellerWallet);
 
     //@ts-ignore
-    const isNative = auctionHouseObj.treasuryMint.equals(WRAPPED_SOL_MINT);
+    const isNative = auctionHouseObj.treasuryMint.equals(WRAPPED_SAFE_MINT);
     const buyPriceAdjusted = new BN(
       await getPriceWithMantissa(
         buyPrice,
@@ -966,7 +966,7 @@ programCommand('buy')
     );
 
     //@ts-ignore
-    const isNative = auctionHouseObj.treasuryMint.equals(WRAPPED_SOL_MINT);
+    const isNative = auctionHouseObj.treasuryMint.equals(WRAPPED_SAFE_MINT);
 
     const ata = (
       await getAtaForMint(
@@ -1090,7 +1090,7 @@ programCommand('deposit')
     );
 
     //@ts-ignore
-    const isNative = auctionHouseObj.treasuryMint.equals(WRAPPED_SOL_MINT);
+    const isNative = auctionHouseObj.treasuryMint.equals(WRAPPED_SAFE_MINT);
 
     const ata = (
       await getAtaForMint(
@@ -1208,7 +1208,7 @@ programCommand('show')
     let tMintKey;
     if (!treasuryMint) {
       log.info('No treasury mint detected, using SOL.');
-      tMintKey = WRAPPED_SOL_MINT;
+      tMintKey = WRAPPED_SAFE_MINT;
     } else {
       tMintKey = new web3.PublicKey(treasuryMint);
     }
@@ -1338,11 +1338,11 @@ programCommand('create_auction_house')
     }
     if (!treasuryMint) {
       log.info('No treasury mint detected, using SOL.');
-      tMintKey = WRAPPED_SOL_MINT;
+      tMintKey = WRAPPED_SAFE_MINT;
     } else {
       tMintKey = new web3.PublicKey(treasuryMint);
     }
-    const twdAta = tMintKey.equals(WRAPPED_SOL_MINT)
+    const twdAta = tMintKey.equals(WRAPPED_SAFE_MINT)
       ? twdKey
       : (await getAtaForMint(tMintKey, twdKey))[0];
 
@@ -1439,7 +1439,7 @@ programCommand('update_auction_house')
     let tMintKey: web3.PublicKey;
     if (!treasuryMint) {
       log.info('No treasury mint detected, using SOL.');
-      tMintKey = WRAPPED_SOL_MINT;
+      tMintKey = WRAPPED_SAFE_MINT;
     } else {
       tMintKey = new web3.PublicKey(treasuryMint);
     }
@@ -1458,7 +1458,7 @@ programCommand('update_auction_house')
     let twdKey: web3.PublicKey, fwdKey: web3.PublicKey;
     if (!treasuryWithdrawalDestination) {
       log.info('No treasury withdrawal dest detected, using original value');
-      twdKey = tMintKey.equals(WRAPPED_SOL_MINT)
+      twdKey = tMintKey.equals(WRAPPED_SAFE_MINT)
         ? //@ts-ignore
           auctionHouseObj.treasuryWithdrawalDestination
         : deserializeAccount(
@@ -1481,7 +1481,7 @@ programCommand('update_auction_house')
     } else {
       fwdKey = new web3.PublicKey(feeWithdrawalDestination);
     }
-    const twdAta = tMintKey.equals(WRAPPED_SOL_MINT)
+    const twdAta = tMintKey.equals(WRAPPED_SAFE_MINT)
       ? twdKey
       : (await getAtaForMint(tMintKey, twdKey))[0];
 
@@ -1555,12 +1555,12 @@ function programCommand(name: string) {
     .command(name)
     .option(
       '-e, --env <string>',
-      'Solana cluster env name',
+      'safecoin cluster env name',
       'devnet', //mainnet-beta, testnet, devnet
     )
     .option(
       '-k, --keypair <path>',
-      `Solana wallet location`,
+      `Safecoin wallet location`,
       '--keypair not provided',
     )
     .option('-l, --log-level <string>', 'log level', setLogLevel);

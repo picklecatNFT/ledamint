@@ -3,8 +3,8 @@ import {
   useStore,
   useWalletModal,
   WhitelistedCreator,
-} from '@oyster/common';
-import { useWallet } from '@solana/wallet-adapter-react';
+} from '@j0nnyboi/common';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { Button } from 'antd';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -75,7 +75,7 @@ export const SetupView = () => {
       {wallet.connected && !store && (
         <>
           <p>Store is not initialized yet</p>
-          <p>There must be some ◎ SOL in the wallet before initialization.</p>
+          <p>There must be some ◎ SAFE in the wallet before initialization.</p>
           <p>
             After initialization, you will be able to manage the list of
             creators

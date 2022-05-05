@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
-import { LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js';
-import { MintLayout, AccountLayout } from '@solana/spl-token';
+import { LAMPORTS_PER_SAFE, PublicKey } from '@safecoin/web3.js';
+import { MintLayout, AccountLayout } from '@safecoin/safe-token';
 import { Button, Form, Input, Modal, InputNumber } from 'antd';
 import debounce from 'lodash/debounce';
 import {
@@ -11,13 +11,13 @@ import {
   MetaplexOverlay,
   useConnection,
   useUserAccounts,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { useArt } from '../../hooks';
 import { mintEditionsToWallet } from '../../actions/mintEditionsIntoWallet';
 import { ArtType } from '../../types';
 import { Confetti } from '../Confetti';
 import { Link } from 'react-router-dom';
-import { useWallet } from '@solana/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 
 interface ArtMintingProps {
   id: string;
@@ -98,7 +98,7 @@ export const ArtMinting = ({ id, onMint }: ArtMintingProps) => {
           metadataRentExempt +
           editionRentExempt) *
           editions) /
-        LAMPORTS_PER_SOL;
+        LAMPORTS_PER_SAFE;
 
       setTotalCost(cost);
     })();

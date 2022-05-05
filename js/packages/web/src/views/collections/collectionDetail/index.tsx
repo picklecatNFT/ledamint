@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { Banner } from '../../../components/Banner';
-import { pubkeyToString, useMeta } from '@oyster/common';
+import { pubkeyToString, useMeta } from '@j0nnyboi/common';
 import { useExtendedArt } from '../../../hooks';
 import { SalesListView } from '../../home/components/SalesList';
 

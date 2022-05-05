@@ -1,4 +1,4 @@
-import { useWallet } from '@solana/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import React, { useEffect, useState } from 'react';
 import { Layout, Row, Col, Tabs, Dropdown, Menu } from 'antd';
 import { useMeta } from '../../contexts';
@@ -7,7 +7,7 @@ import { CardLoader } from '../../components/MyLoader';
 import { ArtworkViewState } from './types';
 import { useItems } from './hooks/useItems';
 import ItemCard from './components/ItemCard';
-import { useUserAccounts } from '@oyster/common';
+import { useUserAccounts } from '@j0nnyboi/common';
 import { DownOutlined } from '@ant-design/icons';
 import { isMetadata, isPack } from './utils';
 

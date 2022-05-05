@@ -1,5 +1,5 @@
 import React from 'react';
-import { useWallet } from '@solana/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { ENDPOINTS, useColorMode, useConnectionConfig } from '../../contexts';
 import { CopyOutlined } from '@ant-design/icons';
 import { ModalEnum, useModal, useWalletModal } from '../../contexts';
@@ -45,7 +45,7 @@ export function notify({
   if (txid) {
     //   <Link
     //     external
-    //     to={'https://explorer.solana.com/tx/' + txid}
+    //     to={'https://explorer.safecoin.org/tx/' + txid}
     //     style={{ color: '#0000ff' }}
     //   >
     //     View transaction {txid.slice(0, 8)}...{txid.slice(txid.length - 8)}

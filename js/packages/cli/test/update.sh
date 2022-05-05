@@ -21,7 +21,7 @@ NUMBER=25
 ENV_URL="devnet"
 RPC="https://psytrbhymqlkfrhudd.dev.genesysgo.net:8899/"
 
-WALLET_KEY="$(solana config get keypair | cut -d : -f 2)"
+WALLET_KEY="$(safecoin config get keypair | cut -d : -f 2)"
 CACHE_NAME="test"
 CACHE_FILE="${CURRENT_DIR}/.cache/${ENV_URL}-${CACHE_NAME}.json"
 

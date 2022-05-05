@@ -4,7 +4,7 @@ import {
   SYSVAR_RENT_PUBKEY,
   SystemProgram,
   Keypair,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import { serialize } from 'borsh';
 
 import { TokenAccount } from '../..';

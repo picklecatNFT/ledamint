@@ -14,10 +14,10 @@ import {
   useUserAccounts,
   VaultState,
   WalletSigner,
-  WRAPPED_SOL_MINT,
-} from '@oyster/common';
-import { useWallet } from '@solana/wallet-adapter-react';
-import { Connection } from '@solana/web3.js';
+  WRAPPED_SAFE_MINT,
+} from '@j0nnyboi/common';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { Connection } from '@safecoin/web3.js';
 import { Badge, Popover, List } from 'antd';
 import { Link } from 'react-router-dom';
 import { closePersonalEscrow } from '../../actions/closePersonalEscrow';
@@ -336,7 +336,7 @@ export function useSettlementAuctions({
               if (
                 wallet.publicKey &&
                 auctionView.auction.info.tokenMint ==
-                  WRAPPED_SOL_MINT.toBase58()
+                  WRAPPED_SAFE_MINT.toBase58()
               ) {
                 const ata = await getPersonalEscrowAta(wallet);
                 if (ata) await closePersonalEscrow(connection, wallet, ata);

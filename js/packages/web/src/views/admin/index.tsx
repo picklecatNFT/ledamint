@@ -15,7 +15,7 @@ import { useMeta } from '../../contexts';
 import {
   Store,
   WhitelistedCreator,
-} from '@oyster/common/dist/lib/models/metaplex/index';
+} from '@j0nnyboi/common/dist/lib/models/metaplex/index';
 import {
   MasterEditionV1,
   notify,
@@ -27,9 +27,9 @@ import {
   useUserAccounts,
   useWalletModal,
   WalletSigner,
-} from '@oyster/common';
-import { useWallet } from '@solana/wallet-adapter-react';
-import { Connection } from '@solana/web3.js';
+} from '@j0nnyboi/common';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { Connection } from '@safecoin/web3.js';
 import { saveAdmin } from '../../actions/saveAdmin';
 import {
   convertMasterEditions,
@@ -150,7 +150,7 @@ function ArtistModal({
             }));
           } catch {
             notify({
-              message: 'Only valid Solana addresses are supported',
+              message: 'Only valid Safecoin addresses are supported',
               type: 'error',
             });
           }

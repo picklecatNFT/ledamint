@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import * as fs from 'fs';
 import { program } from 'commander';
-import * as anchor from '@project-serum/anchor';
-import { LAMPORTS_PER_SOL } from '@solana/web3.js';
-import { Token, MintLayout } from '@solana/spl-token';
+import * as anchor from '@j0nnyboi/anchor';
+import { LAMPORTS_PER_SAFE } from '@safecoin/web3.js';
+import { Token, MintLayout } from '@safecoin/safe-token';
 import {
   CACHE_PATH,
   FAIR_LAUNCH_PROGRAM_ID,
@@ -45,12 +45,12 @@ program
   .command('new_fair_launch')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-u, --uuid <string>', 'uuid')
@@ -151,11 +151,11 @@ program
     const anchorProgram = await loadFairLaunchProgram(walletKeyPair, env);
     if (!treasuryMint) {
       priceRangeStartNumber = Math.ceil(
-        priceRangeStartNumber * LAMPORTS_PER_SOL,
+        priceRangeStartNumber * LAMPORTS_PER_SAFE,
       );
-      priceRangeEndNumber = Math.ceil(priceRangeEndNumber * LAMPORTS_PER_SOL);
-      tickSizeNumber = Math.ceil(tickSizeNumber * LAMPORTS_PER_SOL);
-      feeNumber = Math.ceil(feeNumber * LAMPORTS_PER_SOL);
+      priceRangeEndNumber = Math.ceil(priceRangeEndNumber * LAMPORTS_PER_SAFE);
+      tickSizeNumber = Math.ceil(tickSizeNumber * LAMPORTS_PER_SAFE);
+      feeNumber = Math.ceil(feeNumber * LAMPORTS_PER_SAFE);
     } else {
       const token = new Token(
         anchorProgram.provider.connection,
@@ -230,12 +230,12 @@ program
   .command('update_fair_launch')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-u, --uuid <string>', 'uuid')
@@ -333,11 +333,11 @@ program
     const anchorProgram = await loadFairLaunchProgram(walletKeyPair, env);
     if (!mint) {
       priceRangeStartNumber = Math.ceil(
-        priceRangeStartNumber * LAMPORTS_PER_SOL,
+        priceRangeStartNumber * LAMPORTS_PER_SAFE,
       );
-      priceRangeEndNumber = Math.ceil(priceRangeEndNumber * LAMPORTS_PER_SOL);
-      tickSizeNumber = Math.ceil(tickSizeNumber * LAMPORTS_PER_SOL);
-      feeNumber = Math.ceil(feeNumber * LAMPORTS_PER_SOL);
+      priceRangeEndNumber = Math.ceil(priceRangeEndNumber * LAMPORTS_PER_SAFE);
+      tickSizeNumber = Math.ceil(tickSizeNumber * LAMPORTS_PER_SAFE);
+      feeNumber = Math.ceil(feeNumber * LAMPORTS_PER_SAFE);
     } else {
       const token = new Token(
         anchorProgram.provider.connection,
@@ -391,12 +391,12 @@ program
   .command('purchase_ticket')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -434,7 +434,7 @@ program
 
     //@ts-ignore
     if (!fairLaunchObj.treasuryMint) {
-      amountNumber = Math.ceil(amountNumber * LAMPORTS_PER_SOL);
+      amountNumber = Math.ceil(amountNumber * LAMPORTS_PER_SAFE);
     } else {
       const transferAuthority = anchor.web3.Keypair.generate();
       signers.push(transferAuthority);
@@ -567,12 +567,12 @@ program
   .command('mint_from_dummy')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option(
@@ -642,12 +642,12 @@ program
   .command('create_dummy_payment_mint')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .action(async (_, cmd) => {
@@ -734,7 +734,7 @@ async function adjustTicket({
   //@ts-ignore
   if (!fairLaunchObj.treasuryMint) {
     if (adjustMantissa)
-      amountNumber = Math.ceil(amountNumber * LAMPORTS_PER_SOL);
+      amountNumber = Math.ceil(amountNumber * LAMPORTS_PER_SAFE);
   } else {
     const transferAuthority = anchor.web3.Keypair.generate();
     signers.push(transferAuthority);
@@ -837,12 +837,12 @@ program
   .command('update_participation_nft')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -934,12 +934,12 @@ program
   .command('set_participation_nft')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -1045,12 +1045,12 @@ program
   .command('set_token_metadata')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -1132,12 +1132,12 @@ program
   .command('adjust_ticket')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -1182,12 +1182,12 @@ program
   .command('punch_and_refund_all_outstanding')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -1741,12 +1741,12 @@ program
   .command('punch_ticket')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -1869,12 +1869,12 @@ program
   .command('burn_fair_launch_tokens_warning_irreversible')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -1928,12 +1928,12 @@ program
   .command('start_phase_three')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -1969,12 +1969,12 @@ program
   .command('mint_flp_tokens')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -2031,12 +2031,12 @@ program
   .command('send_flp_tokens')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -2276,12 +2276,12 @@ program
   .command('withdraw_funds')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -2344,12 +2344,12 @@ program
   .command('restart_phase_2')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -2373,12 +2373,12 @@ program
   .command('receive_refund')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -2466,12 +2466,12 @@ program
   .command('create_fair_launch_lottery')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -2752,12 +2752,12 @@ program
   .command('create_missing_sequences')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -2845,12 +2845,12 @@ program
   .command('show')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -3077,12 +3077,12 @@ program
   .command('show_ticket')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')
@@ -3128,12 +3128,12 @@ program
   .command('show_lottery')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option(
     '-k, --keypair <path>',
-    `Solana wallet location`,
+    `Safecoin wallet location`,
     '--keypair not provided',
   )
   .option('-f, --fair-launch <string>', 'fair launch id')

@@ -49,7 +49,7 @@ describe('`metaplex verify_token_metadata`', () => {
   it('throws on invalid share allocation', () => {
     expect(() =>
       verifyAggregateShare(
-        [{ address: 'some-solana-address', share: 80 }],
+        [{ address: 'some-safecoin-address', share: 80 }],
         'placeholder-manifest-file',
       ),
     ).toThrowErrorMatchingInlineSnapshot(
@@ -59,9 +59,9 @@ describe('`metaplex verify_token_metadata`', () => {
     expect(() =>
       verifyAggregateShare(
         [
-          { address: 'some-solana-address', share: 80 },
+          { address: 'some-safecoin-address', share: 80 },
           {
-            address: 'some-other-solana-address',
+            address: 'some-other-safecoin-address',
             share: 19,
           },
         ],
@@ -77,9 +77,9 @@ describe('`metaplex verify_token_metadata`', () => {
     expect(() =>
       verifyAggregateShare(
         [
-          { address: 'some-solana-address', share: 80 },
+          { address: 'some-safecoin-address', share: 80 },
           {
-            address: 'some-other-solana-address',
+            address: 'some-other-safecoin-address',
             share: 19.9,
           },
         ],
@@ -102,10 +102,10 @@ describe('`metaplex verify_token_metadata`', () => {
 
   it('warns when there are inconsistent share allocations', () => {
     const collatedCreators = new Map([
-      ['some-solana-address', { shares: new Set([70]), tokenCount: 10 }],
+      ['some-safecoin-address', { shares: new Set([70]), tokenCount: 10 }],
     ]);
     verifyCreatorCollation(
-      [{ address: 'some-solana-address', share: 80 }],
+      [{ address: 'some-safecoin-address', share: 80 }],
       collatedCreators,
       '0.json',
     );
@@ -114,8 +114,8 @@ describe('`metaplex verify_token_metadata`', () => {
 
   it('warns when there are inconsistent creator allocations', () => {
     const collatedCreators = new Map([
-      ['some-solana-address', { shares: new Set([80]), tokenCount: 10 }],
-      ['some-other-solana-address', { shares: new Set([80]), tokenCount: 20 }],
+      ['some-safecoin-address', { shares: new Set([80]), tokenCount: 10 }],
+      ['some-other-safecoin-address', { shares: new Set([80]), tokenCount: 20 }],
     ]);
     verifyConsistentShares(collatedCreators);
     expect(spy).toHaveBeenCalledTimes(1);

@@ -4,7 +4,7 @@ import {
   SYSVAR_RENT_PUBKEY,
   SYSVAR_CLOCK_PUBKEY,
   SystemProgram,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import { serialize } from 'borsh';
 import { programIds, toPublicKey, StringPublicKey } from '../../../utils';
 import { PACKS_SCHEMA, RequestCardToRedeemArgs } from '../../..';

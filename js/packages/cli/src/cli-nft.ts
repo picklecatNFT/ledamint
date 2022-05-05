@@ -10,10 +10,10 @@ import {
 } from './commands/mint-nft';
 import { getMetadata, loadWalletKey } from './helpers/accounts';
 import { parseUses } from './helpers/various';
-import { web3 } from '@project-serum/anchor';
-import { PublicKey } from '@solana/web3.js';
+import { web3 } from '@j0nnyboi/anchor';
+import { PublicKey } from '@safecoin/web3.js';
 import { getCluster } from './helpers/various';
-import { DataV2, MetadataData } from '@metaplex-foundation/mpl-token-metadata';
+import { DataV2, MetadataData } from '@j0nnyboi/mpl-token-metadata';
 import * as fs from 'fs';
 
 program.version('1.1.0');
@@ -208,7 +208,7 @@ program
   .command('show')
   .option(
     '-e, --env <string>',
-    'Solana cluster env name',
+    'Safecoin cluster env name',
     'devnet', //mainnet-beta, testnet, devnet
   )
   .option('-l, --log-level <string>', 'log level', setLogLevel)
@@ -233,12 +233,12 @@ function programCommand(name: string) {
     .command(name)
     .option(
       '-e, --env <string>',
-      'Solana cluster env name',
+      'Safecoin cluster env name',
       'devnet', //mainnet-beta, testnet, devnet
     )
     .option(
       '-k, --keypair <path>',
-      `Solana wallet location`,
+      `Safecoin wallet location`,
       '--keypair not provided',
     )
     .option('-l, --log-level <string>', 'log level', setLogLevel);

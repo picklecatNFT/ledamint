@@ -3,7 +3,7 @@ import {
   Connection,
   SystemProgram,
   TransactionInstruction,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import {
   utils,
   createMint,
@@ -11,16 +11,16 @@ import {
   StringPublicKey,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import {
   initVault,
   MAX_VAULT_SIZE,
   VAULT_PREFIX,
-} from '@oyster/common/dist/lib/actions/vault';
-import { createTokenAccount } from '@oyster/common/dist/lib/actions/account';
+} from '@j0nnyboi/common/dist/lib/actions/vault';
+import { createTokenAccount } from '@j0nnyboi/common/dist/lib/actions/account';
 
-import { AccountLayout, MintLayout } from '@solana/spl-token';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
+import { AccountLayout, MintLayout } from '@safecoin/safe-token';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 // This command creates the external pricing oracle a vault
 // This gets the vault ready for adding the tokens.

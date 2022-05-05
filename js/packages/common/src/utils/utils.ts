@@ -1,11 +1,11 @@
 import { useCallback, useState } from 'react';
-import { MintInfo } from '@solana/spl-token';
+import { MintInfo } from '@safecoin/safe-token';
 
 import { TokenAccount } from './../models';
-import { PublicKey } from '@solana/web3.js';
+import { PublicKey } from '@safecoin/web3.js';
 import BN from 'bn.js';
 import { WAD, ZERO } from '../constants';
-import { TokenInfo } from '@solana/spl-token-registry';
+import { TokenInfo } from '@j0nnyboi/safe-token-registry';
 import { useLocalStorage } from './useLocalStorage';
 
 export type KnownTokenMap = Map<string, TokenInfo>;

@@ -1,4 +1,4 @@
-import { PublicKey } from '@solana/web3.js';
+import { PublicKey } from '@safecoin/web3.js';
 import { useUserAccounts } from '../hooks/useUserAccounts';
 
 export const useAccountByMint = (mint?: string | PublicKey) => {

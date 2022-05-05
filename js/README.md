@@ -19,12 +19,12 @@ Common currently uses a less library to compile down less files into css in both
 in vscode to pick up and in the dist folder for importers like lending and proposal projects to pick up. If you do not see these files appear when running the `npm start lending` or other commands, and you see missing CSS errors,
 you likely did not install the packages for common correctly. Try running:
 
-`lerna exec npm install --scope @oyster/common` to specifically install packages for common.
+`lerna exec npm install --scope @j0nnyboi/common` to specifically install packages for common.
 
 Then, test that css transpiling is working:
 
-`lerna exec npm watch-css-src --scope @oyster/common` and verify css files appear next to their less counterparts in src.
+`lerna exec npm watch-css-src --scope @j0nnyboi/common` and verify css files appear next to their less counterparts in src.
 
 ## ⚠️ Warning
 
-Any content produced by Solana, or developer resources that Solana provides, are for educational and inspiration purposes only. Solana does not encourage, induce or sanction the deployment of any such applications in violation of applicable laws or regulations.
+Any content produced by Safecoin, or developer resources that Safecoin provides, are for educational and inspiration purposes only. Safecoin does not encourage, induce or sanction the deployment of any such applications in violation of applicable laws or regulations.

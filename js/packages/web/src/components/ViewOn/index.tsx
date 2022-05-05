@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Button } from 'antd';
 import { useArt } from '../../hooks';
-import { useConnectionConfig } from '@oyster/common';
+import { useConnectionConfig } from '@j0nnyboi/common';
 
 export const ViewOn = ({ id }: { id: string }) => {
   const { endpoint } = useConnectionConfig();
@@ -24,7 +24,7 @@ export const ViewOn = ({ id }: { id: string }) => {
               const cluster = endpoint.name;
               const explorerURL = new URL(
                 `account/${art?.mint || ''}`,
-                'https://explorer.solana.com',
+                'https://explorer.safecoin.org',
               );
               if (!cluster.includes('mainnet')) {
                 explorerURL.searchParams.set('cluster', cluster);
@@ -32,7 +32,7 @@ export const ViewOn = ({ id }: { id: string }) => {
               window.open(explorerURL.href, '_blank');
             }}
           >
-            Solana
+            Safecoin
           </Button>
         </div>
       </Col>

@@ -1,13 +1,13 @@
 import {
-  LAMPORTS_PER_SOL,
+  LAMPORTS_PER_SAFE,
   AccountInfo,
   PublicKey,
   Connection,
   Keypair,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import fs from 'fs';
-import { BN, Program, web3 } from '@project-serum/anchor';
-import { Token, TOKEN_PROGRAM_ID } from '@solana/spl-token';
+import { BN, Program, web3 } from '@j0nnyboi/anchor';
+import { Token, TOKEN_PROGRAM_ID } from '@safecoin/safe-token';
 import { StorageType } from './storage-type';
 
 import { getAtaForMint } from './accounts';
@@ -17,7 +17,7 @@ import {
   UseMethod,
   Metadata,
   MetadataKey,
-} from '@metaplex-foundation/mpl-token-metadata';
+} from '@j0nnyboi/mpl-token-metadata';
 
 export async function getCandyMachineV2Config(
   walletKeyPair: web3.Keypair,
@@ -25,8 +25,7 @@ export async function getCandyMachineV2Config(
   configPath: any,
 ): Promise<{
   storage: StorageType;
-  nftStorageKey: string | null;
-  nftStorageGateway: string | null;
+  nftStorageKey: string;
   ipfsInfuraProjectId: string;
   number: number;
   ipfsInfuraSecret: string;
@@ -70,7 +69,6 @@ export async function getCandyMachineV2Config(
   const {
     storage,
     nftStorageKey,
-    nftStorageGateway,
     ipfsInfuraProjectId,
     number,
     ipfsInfuraSecret,
@@ -202,7 +200,6 @@ export async function getCandyMachineV2Config(
   return {
     storage,
     nftStorageKey,
-    nftStorageGateway,
     ipfsInfuraProjectId,
     number,
     ipfsInfuraSecret,
@@ -293,7 +290,7 @@ export function fromUTF8Array(data: number[]) {
   return str;
 }
 
-export function parsePrice(price: string, mantissa: number = LAMPORTS_PER_SOL) {
+export function parsePrice(price: string, mantissa: number = LAMPORTS_PER_SAFE) {
   return Math.ceil(parseFloat(price) * mantissa);
 }
 

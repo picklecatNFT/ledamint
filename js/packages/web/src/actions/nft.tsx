@@ -16,16 +16,16 @@ import {
   StringPublicKey,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import React, { Dispatch, SetStateAction } from 'react';
-import { MintLayout, Token } from '@solana/spl-token';
+import { MintLayout, Token } from '@safecoin/safe-token';
 import {
   Connection,
   Keypair,
   PublicKey,
   SystemProgram,
   TransactionInstruction,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import crypto from 'crypto';
 
 import { AR_SOL_HOLDER_ID } from '../utils/ids';
@@ -34,7 +34,7 @@ import {
   Collection,
   DataV2,
   Uses,
-} from '@metaplex-foundation/mpl-token-metadata';
+} from '@j0nnyboi/mpl-token-metadata';
 
 const RESERVED_TXN_MANIFEST = 'manifest.json';
 const RESERVED_METADATA = 'metadata.json';
@@ -211,7 +211,7 @@ export const mintNFT = async (
   //   SystemProgram.transfer({
   //     fromPubkey: wallet.publicKey,
   //     toPubkey: payerPublicKey,
-  //     lamports: 0.5 * LAMPORTS_PER_SOL // block.feeCalculator.lamportsPerSignature * 3 + mintRent, // TODO
+  //     lamports: 0.5 * LAMPORTS_PER_SAFE // block.feeCalculator.lamportsPerSignature * 3 + mintRent, // TODO
   //   }),
   // );
 
@@ -265,7 +265,8 @@ export const mintNFT = async (
     const updateSigners: Keypair[] = [];
 
     // TODO: connect to testnet arweave
-    const arweaveLink = `https://arweave.net/${metadataFile.transactionId}`;
+    //const arweaveLink = `https://arweave.net/${metadataFile.transactionId}`;
+    const arweaveLink = `http://safestore.testnet.darkartlabs.tech:1984/${metadataFile.transactionId}`;
     await updateMetadataV2(
       new DataV2({
         symbol: metadata.symbol,
@@ -342,7 +343,7 @@ export const mintNFT = async (
     );
 
     notify({
-      message: 'Art created on Solana',
+      message: 'Art created on Safecoin',
       description: (
         <a href={arweaveLink} target="_blank" rel="noopener noreferrer">
           Arweave Link

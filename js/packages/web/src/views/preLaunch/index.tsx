@@ -5,7 +5,7 @@ import { ModalProps } from 'antd/lib/modal';
 import { LogoLink } from '../../components/AppBar';
 import { textContent } from './textContent';
 import useMagicLink from '../../hooks/magicLink/useMagicLink';
-import { shortenAddress } from '@oyster/common';
+import { shortenAddress } from '@j0nnyboi/common';
 import { getUser, getWalletAddress, saveUser } from './userInfo';
 
 const { Content } = Layout;
@@ -191,7 +191,7 @@ export const PreLaunchView = () => {
               <div className={'how-to-step'}>
                 <span className={'how-to-logo wallet'}></span>
                 <span className={'how-to-description'}>
-                  After verification, we&apos;ll help you set up a Solana
+                  After verification, we&apos;ll help you set up a Safecoin
                   crypto-wallet. This is where we&apos;ll send the NFT.
                 </span>
               </div>
@@ -207,7 +207,7 @@ export const PreLaunchView = () => {
               <span className={'high-light'}>{email}</span>
             </div>
             <div className={'verify-message mb32'}>
-              <span>Paste your Solana wallet address here.</span>
+              <span>Paste your Safecoin wallet address here.</span>
             </div>
             {loadingUser ? (
               <Spin />

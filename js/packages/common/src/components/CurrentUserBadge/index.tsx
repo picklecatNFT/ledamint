@@ -1,6 +1,6 @@
 import React from 'react';
-import { LAMPORTS_PER_SOL } from '@solana/web3.js';
-import { useWallet } from '@solana/wallet-adapter-react';
+import { LAMPORTS_PER_SAFE } from '@safecoin/web3.js';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { useNativeAccount } from '../../contexts/accounts';
 import { formatNumber } from '../../utils';
 import { Popover } from 'antd';
@@ -45,7 +45,7 @@ export const CurrentUserBadge = (props: {
     <div className="wallet-wrapper">
       {props.showBalance && (
         <span>
-          {formatNumber.format((account?.lamports || 0) / LAMPORTS_PER_SOL)} SOL
+          {formatNumber.format((account?.lamports || 0) / LAMPORTS_PER_SAFE)} SAFE
         </span>
       )}
 

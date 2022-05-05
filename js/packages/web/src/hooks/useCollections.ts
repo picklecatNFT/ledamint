@@ -1,9 +1,9 @@
 import { AuctionView, AuctionViewState } from './useAuctions';
-import { MetadataData } from '@metaplex-foundation/mpl-token-metadata';
+import { MetadataData } from '@j0nnyboi/mpl-token-metadata';
 import { useAuctionsList } from '../views/home/components/SalesList/hooks/useAuctionsList';
 import { LiveAuctionViewState } from '../views/home/components/SalesList';
 import { useEffect, useState } from 'react';
-import { StringPublicKey, useMeta } from '@oyster/common';
+import { StringPublicKey, useMeta } from '@j0nnyboi/common';
 
 export interface CollectionView {
   pubkey: StringPublicKey;

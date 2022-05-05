@@ -1,14 +1,14 @@
-import { Keypair, Connection, TransactionInstruction } from '@solana/web3.js';
+import { Keypair, Connection, TransactionInstruction } from '@safecoin/web3.js';
 import {
   SequenceType,
   sendTransactions,
   sendTransactionWithRetry,
   WalletSigner,
-} from '@oyster/common';
-import { WhitelistedCreator } from '@oyster/common/dist/lib/models/metaplex/index';
-import { setStore } from '@oyster/common/dist/lib/models/metaplex/setStore';
-import { setWhitelistedCreator } from '@oyster/common/dist/lib/models/metaplex/setWhitelistedCreator';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
+} from '@j0nnyboi/common';
+import { WhitelistedCreator } from '@j0nnyboi/common/dist/lib/models/metaplex/index';
+import { setStore } from '@j0nnyboi/common/dist/lib/models/metaplex/setStore';
+import { setWhitelistedCreator } from '@j0nnyboi/common/dist/lib/models/metaplex/setWhitelistedCreator';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 // TODO if this becomes very slow move to batching txns like we do with settle.ts
 // but given how little this should be used keep it simple

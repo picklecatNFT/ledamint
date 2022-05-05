@@ -1,5 +1,5 @@
-import { PackDistributionType } from '@oyster/common';
-import { Keypair } from '@solana/web3.js';
+import { PackDistributionType } from '@j0nnyboi/common';
+import { Keypair } from '@safecoin/web3.js';
 import { BN } from 'bn.js';
 import { notification } from 'antd';
 

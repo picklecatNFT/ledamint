@@ -1,11 +1,11 @@
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 
-import { MintLayout, TOKEN_PROGRAM_ID, Token } from '@solana/spl-token';
+import { MintLayout, TOKEN_PROGRAM_ID, Token } from '@safecoin/safe-token';
 import {
   SystemProgram,
   Transaction,
   SYSVAR_SLOT_HASHES_PUBKEY,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import { sendTransactions, SequenceType } from './connection';
 
 import {
@@ -30,7 +30,7 @@ interface CandyMachineState {
   itemsRedeemed: number;
   itemsRemaining: number;
   treasury: anchor.web3.PublicKey;
-  tokenMint: null | anchor.web3.PublicKey;
+  tokenMint: anchor.web3.PublicKey;
   isSoldOut: boolean;
   isActive: boolean;
   isPresale: boolean;
@@ -346,18 +346,13 @@ export const createAccountsForMint = async (
   };
 };
 
-type MintResult = {
-  mintTxId: string;
-  metadataKey: anchor.web3.PublicKey;
-};
-
 export const mintOneToken = async (
   candyMachine: CandyMachineAccount,
   payer: anchor.web3.PublicKey,
   beforeTransactions: Transaction[] = [],
   afterTransactions: Transaction[] = [],
   setupState?: SetupState,
-): Promise<MintResult | null> => {
+): Promise<string[]> => {
   const mint = setupState?.mint ?? anchor.web3.Keypair.generate();
   const userTokenAccountAddress = (
     await getAtaForMint(mint.publicKey, payer)
@@ -612,7 +607,7 @@ export const mintOneToken = async (
   const signersMatrix = [signers, []];
 
   try {
-    const txns = (
+    return (
       await sendTransactions(
         candyMachine.program.provider.connection,
         candyMachine.program.provider.wallet,
@@ -627,15 +622,10 @@ export const mintOneToken = async (
         afterTransactions,
       )
     ).txs.map(t => t.txid);
-    const mintTxn = txns[0];
-    return {
-      mintTxId: mintTxn,
-      metadataKey: metadataAddress,
-    };
   } catch (e) {
     console.log(e);
   }
-  return null;
+  return [];
 };
 
 export const shortenAddress = (address: string, chars = 4): string => {

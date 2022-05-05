@@ -6,7 +6,7 @@ import {
   TransactionInstruction,
   Blockhash,
   FeeCalculator,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import React, {
   useCallback,
   useContext,
@@ -19,9 +19,10 @@ import {
   TokenInfo,
   TokenListProvider,
   ENV as ChainId,
-} from '@solana/spl-token-registry';
+  Strategy,
+} from '@j0nnyboi/safe-token-registry';
 import { WalletSigner } from './WalletContext/WalletContext';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 type UseStorageReturnValue = {
   getItem: (key: string) => string;
@@ -103,13 +104,18 @@ export type ENV = 'mainnet-beta' | 'testnet' | 'devnet' | 'localnet';
 export const ENDPOINTS = [
   {
     name: 'mainnet-beta' as ENV,
-    endpoint: 'https://api.metaplex.solana.com/',
+    endpoint: 'https://api.mainnet-beta.safecoin.org/',
     ChainId: ChainId.MainnetBeta,
   },
   {
     name: 'devnet' as ENV,
-    endpoint: 'https://metaplex.devnet.rpcpool.com/',
+    endpoint: 'https://api.devnet.safecoin.org/',
     ChainId: ChainId.Devnet,
+  },
+  {
+    name: 'testnet' as ENV,
+    endpoint: 'https://api.testnet.safecoin.org/',
+    ChainId: ChainId.Testnet,
   },
 ];
 
@@ -174,7 +180,7 @@ export function ConnectionProvider({
     });
   }, [env, endpoint]);
 
-  // The websocket library solana/web3.js uses closes its websocket connection when the subscription list
+  // The websocket library safecoin/web3.js uses closes its websocket connection when the subscription list
   // is empty after opening its first time, preventing subsequent subscriptions from receiving responses.
   // This is a hack to prevent the list from every getting empty
   useEffect(() => {

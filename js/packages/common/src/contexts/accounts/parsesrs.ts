@@ -1,4 +1,4 @@
-import { AccountInfo } from '@solana/web3.js';
+import { AccountInfo } from '@safecoin/web3.js';
 import { TokenAccount } from '../../models';
 import { ParsedAccountBase } from './types';
 import { deserializeMint, deserializeAccount } from './deserialize';

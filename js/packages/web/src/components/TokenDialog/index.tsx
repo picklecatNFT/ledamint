@@ -1,11 +1,11 @@
-import { PublicKey } from '@solana/web3.js';
+import { PublicKey } from '@safecoin/web3.js';
 import React, { useState } from 'react';
 import { useSwappableTokens, useTokenList } from '../../contexts/tokenList';
 import { Row, Col, Typography, Tabs, Input, List } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import { TokenInfo } from '@solana/spl-token-registry';
+import { TokenInfo } from '@j0nnyboi/safe-token-registry';
 import { TokenCircle } from '../Custom';
-import { MetaplexModal, shortenAddress, toPublicKey } from '@oyster/common';
+import { MetaplexModal, shortenAddress, toPublicKey } from '@j0nnyboi/common';
 
 const { Search } = Input;
 

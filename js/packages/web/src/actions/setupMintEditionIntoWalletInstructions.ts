@@ -1,14 +1,14 @@
-import { Connection } from '@solana/web3.js';
-import { MintLayout } from '@solana/spl-token';
+import { Connection } from '@safecoin/web3.js';
+import { MintLayout } from '@safecoin/safe-token';
 import BN from 'bn.js';
 import {
   mintNewEditionFromMasterEditionViaToken,
   StringPublicKey,
   TokenAccount,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { createMintAndAccountWithOne } from './createMintAndAccountWithOne';
 import { Art } from '../types';
-import { WalletContextState } from '@solana/wallet-adapter-react';
+import { WalletContextState } from '@j0nnyboi/wallet-adapter-react';
 
 export async function setupMintEditionIntoWalletInstructions(
   art: Art,

@@ -3,7 +3,7 @@ import {
   SystemProgram,
   SYSVAR_RENT_PUBKEY,
   TransactionInstruction,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import {
   SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID,
   TOKEN_PROGRAM_ID,
@@ -12,7 +12,7 @@ import {
   CANDY_MACHINE_PROGRAM_V2_ID,
   CONFIG_LINE_SIZE_V2,
 } from './constants';
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 import { CandyMachineData } from './accounts';
 
 export function createAssociatedTokenAccountInstruction(

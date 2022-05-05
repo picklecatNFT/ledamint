@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { useConnectionConfig } from '@oyster/common';
-import { TokenInfo, TokenListContainer } from '@solana/spl-token-registry';
-import { WRAPPED_SOL_MINT } from '@project-serum/serum/lib/token-instructions';
+import { useConnectionConfig } from '@j0nnyboi/common';
+import { Strategy, TokenInfo, TokenListContainer } from '@j0nnyboi/safe-token-registry';
+import { WRAPPED_SAFE_MINT } from '@j0nnyboi/serum/lib/token-instructions';
 
 // Tag in the spl-token-registry for sollet wrapped tokens.
-export const SPL_REGISTRY_SOLLET_TAG = 'wrapped-sollet';
+export const SPL_REGISTRY_SOLLET_TAG = 'wrapped-safecoin';
 
 // Tag in the spl-token-registry for wormhole wrapped tokens.
 export const SPL_REGISTRY_WORM_TAG = 'wormhole';
@@ -30,15 +30,16 @@ export function SPLTokenListProvider({
   children: React.ReactNode;
 }) {
   const [tokenList, setTokenList] = useState<TokenListContainer | null>(null);
-
+  console.log("++++++++++ tokenList", tokenList)
   const subscribedTokenMints = process.env.NEXT_SPL_TOKEN_MINTS
-    ? [WRAPPED_SOL_MINT, ...process.env.NEXT_SPL_TOKEN_MINTS.split(',')]
-    : [WRAPPED_SOL_MINT];
+    ? [WRAPPED_SAFE_MINT, ...process.env.NEXT_SPL_TOKEN_MINTS.split(',')]
+    : [WRAPPED_SAFE_MINT];
 
   const { tokens } = useConnectionConfig();
-
+  console.log(" tokens ????????????", tokens)
   useEffect(() => {
     setTokenList(new TokenListContainer(Array.from(tokens.values())));
+    console.log("useEffect tokens : ", tokens) //OK
   }, [setTokenList, tokens]);
 
   const hasOtherTokens = !!process.env.NEXT_SPL_TOKEN_MINTS;
@@ -47,7 +48,8 @@ export function SPLTokenListProvider({
   const subscribedTokens = tokenList
     ? tokenList
         .getList()
-        .filter(f => subscribedTokenMints.some(s => s == f.address))
+        // ara TODO: find what are "really" subscribedTokenMints
+        //.filter(f => subscribedTokenMints.some(s => s == f.address))
     : [];
 
   const tokenMap = useMemo(() => {
@@ -55,6 +57,7 @@ export function SPLTokenListProvider({
     subscribedTokens.forEach((t: TokenInfo) => {
       tokenMap.set(t.address, t);
     });
+    console.log("+++ TOKENMAP", tokenMap)
     return tokenMap;
   }, [tokenList]);
 
@@ -121,6 +124,7 @@ export function SPLTokenListProvider({
 
 export const useTokenMap = () => {
   const { tokenMap } = useTokenList();
+  console.log("CONTEXT tokenMap : ", tokenMap)
   return tokenMap;
 };
 
@@ -138,5 +142,6 @@ export const queryTokenList = () => {
 
 export const useTokenList = () => {
   const context = useContext(TokenListContext);
+  console.log("CONTEXT useTokenList : ", context)
   return context as TokenListContextState;
 };

@@ -1,4 +1,4 @@
-import { PublicKey } from '@solana/web3.js';
+import { PublicKey } from '@safecoin/web3.js';
 import { BinaryReader, BinaryWriter } from 'borsh';
 import base58 from 'bs58';
 import { StringPublicKey } from './ids';

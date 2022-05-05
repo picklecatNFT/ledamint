@@ -1,11 +1,11 @@
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import {
   claimPack,
   findPackCardProgramAddress,
   sendTransactionsInChunks,
   SequenceType,
   toPublicKey,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { BN } from 'bn.js';
 
 import {

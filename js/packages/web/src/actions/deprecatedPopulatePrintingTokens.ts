@@ -1,4 +1,4 @@
-import { Keypair, Connection, TransactionInstruction } from '@solana/web3.js';
+import { Keypair, Connection, TransactionInstruction } from '@safecoin/web3.js';
 import {
   utils,
   createAssociatedTokenAccountInstruction,
@@ -9,8 +9,8 @@ import {
   MetadataKey,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
+} from '@j0nnyboi/common';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import BN from 'bn.js';
 import { SafetyDepositInstructionTemplate } from './addTokensToVault';
 

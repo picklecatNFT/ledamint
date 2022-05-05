@@ -1,4 +1,4 @@
-import { Connection } from '@solana/web3.js';
+import { Connection } from '@safecoin/web3.js';
 import { deserializeUnchecked } from 'borsh';
 
 import { PackKey, MAX_PACK_CARD_SIZE } from '..';

@@ -1,6 +1,6 @@
-import { programIds } from '@oyster/common';
-import { AccountLayout } from '@solana/spl-token';
-import { TransactionInstruction } from '@solana/web3.js';
+import { programIds } from '@j0nnyboi/common';
+import { AccountLayout } from '@safecoin/safe-token';
+import { TransactionInstruction } from '@safecoin/web3.js';
 
 import { getCreateAccount } from './getCreateAccount';
 import { GetCreateTokenAccounts } from './interface';

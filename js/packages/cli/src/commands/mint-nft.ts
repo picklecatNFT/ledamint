@@ -4,21 +4,21 @@ import {
   getMetadata,
   getMasterEdition,
 } from '../helpers/accounts';
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 import fetch from 'node-fetch';
 import {
   ASSOCIATED_TOKEN_PROGRAM_ID,
   MintLayout,
   Token,
   TOKEN_PROGRAM_ID,
-} from '@solana/spl-token';
+} from '@safecoin/safe-token';
 import {
   Keypair,
   Connection,
   SystemProgram,
   TransactionInstruction,
   PublicKey,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import log from 'loglevel';
 import {
   DataV2,
@@ -29,7 +29,7 @@ import {
   CreateMetadataV2,
   CreateMasterEditionV3,
   UpdateMetadataV2,
-} from '@metaplex-foundation/mpl-token-metadata';
+} from '@j0nnyboi/mpl-token-metadata';
 
 export const createMetadata = async (
   metadataLink: string,

@@ -1,4 +1,4 @@
-import { PublicKey } from '@solana/web3.js';
+import { PublicKey } from '@safecoin/web3.js';
 
 export type StringPublicKey = string;
 
@@ -26,6 +26,6 @@ export const TOKEN_ENTANGLEMENT_PROGRAM_ID = new PublicKey(
   'qntmGodpGkrM42mN68VCZHXnKqDCT8rdY23wFcXCLPd',
 );
 
-export const WRAPPED_SOL_MINT = new PublicKey(
+export const WRAPPED_SAFE_MINT = new PublicKey(
   'So11111111111111111111111111111111111111112',
 );

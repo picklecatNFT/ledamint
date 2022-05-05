@@ -3,7 +3,7 @@ import {
   TransactionInstruction,
   SYSVAR_RENT_PUBKEY,
   SYSVAR_CLOCK_PUBKEY,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import { serialize } from 'borsh';
 import { getWhitelistedCreator } from '../../metaplex';
 import { programIds, toPublicKey, StringPublicKey } from '../../../utils';

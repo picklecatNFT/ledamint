@@ -47,7 +47,7 @@ Want captcha? Add this for gatekeeper value and you are done:
 
 ### Hidden Settings
 
-If you plan to do a mint larger than 20k, consider this option. With this, none of the arweave URIs actually go on Solana. You just provide the following in the config for hiddenSettings:
+If you plan to do a mint larger than 20k, consider this option. With this, none of the arweave URIs actually go on safecoin. You just provide the following in the config for hiddenSettings:
 
 ```
 {
@@ -104,7 +104,7 @@ and once the sale begins, the whitelist gets you nothing.
 ```
 
 I want to burn the token each time. This whitelist is ONLY used for presale, and gives users
-a 0.5 SOL price tag instead. Once the sale begins, the whitelist gets you only a discount.
+a 0.5 SAFE price tag instead. Once the sale begins, the whitelist gets you only a discount.
 
 ```
 
@@ -118,7 +118,7 @@ a 0.5 SOL price tag instead. Once the sale begins, the whitelist gets you only a
 ```
 
 I do not want to burn the whitelist token - it can be reused. This whitelist is ONLY used for presale, and gives users
-a 0.5 SOL price tag instead. Once the sale begins, the whitelist gets you only a discount.
+a 0.5 SAFE price tag instead. Once the sale begins, the whitelist gets you only a discount.
 
 ```
 
@@ -131,7 +131,7 @@ a 0.5 SOL price tag instead. Once the sale begins, the whitelist gets you only a
 
 ```
 
-I do not want to burn the whitelist token - it can be reused. This whitelist is ONLY used to grant users discounts - a 0.5 SOL price tag.
+I do not want to burn the whitelist token - it can be reused. This whitelist is ONLY used to grant users discounts - a 0.5 SAFE price tag.
 
 ```
 
@@ -173,8 +173,8 @@ There are great tools that can make generative art for you. One of the open sour
 ### Example `0.json` File 
 ```json
 {
-  "name": "SolanaArtProject #0",
-  "description": "Generative art on Solana.",
+  "name": "SafecoinArtProject #0",
+  "description": "Generative art on Safecoin.",
   "image": "0.jpeg", // This means you should also have a 0.jpeg file in the assets folder
   "animation_url": "0.glb", // This means you should also have a 0.glb file in the assets folder
   "external_url": "https://example.com",

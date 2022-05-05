@@ -1,5 +1,5 @@
-import { addVoucherToPack } from '@oyster/common';
-import { TransactionInstruction } from '@solana/web3.js';
+import { addVoucherToPack } from '@j0nnyboi/common';
+import { TransactionInstruction } from '@safecoin/web3.js';
 
 import { GetAddVoucherToPackParams } from './interface';
 

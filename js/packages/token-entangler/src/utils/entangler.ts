@@ -5,22 +5,22 @@ import {
   PublicKey,
   SystemProgram,
   SYSVAR_RENT_PUBKEY,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 
 import { Connection as ContextConnection } from '../contexts';
 import { deserializeUnchecked } from 'borsh';
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 import {
   SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID,
   TOKEN_ENTANGLEMENT_PROGRAM_ID,
-  WRAPPED_SOL_MINT,
+  WRAPPED_SAFE_MINT,
 } from './ids';
 import {
   ASSOCIATED_TOKEN_PROGRAM_ID,
   Token,
   TOKEN_PROGRAM_ID,
-} from '@solana/spl-token';
-import { BN } from '@project-serum/anchor';
+} from '@safecoin/safe-token';
+import { BN } from '@j0nnyboi/anchor';
 import { getEdition, getMetadata, getTokenAmount } from './accounts';
 import mints from './valid_mints.json';
 import { extendBorsh } from './borsh';
@@ -345,8 +345,8 @@ export const createEntanglement = async (
   const mintBKey = new PublicKey(mintB);
 
   if (!treasuryMint) {
-    console.log('No treasury mint detected, using SOL.');
-    tMintKey = WRAPPED_SOL_MINT;
+    console.log('No treasury mint detected, using SAFE.');
+    tMintKey = WRAPPED_SAFE_MINT;
   } else {
     tMintKey = new PublicKey(treasuryMint);
   }
@@ -478,7 +478,7 @@ export const swapEntanglement = async (
   const signers = [transferAuthority];
 
   //@ts-ignore
-  const isNative = epObj.treasuryMint.equals(WRAPPED_SOL_MINT);
+  const isNative = epObj.treasuryMint.equals(WRAPPED_SAFE_MINT);
 
   //@ts-ignore
   const paymentAccount = isNative

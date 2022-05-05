@@ -1,4 +1,4 @@
-import { Keypair, Connection, TransactionInstruction } from '@solana/web3.js';
+import { Keypair, Connection, TransactionInstruction } from '@safecoin/web3.js';
 import {
   ParsedAccount,
   SequenceType,
@@ -12,14 +12,14 @@ import {
   TokenAccount,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 
 import { AuctionView } from '../hooks';
 
-import { claimBid } from '@oyster/common/dist/lib/models/metaplex/claimBid';
-import { emptyPaymentAccount } from '@oyster/common/dist/lib/models/metaplex/emptyPaymentAccount';
+import { claimBid } from '@j0nnyboi/common/dist/lib/models/metaplex/claimBid';
+import { emptyPaymentAccount } from '@j0nnyboi/common/dist/lib/models/metaplex/emptyPaymentAccount';
 import { setupPlaceBid } from './sendPlaceBid';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 const BATCH_SIZE = 10;
 const SETTLE_TRANSACTION_SIZE = 6;

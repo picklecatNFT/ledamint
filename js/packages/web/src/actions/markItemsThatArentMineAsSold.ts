@@ -1,10 +1,10 @@
-import { Keypair, TransactionInstruction } from '@solana/web3.js';
+import { Keypair, TransactionInstruction } from '@safecoin/web3.js';
 import {
   updatePrimarySaleHappenedViaToken,
   WalletSigner,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { SafetyDepositDraft } from './createAuctionManager';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 const SALE_TRANSACTION_SIZE = 10;
 
 export async function markItemsThatArentMineAsSold(

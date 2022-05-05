@@ -4,7 +4,7 @@ import {
   TransactionInstruction,
   PublicKey,
   Commitment,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import {
   sendTransactionWithRetry,
   placeBid,
@@ -17,13 +17,13 @@ import {
   createAssociatedTokenAccountInstruction,
   programIds,
   pubkeyToString,
-  WRAPPED_SOL_MINT,
-} from '@oyster/common';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
-import { approve } from '@oyster/common/dist/lib/models/account';
-import { TokenAccount } from '@oyster/common/dist/lib/models/account';
+  WRAPPED_SAFE_MINT,
+} from '@j0nnyboi/common';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { approve } from '@j0nnyboi/common/dist/lib/models/account';
+import { TokenAccount } from '@j0nnyboi/common/dist/lib/models/account';
 
-import { AccountLayout, MintInfo } from '@solana/spl-token';
+import { AccountLayout, MintInfo } from '@safecoin/safe-token';
 import { AuctionView } from '../hooks';
 import BN from 'bn.js';
 import { setupCancelBid } from './cancelBid';
@@ -125,7 +125,7 @@ export async function setupPlaceBid(
   }
 
   let receivingSolAccountOrAta = '';
-  if (auctionView.auction.info.tokenMint == WRAPPED_SOL_MINT.toBase58()) {
+  if (auctionView.auction.info.tokenMint == WRAPPED_SAFE_MINT.toBase58()) {
     receivingSolAccountOrAta = ensureWrappedAccount(
       instructions,
       cleanupInstructions,

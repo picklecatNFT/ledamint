@@ -1,4 +1,4 @@
-import { Keypair, Connection, TransactionInstruction } from '@solana/web3.js';
+import { Keypair, Connection, TransactionInstruction } from '@safecoin/web3.js';
 import {
   ParsedAccount,
   TokenAccount,
@@ -12,9 +12,9 @@ import {
   BidderMetadata,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
-import { AccountLayout, MintLayout } from '@solana/spl-token';
+} from '@j0nnyboi/common';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { AccountLayout, MintLayout } from '@safecoin/safe-token';
 import { AuctionView } from '../hooks';
 import {
   WinningConfigType,
@@ -25,8 +25,8 @@ import {
   getBidRedemption,
   PrizeTrackingTicket,
   AuctionViewItem,
-} from '@oyster/common/dist/lib/models/metaplex/index';
-import { createTokenAccount } from '@oyster/common/dist/lib/actions/account';
+} from '@j0nnyboi/common/dist/lib/models/metaplex/index';
+import { createTokenAccount } from '@j0nnyboi/common/dist/lib/actions/account';
 import {
   eligibleForParticipationPrizeGivenWinningIndex,
   setupRedeemParticipationInstructions,

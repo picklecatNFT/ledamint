@@ -3,9 +3,9 @@ import {
   Keypair,
   PublicKey,
   TransactionInstruction,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 
-import { AccountInfo as TokenAccountInfo, Token } from '@solana/spl-token';
+import { AccountInfo as TokenAccountInfo, Token } from '@safecoin/safe-token';
 import { TOKEN_PROGRAM_ID } from '../utils/ids';
 import BufferLayout from 'buffer-layout';
 

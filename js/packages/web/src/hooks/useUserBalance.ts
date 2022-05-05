@@ -3,8 +3,8 @@ import {
   StringPublicKey,
   useMint,
   useUserAccounts,
-  WRAPPED_SOL_MINT,
-} from '@oyster/common';
+  WRAPPED_SAFE_MINT,
+} from '@j0nnyboi/common';
 import { useEffect, useMemo, useState } from 'react';
 import { useSolPrice, useAllSplPrices } from '../contexts';
 
@@ -31,7 +31,7 @@ export function useUserBalance(
     a => a.tokenMint == mintAddress,
   )[0]?.tokenPrice;
   const tokenPrice =
-    mintAddress == WRAPPED_SOL_MINT.toBase58() ? solPrice : altSplPrice;
+    mintAddress == WRAPPED_SAFE_MINT.toBase58() ? solPrice : altSplPrice;
 
   const mintInfo = useMint(mint);
   const accounts = useMemo(() => {

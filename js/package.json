@@ -16,8 +16,8 @@
   "scripts": {
     "bootstrap": "lerna link && lerna bootstrap",
     "build": "lerna run build --ignore=token-entangler --ignore=candy-machine-ui",
-    "build-web": "lerna run build --stream --scope @oyster/common --scope web",
-    "start": "cross-env CI=true lerna run start --scope @oyster/common --stream --parallel --scope web",
+    "build-web": "lerna run build --stream --scope @j0nnyboi/common --scope web",
+    "start": "cross-env CI=true lerna run start --scope @j0nnyboi/common --stream --parallel --scope web",
     "lint": "prettier -c 'packages/*/{src,test}/**/*.{ts,tsx}' && npm run lint:eslint",
     "lint:eslint": "eslint 'packages/*/{src,test}/**/*.{ts,tsx}'",
     "lint:fix": "prettier --write 'packages/*/{src,test}/**/*.{ts,tsx}' && eslint --fix 'packages/*/{src,test}/**/*.{ts,tsx}'",
@@ -35,7 +35,7 @@
   },
   "resolutions": {
     "@types/react": "^17.0.16",
-    "@solana/web3.js": "^1.33.0",
+    "@safecoin/web3.js": "^1.29.4",
     "redstone-node": "0.4.21"
   },
   "husky": {
@@ -55,7 +55,7 @@
     ]
   },
   "dependencies": {
-    "@metaplex/arweave-cost": "^1.0.4",
+    "@j0nnyboi/arweave-cost": "^2.0.0",
     "cross-env": "^7.0.3",
     "next": "^11.0.1",
     "react": "^17.0.2",

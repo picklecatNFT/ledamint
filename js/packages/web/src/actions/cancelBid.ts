@@ -13,18 +13,18 @@ import {
   WalletSigner,
   toPublicKey,
   pubkeyToString,
-  WRAPPED_SOL_MINT,
-} from '@oyster/common';
-import { AccountLayout } from '@solana/spl-token';
-import { TransactionInstruction, Keypair, Connection } from '@solana/web3.js';
+  WRAPPED_SAFE_MINT,
+} from '@j0nnyboi/common';
+import { AccountLayout } from '@safecoin/safe-token';
+import { TransactionInstruction, Keypair, Connection } from '@safecoin/web3.js';
 import { AuctionView } from '../hooks';
 import {
   BidRedemptionTicket,
   PrizeTrackingTicket,
-} from '@oyster/common/dist/lib/models/metaplex/index';
+} from '@j0nnyboi/common/dist/lib/models/metaplex/index';
 import { claimUnusedPrizes } from './claimUnusedPrizes';
 import { findAta, setupPlaceBid } from './sendPlaceBid';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 export async function sendCancelBid(
   connection: Connection,
@@ -128,7 +128,7 @@ export async function setupCancelBid(
 
   if (mint && auctionView.myBidderPot) {
     let receivingSolAccountOrAta = '';
-    if (auctionView.auction.info.tokenMint == WRAPPED_SOL_MINT.toBase58()) {
+    if (auctionView.auction.info.tokenMint == WRAPPED_SAFE_MINT.toBase58()) {
       receivingSolAccountOrAta = ensureWrappedAccount(
         cancelInstructions,
         cleanupInstructions,

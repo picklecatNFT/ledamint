@@ -1,5 +1,5 @@
-import { Keypair, TransactionInstruction } from '@solana/web3.js';
-import { Token } from '@solana/spl-token';
+import { Keypair, TransactionInstruction } from '@safecoin/web3.js';
+import { Token } from '@safecoin/safe-token';
 import {
   createAssociatedTokenAccountInstruction,
   createMint,
@@ -7,8 +7,8 @@ import {
   programIds,
   StringPublicKey,
   toPublicKey,
-} from '@oyster/common';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
+} from '@j0nnyboi/common';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 export async function createMintAndAccountWithOne(
   wallet: any,

@@ -1,11 +1,11 @@
 import { useEffect, useMemo } from 'react';
-import { useWallet } from '@solana/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 
 import { useAuctions, AuctionView } from '../../../../../../hooks';
 
 import { LiveAuctionViewState } from '../..';
 import { getFilterFunction, resaleAuctionsFilter } from './utils';
-import { useMeta } from '@oyster/common';
+import { useMeta } from '@j0nnyboi/common';
 
 export const useAuctionsList = (
   activeKey: LiveAuctionViewState,

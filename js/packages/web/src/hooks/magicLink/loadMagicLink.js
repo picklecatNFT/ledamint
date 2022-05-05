@@ -1,7 +1,7 @@
 import EventEmitter from 'event-emitter';
 
 import { Magic } from 'magic-sdk';
-import { SolanaExtension } from '@magic-ext/solana';
+import { SafecoinExtension } from '@j0nnyboi/magic-ext-safecoin';
 
 const events = new EventEmitter();
 // let MagicSDK = null;
@@ -11,7 +11,7 @@ let sdk = null;
 export default async function loadMagicLink(key, endpoint) {
   const options = {
     extensions: {
-      solana: new SolanaExtension({
+      safecoin: new SafecoinExtension({
         rpcUrl: endpoint,
       }),
     },

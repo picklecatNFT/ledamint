@@ -10,7 +10,7 @@ import {
   Transaction,
   TransactionInstruction,
   TransactionSignature,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import log from 'loglevel';
 
 interface BlockhashAndFeeCalculator {
@@ -30,7 +30,7 @@ export function sleep(ms: number): Promise<void> {
 
 export const envFor = (connection: Connection): string => {
   const endpoint = (connection as any)._rpcEndpoint;
-  const regex = /https:\/\/api.([^.]*).solana.com/;
+  const regex = /https:\/\/api.([^.]*).safecoin.org/;
   const match = endpoint.match(regex);
   if (match[1]) {
     return match[1];
@@ -42,7 +42,7 @@ export const explorerLinkFor = (
   txid: TransactionSignature,
   connection: Connection,
 ): string => {
-  return `https://explorer.solana.com/tx/${txid}?cluster=${envFor(connection)}`;
+  return `https://explorer.safecoin.org/tx/${txid}?cluster=${envFor(connection)}`;
 };
 
 export const sendTransactionWithRetryWithKeypair = async (

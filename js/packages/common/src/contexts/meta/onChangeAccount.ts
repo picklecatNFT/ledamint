@@ -1,4 +1,4 @@
-import { ProgramAccountChangeCallback } from '@solana/web3.js';
+import { ProgramAccountChangeCallback } from '@safecoin/web3.js';
 import { pubkeyToString } from '../../utils';
 import { ProcessAccountsFunc, UpdateStateValueFunc } from './types';
 

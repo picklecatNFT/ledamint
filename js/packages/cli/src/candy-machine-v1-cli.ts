@@ -2,7 +2,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { program } from 'commander';
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 import fetch from 'node-fetch';
 
 import {
@@ -12,7 +12,7 @@ import {
   parsePrice,
   shuffle,
 } from './helpers/various';
-import { PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { PublicKey, LAMPORTS_PER_SAFE } from '@safecoin/web3.js';
 import {
   CACHE_PATH,
   CONFIG_ARRAY_START,
@@ -266,18 +266,18 @@ programCommand('withdraw')
     for (const cg in configs) {
       t += configs[cg].account.lamports;
     }
-    const totalValue = t / LAMPORTS_PER_SOL;
+    const totalValue = t / LAMPORTS_PER_SAFE;
     const cpf = parseFloat(charityPercent);
     let charityPub;
     log.info(
       `Total Number of Candy Machine Config Accounts to drain ${configs.length}`,
     );
-    log.info(`${totalValue} SOL locked up in configs`);
+    log.info(`${totalValue} SAFE locked up in configs`);
     if (!!charity && charityPercent > 0) {
       const donation = totalValue * (100 / charityPercent);
       charityPub = new PublicKey(charity);
       log.info(
-        `Of that ${totalValue} SOL, ${donation} will be donated to ${charity}. Thank you!`,
+        `Of that ${totalValue} SAFE, ${donation} will be donated to ${charity}. Thank you!`,
       );
     }
 
@@ -675,7 +675,7 @@ programCommand('update_candy_machine')
     '-d, --date <string>',
     'timestamp - eg "04 Dec 1995 00:12:00 GMT" or "now"',
   )
-  .option('-p, --price <string>', 'SOL price')
+  .option('-p, --price <string>', 'SAFE price')
   .option(
     '-r, --rpc-url <string>',
     'custom rpc url since this is a heavy command',
@@ -958,10 +958,10 @@ function programCommand(name: string) {
     .command(name)
     .option(
       '-e, --env <string>',
-      'Solana cluster env name',
+      'Safecoin cluster env name',
       'devnet', //mainnet-beta, testnet, devnet
     )
-    .requiredOption('-k, --keypair <path>', `Solana wallet location`)
+    .requiredOption('-k, --keypair <path>', `safecoin wallet location`)
     .option('-l, --log-level <string>', 'log level', setLogLevel)
     .option('-c, --cache-name <string>', 'Cache file name', 'temp');
 }

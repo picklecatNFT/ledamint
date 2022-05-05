@@ -1,5 +1,5 @@
-import { activate } from '@oyster/common';
-import { TransactionInstruction } from '@solana/web3.js';
+import { activate } from '@j0nnyboi/common';
+import { TransactionInstruction } from '@safecoin/web3.js';
 
 import { GetActivateParams } from './interface';
 

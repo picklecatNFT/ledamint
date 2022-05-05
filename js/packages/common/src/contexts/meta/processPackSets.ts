@@ -1,4 +1,4 @@
-import { AccountInfo } from '@solana/web3.js';
+import { AccountInfo } from '@safecoin/web3.js';
 import { PackKey } from '../..';
 import { decodePackSet, PackSet } from '../../models/packs/accounts/PackSet';
 import { PACK_CREATE_ID, pubkeyToString } from '../../utils';

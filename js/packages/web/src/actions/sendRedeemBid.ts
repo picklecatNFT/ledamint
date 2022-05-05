@@ -1,4 +1,4 @@
-import { Keypair, Connection, TransactionInstruction } from '@solana/web3.js';
+import { Keypair, Connection, TransactionInstruction } from '@safecoin/web3.js';
 import {
   ParsedAccount,
   programIds,
@@ -24,10 +24,10 @@ import {
   toPublicKey,
   WalletSigner,
   pubkeyToString,
-  WRAPPED_SOL_MINT,
-} from '@oyster/common';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
-import { AccountLayout, MintLayout, Token } from '@solana/spl-token';
+  WRAPPED_SAFE_MINT,
+} from '@j0nnyboi/common';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { AccountLayout, MintLayout, Token } from '@safecoin/safe-token';
 import { AuctionView } from '../hooks';
 import {
   AuctionManagerV1,
@@ -44,12 +44,12 @@ import {
   getPrizeTrackingTicket,
   BidRedemptionTicket,
   AuctionViewItem,
-} from '@oyster/common/dist/lib/models/metaplex/index';
-import { claimBid } from '@oyster/common/dist/lib/models/metaplex/claimBid';
-import { approve } from '@oyster/common/dist/lib/models/account';
-import { createTokenAccount } from '@oyster/common/dist/lib/actions/account';
+} from '@j0nnyboi/common/dist/lib/models/metaplex/index';
+import { claimBid } from '@j0nnyboi/common/dist/lib/models/metaplex/claimBid';
+import { approve } from '@j0nnyboi/common/dist/lib/models/account';
+import { createTokenAccount } from '@j0nnyboi/common/dist/lib/actions/account';
 import { setupCancelBid } from './cancelBid';
-import { deprecatedPopulateParticipationPrintingAccount } from '@oyster/common/dist/lib/models/metaplex/deprecatedPopulateParticipationPrintingAccount';
+import { deprecatedPopulateParticipationPrintingAccount } from '@j0nnyboi/common/dist/lib/models/metaplex/deprecatedPopulateParticipationPrintingAccount';
 import { findAta, setupPlaceBid } from './sendPlaceBid';
 import { claimUnusedPrizes } from './claimUnusedPrizes';
 import { createMintAndAccountWithOne } from './createMintAndAccountWithOne';
@@ -770,7 +770,7 @@ export async function setupRedeemParticipationInstructions(
     }
 
     let receivingSolAccountOrAta = '';
-    if (auctionView.auction.info.tokenMint == WRAPPED_SOL_MINT.toBase58()) {
+    if (auctionView.auction.info.tokenMint == WRAPPED_SAFE_MINT.toBase58()) {
       receivingSolAccountOrAta = ensureWrappedAccount(
         mintingInstructions,
         cleanupInstructions,
@@ -967,7 +967,7 @@ async function deprecatedSetupRedeemParticipationInstructions(
           : auctionView.myBidderMetadata.info.lastBid.toNumber() || 0;
 
       let receivingSolAccountOrAta = '';
-      if (auctionView.auction.info.tokenMint == WRAPPED_SOL_MINT.toBase58()) {
+      if (auctionView.auction.info.tokenMint == WRAPPED_SAFE_MINT.toBase58()) {
         receivingSolAccountOrAta = ensureWrappedAccount(
           winningPrizeInstructions,
           cleanupInstructions,

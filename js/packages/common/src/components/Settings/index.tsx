@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tooltip } from 'antd';
-import { useWallet } from '@solana/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { shortenAddress } from '../../utils';
 import { CopyOutlined } from '@ant-design/icons';
 import { Identicon } from '../Identicon';
@@ -35,7 +35,7 @@ export const Settings = ({
                 style={{
                   fontWeight: 600,
                   letterSpacing: '-0.02em',
-                  color: '#FFFFFF',
+                  color: '#000000',
                 }}
                 onClick={() =>
                   navigator.clipboard.writeText(publicKey?.toBase58() || '')

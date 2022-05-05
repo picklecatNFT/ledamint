@@ -3,7 +3,7 @@ import {
   Keypair,
   PublicKey,
   TransactionInstruction,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import { sendTransactionWithRetryWithKeypair } from '../helpers/transactions';
 import { serialize } from 'borsh';
 

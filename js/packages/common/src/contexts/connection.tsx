@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { getTokenListContainerPromise } from '../utils';
-import { TokenInfo, ENV as ChainId } from '@solana/spl-token-registry';
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
+import { TokenInfo, ENV as ChainId } from '@j0nnyboi/safe-token-registry';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import {
   Keypair,
   clusterApiUrl,
@@ -15,7 +15,7 @@ import {
   TransactionSignature,
   Blockhash,
   FeeCalculator,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import { chunks, sleep, useLocalStorageState } from '../utils/utils';
 import { notify } from '../utils/notifications';
 import { ExplorerLink } from '../components/ExplorerLink';
@@ -45,7 +45,7 @@ export const ENDPOINTS: Array<Endpoint> = [
   {
     name: 'mainnet-beta',
     label: 'mainnet-beta',
-    url: 'https://api.metaplex.solana.com/',
+    url: 'https://api.mainnet-beta.safecoin.org/',
     chainId: ChainId.MainnetBeta,
   },
   {
@@ -62,7 +62,7 @@ export const ENDPOINTS: Array<Endpoint> = [
   },
 ];
 
-const DEFAULT_ENDPOINT = ENDPOINTS[0];
+const DEFAULT_ENDPOINT = ENDPOINTS[1];
 
 interface ConnectionConfig {
   connection: Connection;
@@ -131,7 +131,7 @@ export function ConnectionProvider({ children }: { children: any }) {
     updateNetworkInLocalStorageIfNeeded();
   }, []);
 
-  // solana/web3.js closes its websocket connection when the subscription list
+  // safecoin/web3.js closes its websocket connection when the subscription list
   // is empty after opening for the first time, preventing subsequent
   // subscriptions from receiving responses.
   // This is a hack to prevent the list from ever being empty.

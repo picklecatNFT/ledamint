@@ -32,13 +32,13 @@ import {
   MetaplexOverlay,
   MetadataFile,
   StringPublicKey,
-  WRAPPED_SOL_MINT,
+  WRAPPED_SAFE_MINT,
   getAssetCostToStore,
   LAMPORT_MULTIPLIER,
-} from '@oyster/common';
-import { useWallet } from '@solana/wallet-adapter-react';
-import { Connection } from '@solana/web3.js';
-import { MintLayout } from '@solana/spl-token';
+} from '@j0nnyboi/common';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { Connection } from '@safecoin/web3.js';
+import { MintLayout } from '@safecoin/safe-token';
 import { useHistory, useParams } from 'react-router-dom';
 import { getLast } from '../../utils/utils';
 import { AmountLabel } from '../../components/AmountLabel';
@@ -1195,7 +1195,7 @@ const LaunchStep = (props: {
               title="Cost to Create"
               amount={cost.toFixed(5)}
               tokenInfo={useTokenList().tokenMap.get(
-                WRAPPED_SOL_MINT.toString(),
+                WRAPPED_SAFE_MINT.toString(),
               )}
             />
           ) : (
@@ -1210,15 +1210,7 @@ const LaunchStep = (props: {
           onClick={props.confirm}
           className="action-btn"
         >
-          Pay with SOL
-        </Button>
-        <Button
-          disabled={true}
-          size="large"
-          onClick={props.confirm}
-          className="action-btn"
-        >
-          Pay with Credit Card
+          Pay with SAFE
         </Button>
       </Row>
     </>
@@ -1277,7 +1269,7 @@ const WaitingStep = (props: {
           />
           <Step
             className={'white-description'}
-            title="Sending Transaction to Solana"
+            title="Sending Transaction to Safecoin"
             description="This will take a few seconds."
             icon={setIconForStep(props.step, 3)}
           />
@@ -1329,7 +1321,7 @@ const Congrats = (props: {
       }/#/art/${props.nft?.metadataAccount.toString()}`,
       hashtags: 'NFT,Crypto,Metaplex',
       // via: "Metaplex",
-      related: 'Metaplex,Solana',
+      related: 'Metaplex,Safecoin',
     };
     const queryParams = new URLSearchParams(params).toString();
     return `https://twitter.com/intent/tweet?${queryParams}`;
