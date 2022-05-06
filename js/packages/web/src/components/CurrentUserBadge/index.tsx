@@ -361,7 +361,7 @@ export const Cog = () => {
           >
             <h5
               style={{
-                color: 'rgba(255, 255, 255, 0.7)',
+                color: '#282727b3',
                 letterSpacing: '0.02em',
               }}
             >
@@ -392,7 +392,7 @@ export const Cog = () => {
               value={endpoint.name}
               bordered={false}
               style={{
-                background: 'rgba(255, 255, 255, 0.05)',
+                background: 'rgb(68 64 64 / 5%)',
                 borderRadius: 8,
                 width: '100%',
                 marginBottom: 10,

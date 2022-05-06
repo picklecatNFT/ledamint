@@ -1179,7 +1179,8 @@ const PriceAuction = (props: {
           Set the price for your auction.
           {props.attributes.quoteMintAddress != WRAPPED_SAFE_MINT.toBase58() &&
             ` Warning! the auction quote mint is `}
-          {props.attributes.quoteMintAddress != WRAPPED_SAFE_MINT.toBase58() && (
+          {props.attributes.quoteMintAddress !=
+            WRAPPED_SAFE_MINT.toBase58() && (
             <a
               href={`https://explorer.safecoin.org/address/${props.attributes?.quoteMintAddress}`}
               target="_blank"
@@ -2132,9 +2133,9 @@ const Congrats = (props: {
       url: `${
         window.location.origin
       }/#/auction/${props.auction?.auction.toString()}`,
-      hashtags: 'NFT,Crypto,Metaplex',
+      hashtags: 'NFT,Crypto,Ledamint,Metaplex',
       // via: "Metaplex",
-      related: 'Metaplex,Safecoin',
+      related: 'Ledamint,Safecoin',
     };
     const queryParams = new URLSearchParams(params).toString();
     return `https://twitter.com/intent/tweet?${queryParams}`;
