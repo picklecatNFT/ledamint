@@ -157,14 +157,16 @@ code {
 }
 
 .pubkey-row {
+  font-family: monospace;
   line-height: 30px;
 }
 
 .copy-pubkey {
-  height: 100%;
+  transform: scale(0.7);
+  height: 70%;
   cursor: pointer;
   margin-left: 10px;
-  color: white;
+  color: rgb(36, 36, 36);
   :hover {
     color: @metaplex-primary-color;
   }
@@ -187,7 +189,7 @@ code {
 
 .ant-tabs-tab-active {
   .tab-title {
-    color: @text-color;
+    color: black;
   }
 }
 
@@ -228,18 +230,21 @@ h1 {
   .ant-steps-icon-dot {
   background: hsla(0, 0%, 17%, 0.3);
 }
+.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title {
+  color: rgb(22, 87, 82);
+}
 .ant-card {
-  background: #141414;
+  background: #ffffff;
 }
 .ant-card-bordered {
-  border: 1px solid #303030;
+  border: 1px solid #ffffff;
 }
 
 .ant-card-meta-title {
   color: rgba(255, 255, 255, 0.85);
 }
 .tab-title {
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(0, 0, 0, 0.664);
 }
 .ant-btn {
   height: 56px;
@@ -336,7 +341,7 @@ model-viewer {
   margin: 5px;
   padding: 16px 36px;
   border: none;
-  background: @grey-70 !important;
+ // background: @grey-70 !important;
   box-shadow: 0 0 24px rgba(26, 26, 26, 0.12);
   border-radius: 8px;
   cursor: pointer !important;
@@ -380,7 +385,7 @@ model-viewer {
   margin: 5px;
   padding: 16px 36px;
   border: none;
-  background: @grey-70 !important;
+ // background: @grey-70 !important;
   box-shadow: 0 0 24px rgba(26, 26, 26, 0.12);
   border-radius: 8px;
   cursor: pointer !important;

@@ -396,6 +396,7 @@ export const Cog = () => {
                 borderRadius: 8,
                 width: '100%',
                 marginBottom: 10,
+                color: 'black',
               }}
             >
               {ENDPOINTS.map(({ name }) => (
@@ -416,7 +417,7 @@ export const Cog = () => {
         }
       >
         <Button className="wallet-key">
-          <img src="/cog.svg" />
+          <img src="/cog.svg" style={{ filter: 'invert(1)' }} />
         </Button>
       </Popover>
     </div>
