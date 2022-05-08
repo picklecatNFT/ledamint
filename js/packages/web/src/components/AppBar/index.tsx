@@ -143,7 +143,7 @@ export const AppBar = () => {
               <CurrentUserBadge
                 showBalance={false}
                 showAddress={true}
-                iconSize={24}
+                iconSize={37}
               />
               <Notifications />
               <Cog />

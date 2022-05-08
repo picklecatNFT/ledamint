@@ -318,18 +318,30 @@ export const CurrentUserBadge = (props: {
           />
         }
       >
-        <Button className="wallet-key">
-          {image}
+        <Button className="wallet-keyV2">
           {name && (
-            <span
+            <div
               style={{
-                marginLeft: '0.5rem',
-                fontWeight: 600,
+                display: 'flex',
+                textAlign: 'right',
+                flexDirection: 'column',
+                marginRight: 7,
               }}
             >
-              {name}
-            </span>
+              <span
+                style={{
+                  marginLeft: '0.5rem',
+                  fontWeight: 300,
+                }}
+              >
+                {name}
+              </span>
+              <span style={{ paddingTop: 5 }}>
+                {formatNumber.format(balance)} SAFE
+              </span>
+            </div>
           )}
+          {image}
         </Button>
       </Popover>
       <AddFundsModal
