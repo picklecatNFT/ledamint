@@ -268,8 +268,9 @@ export const CurrentUserBadge = (props: {
                     marginBottom: 10,
                   }}
                 >
+                  <div style={{display:'flex'}}>
                   <TokenCircle
-                    iconFile={solMintInfo ? solMintInfo.logoURI : ''}
+                    iconFile={solMintInfo ? 'https://raw.githubusercontent.com/Fair-Exchange/safecoinwiki/master/Logos/SafeCoin/SafeCoin_Icon_monochrome.svg' : ''}
                   />
                   &nbsp;
                   <span
@@ -289,6 +290,7 @@ export const CurrentUserBadge = (props: {
                     {formatUSD.format(balanceInUSD)}
                   </span>
                   &nbsp;
+                  </div>
                 </div>
                 <div
                   style={{

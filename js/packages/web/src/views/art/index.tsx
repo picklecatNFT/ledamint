@@ -21,6 +21,8 @@ import { sendSignMetadata } from '../../actions/sendSignMetadata';
 import { ViewOn } from '../../components/ViewOn';
 import { ArtType } from '../../types';
 import { ArtMinting } from '../../components/ArtMinting';
+import { PublicKey } from '@safecoin/web3.js';
+import { Metadata } from '@j0nnyboi/mpl-token-metadata';
 
 const { Content } = Layout;
 
@@ -58,7 +60,15 @@ export const ArtView = () => {
   const attributes = data?.attributes;
 
   const pubkey = wallet?.publicKey?.toBase58() || '';
-
+  /*
+  (async () => {
+    //console.log("test")
+    let mintPubkey = new PublicKey("3MjCrF9Rid2c19rHkSHwALPzsgd1H7TbBBdCGVhV8n4h");
+    let tokenmetaPubkey = await Metadata.getPDA(mintPubkey);
+  
+    const tokenmeta = await Metadata.load(connection, tokenmetaPubkey);
+    console.log("tokenmetatokenmetatokenmetatokenmetaa ", tokenmeta);
+  })();*/
   const tag = (
     <div className="info-header">
       <Tag color="blue">UNVERIFIED</Tag>
@@ -109,6 +119,12 @@ export const ArtView = () => {
               <div style={{ fontWeight: 700, fontSize: '4rem' }}>
                 {art.title || <Skeleton paragraph={{ rows: 0 }} />}
               </div>
+            </Row>
+            <Row>
+              <br />
+              <div className="info-header">ABOUT THE CREATION</div>
+              <div className="info-content">{description}</div>
+              <br />
             </Row>
             <Row>
               <Col span={6}>
@@ -219,6 +235,7 @@ export const ArtView = () => {
               onMint={async () => await setRemountArtMinting(prev => prev + 1)}
             />
           </Col>
+          {/* 
           <Col span="12">
             <Divider />
             {art.creators?.find(c => !c.verified) && unverified}
@@ -229,8 +246,9 @@ export const ArtView = () => {
             {/*
               TODO: add info about artist
             <div className="info-header">ABOUT THE CREATOR</div>
-            <div className="info-content">{art.about}</div> */}
+            <div className="info-content">{art.about}</div> 
           </Col>
+        */}
           <Col span="12">
             {attributes && (
               <>
