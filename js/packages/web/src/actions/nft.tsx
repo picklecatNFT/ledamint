@@ -45,6 +45,7 @@ interface IArweaveResult {
     filename: string;
     status: 'success' | 'fail';
     transactionId?: string;
+    AweaveURL: string;
     error?: string;
   }>;
 }
@@ -266,7 +267,8 @@ export const mintNFT = async (
 
     // TODO: connect to testnet arweave
     //const arweaveLink = `https://arweave.net/${metadataFile.transactionId}`;
-    const arweaveLink = `http://safestore.testnet.darkartlabs.tech:1984/${metadataFile.transactionId}`;
+    //const arweaveLink = `http://safestore.testnet.darkartlabs.tech:1984/${metadataFile.transactionId}`;
+    const arweaveLink =  metadataFile.AweaveURL
     await updateMetadataV2(
       new DataV2({
         symbol: metadata.symbol,

@@ -22,7 +22,7 @@
 }
 
 .ant-upload-list-item-info .anticon-loading .anticon, .ant-upload-list-item-info .ant-upload-text-icon .anticon {
-  color: white;
+  color: rgb(44, 44, 44);
 }
 
 .ant-upload-list-item:hover {
@@ -32,6 +32,9 @@
   }
 }
 
+.ant-upload-list-item-name {
+  color:#181818;
+}
 .url-form-action {
   color: #FFFFFF !important;
   &.ant-form-item-has-error :not(.ant-input-disabled):not(.ant-input-borderless).ant-input {
@@ -140,7 +143,7 @@
   align-items: center;
   padding: 20px 24px;
 
-  background: linear-gradient(270deg, #616774 7.29%, #403f4c 100%);
+  background: linear-gradient(270deg, #efeff1 7.29%, #e4e4e7 100%);
   max-width: 100%;
   white-space: normal;
 }
@@ -184,6 +187,11 @@
 
   /* text/default */
   color: #fff;
+  &:hover, &:focus {
+    background: transparent;
+    //border-color: #FFFFFF;
+    color: #1d1d1d;
+  }
 }
 
 .connector {
@@ -307,8 +315,8 @@ h2 {
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  background: #282828;
+  color:#000000;
+  background: #f0f0f0;
   border-radius: 8px;
 
   flex: none;
@@ -353,7 +361,7 @@ h2 {
   /* identical to box height, or 100% */
   letter-spacing: -0.01em;
   /* White */
-  color: #FFFFFF;
+  color: #464646;
   &.w100{
     width: 100%;
   }

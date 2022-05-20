@@ -122,7 +122,7 @@ export const ArtView = () => {
             </Row>
             <Row>
               <br />
-              <div className="info-header">ABOUT THE CREATION</div>
+             {/*  <div className="info-header">ABOUT THE CREATION</div> */}
               <div className="info-content">{description}</div>
               <br />
             </Row>
@@ -202,6 +202,27 @@ export const ArtView = () => {
                 </Col>
               </Row>
             )}
+            <Row>
+              <Col span="12">
+                {attributes && (
+                  <>
+                    <br />
+                    <h6 style={{ marginTop: 5 }}>Attributes</h6>
+                    <List style={{color:'black'}} size="large" grid={{ column: 4 }}>
+                      {attributes.map(attribute => (
+                        <List.Item key={attribute.trait_type}>
+                          <div style={{color:'black'}}>{attribute.trait_type}</div>
+                          <div style={{color:'black', fontWeight:600}}>{attribute.value}</div>
+                          {/*<Card title={attribute.trait_type}>
+                            {attribute.value}
+                      </Card>*/}
+                        </List.Item>
+                      ))}
+                    </List>
+                  </>
+                )}
+              </Col>
+            </Row>
             {/* <Button
                   onClick={async () => {
                     if(!art.mint) {
@@ -249,24 +270,7 @@ export const ArtView = () => {
             <div className="info-content">{art.about}</div> 
           </Col>
         */}
-          <Col span="12">
-            {attributes && (
-              <>
-                <Divider />
-                <br />
-                <div className="info-header">Attributes</div>
-                <List size="large" grid={{ column: 4 }}>
-                  {attributes.map(attribute => (
-                    <List.Item key={attribute.trait_type}>
-                      <Card title={attribute.trait_type}>
-                        {attribute.value}
-                      </Card>
-                    </List.Item>
-                  ))}
-                </List>
-              </>
-            )}
-          </Col>
+
         </Row>
       </Col>
     </Content>

@@ -4,7 +4,7 @@ import { LAMPORTS_PER_SAFE } from '@safecoin/web3.js';
 export const LAMPORT_MULTIPLIER = LAMPORTS_PER_SAFE;
 
 export const ARWEAVE_UPLOAD_ENDPOINT =
-  'http://www.metaplex.darkartlabs.tech';
+  'https://ledamint.io/';
 
 export async function getAssetCostToStore(files: { size: number }[]) {
   const sizes = files.map(f => f.size);

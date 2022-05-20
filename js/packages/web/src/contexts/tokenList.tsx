@@ -30,16 +30,16 @@ export function SPLTokenListProvider({
   children: React.ReactNode;
 }) {
   const [tokenList, setTokenList] = useState<TokenListContainer | null>(null);
-  console.log("++++++++++ tokenList", tokenList)
+  //console.log("++++++++++ tokenList", tokenList)
   const subscribedTokenMints = process.env.NEXT_SPL_TOKEN_MINTS
     ? [WRAPPED_SAFE_MINT, ...process.env.NEXT_SPL_TOKEN_MINTS.split(',')]
     : [WRAPPED_SAFE_MINT];
 
   const { tokens } = useConnectionConfig();
-  console.log(" tokens ????????????", tokens)
+  //console.log(" tokens ????????????", tokens)
   useEffect(() => {
     setTokenList(new TokenListContainer(Array.from(tokens.values())));
-    console.log("useEffect tokens : ", tokens) //OK
+    //console.log("useEffect tokens : ", tokens) //OK
   }, [setTokenList, tokens]);
 
   const hasOtherTokens = !!process.env.NEXT_SPL_TOKEN_MINTS;
@@ -142,6 +142,6 @@ export const queryTokenList = () => {
 
 export const useTokenList = () => {
   const context = useContext(TokenListContext);
-  console.log("CONTEXT useTokenList : ", context)
+  //console.log("CONTEXT useTokenList : ", context)
   return context as TokenListContextState;
 };

@@ -832,6 +832,6 @@ export const getOwnedNFTMints = async (
         //@ts-ignore
         mints.includes(val.info.mint),
     );
-
+      console.log("NFTMints NFTMints", NFTMints)
   return NFTMints;
 };

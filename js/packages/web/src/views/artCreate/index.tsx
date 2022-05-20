@@ -411,7 +411,7 @@ const UploadStep = (props: {
         <h3>Upload a cover image (PNG, JPG, GIF, SVG)</h3>
         <Dragger
           accept=".png,.jpg,.gif,.mp4,.svg"
-          style={{ padding: 20, background: 'rgba(255, 255, 255, 0.08)' }}
+          style={{ borderColor:'#dee0e5', padding: 20, background: 'rgba(255, 255, 255, 0.08)' }}
           multiple={false}
           onRemove={() => {
             setMainFile(undefined);
@@ -1042,7 +1042,7 @@ const RoyaltiesStep = (props: {
           </span>
           <span
             style={{
-              color: 'rgba(255, 255, 255, 0.7)',
+              color: 'rgba(20, 20, 20, 0.7)',
               verticalAlign: 'middle',
               lineHeight: 1,
             }}
@@ -1205,6 +1205,7 @@ const LaunchStep = (props: {
       </Row>
       <Row>
         <Button
+        style={{marginTop:15}}
           type="primary"
           size="large"
           onClick={props.confirm}
