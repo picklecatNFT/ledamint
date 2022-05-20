@@ -55,7 +55,8 @@ export const MetaplexMenu = () => {
       <>
         <Modal
           title={
-            <img style={{ filter: 'invert(1)' }} src={'/metaplex-logo.svg'} />
+            <img style={{maxWidth: 380,
+              paddingTop: 10, /*filter: 'invert(1)'*/ }} src={'/metaplex-logo.svg'} />
           }
           visible={isModalVisible}
           footer={null}
@@ -115,7 +116,8 @@ export const MetaplexMenu = () => {
 export const LogoLink = () => {
   return (
     <Link to={`/`}>
-      <img style={{ filter: 'invert(1)' }} src={'/metaplex-logo.svg'} />
+      <img style={{maxWidth: 380,
+              paddingTop: 10, /*filter: 'invert(1)'*/ }} src={'/ledamint-logo.svg'} />
     </Link>
   );
 };
