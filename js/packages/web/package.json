@@ -76,7 +76,7 @@
     "type": "git",
     "url": "https://github.com/ledamint-IO/ledamint"
   },
-  "homepage": "https://ledamint-io.github.io/ledamint/",
+  "homepage": ".",
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
