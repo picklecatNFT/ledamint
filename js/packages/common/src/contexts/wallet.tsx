@@ -4,13 +4,13 @@ import {
   WalletProvider as BaseWalletProvider,
 } from '@j0nnyboi/wallet-adapter-react';
 import {
- /* getLedgerWallet,
+  /* getLedgerWallet,
   getMathWallet,
   getPhantomWallet,
   getSlopeWallet,
   getSolflareWallet,*/
   getSolletWallet,
- // getSolongWallet,
+  // getSolongWallet,
 } from '@j0nnyboi/wallet-adapter-wallets';
 import { Button, Collapse } from 'antd';
 import React, {
@@ -48,23 +48,12 @@ export const WalletModal: FC = () => {
     setVisible(false);
   }, [setVisible]);
 
- // const phatomWallet = useMemo(() => getPhantomWallet(), []);
- const SolletWallet = useMemo(() => getSolletWallet(), []);
+  // const phatomWallet = useMemo(() => getPhantomWallet(), []);
+  const SolletWallet = useMemo(() => getSolletWallet(), []);
 
   return (
     <MetaplexModal title="Connect Wallet" visible={visible} onCancel={close}>
-      <span
-        style={{
-          color: 'rgba(255, 255, 255, 0.75)',
-          fontSize: '14px',
-          lineHeight: '14px',
-          fontFamily: 'GraphikWeb',
-          letterSpacing: '0.02em',
-          marginBottom: 14,
-        }}
-      >
-        RECOMMENDED
-      </span>
+      <span>RECOMMENDED</span>
 
       <Button
         className="phantom-button metaplex-button"
@@ -74,10 +63,13 @@ export const WalletModal: FC = () => {
           close();
         }}
       >
-        <img src={SolletWallet?.icon} style={{ width: '1.2rem' }} />
+        <img
+          src="https://raw.githubusercontent.com/Fair-Exchange/safecoinwiki/master/Logos/SafeCoin/SafeCoin_Icon.svg"
+          style={{ width: '1.2rem' }}
+        />
         &nbsp;Connect to Safecoin
       </Button>
-	  
+
       <Collapse
         ghost
         expandIcon={panelProps =>
@@ -124,7 +116,6 @@ export const WalletModal: FC = () => {
                 fontSize: '16px',
                 lineHeight: '16px',
                 letterSpacing: '-0.01em',
-                color: 'rgba(255, 255, 255, 255)',
               }}
             >
               Other Wallets
@@ -133,7 +124,7 @@ export const WalletModal: FC = () => {
           key="1"
         >
           {wallets.map((wallet, idx) => {
-          if (wallet.name === 'Sollet') return null;
+            if (wallet.name === 'Sollet') return null;
 
             return (
               <Button
@@ -208,7 +199,6 @@ export const WalletModalProvider: FC<{ children: ReactNode }> = ({
 export const WalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const wallets = useMemo(
     () => [
-
       // getTorusWallet({
       //   options: {
       //     // @FIXME: this should be changed for Metaplex, and by each Metaplex storefront

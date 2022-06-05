@@ -21,17 +21,17 @@ export const HowToBuyModal: React.FC<HowToBuyModalProps> = ({
         {
           title: 'Create a SAFE wallet',
           imgSrc: '/modals/how-to-buy-1.svg',
-          description: `SAFE is the cryptocurrency we use for purchases on ${LABELS.STORE_NAME}. To keep your SAFE safe, you’ll need a crypto wallet—we recommend using one called Phantom. Just head to Phantom’s site, install the Chrome extension, and create an account.`,
+          description: `SAFE is the cryptocurrency we use for purchases on ${LABELS.STORE_NAME}. To keep your SAFE safe, you’ll need a crypto wallet—we recommend using wallet.safecoin.org.`,
         },
         {
           title: 'Add funds to your wallet',
           imgSrc: '/modals/how-to-buy-2.svg',
-          description: `To fund your wallet, you’ll need to purchase SAFE tokens. The easiest way is with a credit card on FTX Pay—a service that’s already part of your new Phantom wallet. Open your wallet, tap “Deposit SAFE”, and select “Deposit from FTX”. A new window will open where you can create an FTX account and purchase SOL.`,
+          description: `To fund your wallet, you’ll need to purchase Safecoin. The easiest way is on SafeTrade. A new window will open where you can create an SafeTrade account and purchase SAFE.`,
         },
         {
           title: `Connect your wallet to ${LABELS.STORE_NAME}.`,
           imgSrc: '/modals/how-to-buy-3.jpg',
-          description: `To connect your wallet, tap “Connect Wallet” here on the site. Select the Phantom option, and your wallet will connect. After that, you can start bidding on NFTs.`,
+          description: `To connect your wallet, tap “Connect Wallet” here on the site. Select the Safecoin option, and your wallet will connect. After that, you can start bidding on NFTs.`,
           endElement: <ConnectButton className={'secondary-btn'} />,
         },
       ]}
