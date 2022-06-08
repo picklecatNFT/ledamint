@@ -55,8 +55,10 @@ export const MetaplexMenu = () => {
       <>
         <Modal
           title={
-            <img style={{maxWidth: 380,
-              paddingTop: 10, /*filter: 'invert(1)'*/ }} src={'/ledamint-logo.svg'} />
+            <img
+              style={{ maxWidth: 195, paddingTop: 10 /*filter: 'invert(1)'*/ }}
+              src={'/ledamint-logo.svg'}
+            />
           }
           visible={isModalVisible}
           footer={null}
@@ -116,8 +118,10 @@ export const MetaplexMenu = () => {
 export const LogoLink = () => {
   return (
     <Link to={`/`}>
-      <img style={{maxWidth: 380,
-              paddingTop: 10, /*filter: 'invert(1)'*/ }} src={'ledamint-logo.svg'} />
+      <img
+        style={{ maxWidth: 195, paddingTop: 0 /*filter: 'invert(1)'*/ }}
+        src={'ledamint-logo.svg'}
+      />
     </Link>
   );
 };
