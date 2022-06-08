@@ -246,8 +246,8 @@ export const AuctionCard = ({
   const symbol = tokenInfo
     ? tokenInfo.symbol
     : mintKey == WRAPPED_SAFE_MINT.toBase58()
-    ? 'safe'
-    : 'CUSTOM';
+      ? 'safe'
+      : 'CUSTOM';
 
   const LAMPORTS_PER_MINT = tokenInfo
     ? Math.ceil(10 ** tokenInfo.decimals)
@@ -315,13 +315,13 @@ export const AuctionCard = ({
     tickSize &&
     (isUpcoming || bids.length === 0
       ? fromLamports(
-          participationOnly ? participationFixedPrice : priceFloor,
-          mintInfo,
-        )
+        participationOnly ? participationFixedPrice : priceFloor,
+        mintInfo,
+      )
       : isStarted && bids.length > 0
-      ? parseFloat(formatTokenAmount(bids[0].info.lastBid, mintInfo))
-      : 9999999) +
-      tickSize.toNumber() / LAMPORTS_PER_MINT;
+        ? parseFloat(formatTokenAmount(bids[0].info.lastBid, mintInfo))
+        : 9999999) +
+    tickSize.toNumber() / LAMPORTS_PER_MINT;
 
   const invalidBid =
     tickSizeInvalid ||
@@ -515,16 +515,17 @@ export const AuctionCard = ({
 
   return (
     <div className="auction-container" style={style}>
-      <div className={'time-info'}>
-        {!auctionView.isInstantSale && (
+      {!auctionView.isInstantSale && (
+        <div className={'time-info'}>
           <>
             <span>Auction ends in</span>
             <div>
               <AuctionCountdown auctionView={auctionView} labels={false} />
             </div>
           </>
-        )}
-      </div>
+
+        </div>
+      )}
       <div className={'bid-info'}>
         <div className="bid-info-container">
           <AuctionNumbers
@@ -595,46 +596,49 @@ export const AuctionCard = ({
                 }}
               >
                 {loading ||
-                auctionView.items.find(i => i.find(it => !it.metadata)) ||
-                !myPayingAccount ? (
+                  auctionView.items.find(i => i.find(it => !it.metadata)) ||
+                  !myPayingAccount ? (
                   <Spin />
                 ) : eligibleForAnything ? (
                   `Redeem bid`
                 ) : (
-                  `${
-                    wallet?.publicKey &&
+                  `${wallet?.publicKey &&
                     auctionView.auctionManager.authority ===
-                      wallet.publicKey.toBase58()
-                      ? 'Reclaim Items'
-                      : 'Refund bid'
+                    wallet.publicKey.toBase58()
+                    ? 'Reclaim Items'
+                    : 'Refund bid'
                   }`
                 )}
               </Button>
             )}
           {showPlaceBid ? (
-            <div className="show-place-bid">
-              <AmountLabel
-                title="in your wallet"
-                displaySymbol={tokenInfo?.symbol || 'CUSTOM'}
-                style={{ marginBottom: 0 }}
-                amount={balance.balance}
-                tokenInfo={tokenInfo}
-                customPrefix={
-                  <Identicon
-                    address={wallet?.publicKey?.toBase58()}
-                    style={{ width: 36 }}
-                  />
-                }
-              />
-            </div>
+            <>
+              {/* 
+              <div className="show-place-bid">
+                <AmountLabel
+                  title="in your wallet"
+                  displaySymbol={tokenInfo?.symbol || 'CUSTOM'}
+                  style={{ marginBottom: 0 }}
+                  amount={balance.balance}
+                  tokenInfo={tokenInfo}
+                  customPrefix={
+                    <Identicon
+                      address={wallet?.publicKey?.toBase58()}
+                      style={{ width: 36 }}
+                    />
+                  }
+                />
+              </div>
+              */}
+            </>
           ) : (
             <div className="actions-place-bid">
               <HowAuctionsWorkModal buttonClassName="black-btn" />
               {!hideDefaultAction &&
                 !auctionView.auction.info.ended() &&
                 (wallet.connected &&
-                isAuctionNotStarted &&
-                !isAuctionManagerAuthorityNotWalletOwner ? (
+                  isAuctionNotStarted &&
+                  !isAuctionManagerAuthorityNotWalletOwner ? (
                   <Button
                     className="secondary-btn"
                     disabled={loading}

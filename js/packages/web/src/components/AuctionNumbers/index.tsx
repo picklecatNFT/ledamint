@@ -12,6 +12,7 @@ import { AuctionView, AuctionViewState, useBidsForAuction } from '../../hooks';
 import { AmountLabel } from '../AmountLabel';
 import { useAuctionCountdown } from '../../hooks/useAuctionCountdown';
 import { useTokenList } from '../../contexts/tokenList';
+import { upperCase } from 'lodash';
 
 export const AuctionCountdown = (props: {
   auctionView: AuctionView;
@@ -65,7 +66,7 @@ export const AuctionNumbers = (props: {
           {(isUpcoming || bids.length === 0 || auctionView.isInstantSale) && (
             <AmountLabel
               displaySymbol={tokenInfo?.symbol || 'CUSTOM'}
-              style={{ marginBottom: props.showAsRow ? 0 : 10 }}
+              style={{ marginBottom: props.showAsRow ? 0 : 10 , textTransform: 'uppercase'}}
               title={auctionView.isInstantSale ? 'Price' : 'Starting bid'}
               tokenInfo={tokenInfo}
               amount={fromLamports(
@@ -77,7 +78,7 @@ export const AuctionNumbers = (props: {
           {!auctionView.isInstantSale && isStarted && bids.length > 0 && (
             <AmountLabel
               displaySymbol={tokenInfo?.symbol || 'CUSTOM'}
-              style={{ marginBottom: props.showAsRow ? 0 : 10 }}
+              style={{ marginBottom: props.showAsRow ? 0 : 10, textTransform: 'uppercase' }}
               containerStyle={{
                 flexDirection: props.showAsRow ? ' row' : 'column',
               }}

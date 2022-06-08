@@ -23,10 +23,16 @@
     "description": "Safecoin dev",
     "background": "electrical engineer by trade, programmer by choice"
   },
-  "SoL351y4uKWtbH14AU1Rhiao96aBM4u57bMi5Vj2XJc": {
-    "name": "Safecoin",
-    "image": "https://pbs.twimg.com/profile_images/1299400345144049665/sPxnVXa7_400x400.jpg",
-    "description": "Account used by Safecoin to mint official NFTs",
-    "background": ""
+  "J5gKwtAjK34yGkEWRxEQk3QraSCDf8YufWQrDEpkQPAW": {
+    "name": "Jonnyboi",
+    "image": "https://pbs.twimg.com/profile_images/1393353972371623938/ZMWvvptg_400x400.jpg",
+    "description": "Safecoin dev",
+    "background": "https://images.unsplash.com/photo-1654616111851-5394318e3279?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"
+  },
+  "smdxEAsiqoyz1mYpZ8UDdzUbWSG8nnnbAp9gTF9HQWW": {
+    "name": "Araviel",
+    "image": "https://pbs.twimg.com/profile_images/1423609847275216899/94A6kE1x_400x400.jpg",
+    "description": "Safecoin dev",
+    "background": "https://images.unsplash.com/photo-1654522040644-c71d7c7730da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80"
   }
 }

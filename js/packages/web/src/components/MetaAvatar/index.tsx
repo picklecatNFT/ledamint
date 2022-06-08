@@ -71,10 +71,12 @@ export const MetaAvatarDetailed = (props: {
     <div>
       {(creators || []).map((creator, _idx) => (
         <div style={{ display: 'flex' }} key={_idx}>
+          <div  style={{ display: 'flex', alignItems:'center' }}>
           <MetaAvatarItem creator={creator} alt={creator.name} size={size} />
-          <p style={{ marginLeft: 10 }}>
+          <div style={{ marginLeft: 10 }}>
             {creator.name ? creator.name : 'No name provided.'}
-          </p>
+          </div>
+          </div>
         </div>
       ))}
     </div>

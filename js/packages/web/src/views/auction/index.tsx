@@ -58,14 +58,14 @@ export const AuctionItem = ({
       index === 0
         ? ''
         : `translate(${index * 15}px, ${-40 * index}px) scale(${Math.max(
-            1 - 0.2 * index,
-            0,
-          )})`,
+          1 - 0.2 * index,
+          0,
+        )})`,
     transformOrigin: 'right bottom',
     position: index !== 0 ? 'absolute' : 'static',
     zIndex: -1 * index,
     marginLeft: size > 1 && index === 0 ? '0px' : 'auto',
-  //  background: 'black',
+    //  background: 'black',
     //boxShadow: 'rgb(0 0 0 / 10%) 12px 2px 20px 14px',
     aspectRatio: '1/1',
   };
@@ -275,7 +275,7 @@ export const AuctionView = () => {
   } else {
     return (
       <Row justify="center" ref={ref} gutter={[48, 0]}>
-        <Col span={24} md={10} className={'img-cont-500'}>
+        <Col span={24} md={10} className={'img-cont-500'} style={{placeSelf:'center'}}>
           <div className="auction-view" style={{ minHeight: 300 }}>
             <Carousel
               autoplay={false}
@@ -284,6 +284,20 @@ export const AuctionView = () => {
               {items}
             </Carousel>
           </div>
+
+        </Col>
+
+        <Col span={24} md={14}>
+          <h2 className="art-title">
+            {art.title || <Skeleton paragraph={{ rows: 0 }} />}
+          </h2>
+          <h6 className={'info-title'}>CREATED BY</h6>
+          <span>{<MetaAvatarDetailed creators={creators} />}</span>
+          {!auction && <Skeleton paragraph={{ rows: 6 }} />}
+          {auction && (
+            <AuctionCard auctionView={auction} hideDefaultAction={false} />
+          )}
+          <AuctionBids auctionView={auction} />
           <h6 className={'about-nft-collection'}>
             ABOUT THIS {nftCount === 1 ? 'NFT' : 'COLLECTION'}
           </h6>
@@ -308,25 +322,13 @@ export const AuctionView = () => {
               </List>
             </div>
           )}
-          {/* {auctionData[id] && (
-            <>
-              <h6>About this Auction</h6>
-              <p>{auctionData[id].description.split('\n').map((t: string) => <div>{t}</div>)}</p>
-            </>
-          )} */}
-        </Col>
-
-        <Col span={24} md={14}>
-          <h2 className="art-title">
-            {art.title || <Skeleton paragraph={{ rows: 0 }} />}
-          </h2>
           <Row gutter={[44, 0]}>
             <Col span={12} md={16}>
               <div className={'info-container'}>
-                <div className={'info-component'}>
-                  <h6 className={'info-title'}>CREATED BY</h6>
-                  <span>{<MetaAvatar creators={creators} />}</span>
-                </div>
+                {/*
+               <div className={'info-component'}>
+               </div>
+               */}
                 <div className={'info-component'}>
                   <h6 className={'info-title'}>Edition</h6>
                   <span>
@@ -363,8 +365,7 @@ export const AuctionView = () => {
                     {nftCount === undefined ? (
                       <Skeleton paragraph={{ rows: 0 }} />
                     ) : (
-                      `${tokenInfo?.name || 'Custom Token'} ($${
-                        tokenInfo?.symbol || 'CUSTOM'
+                      `${tokenInfo?.name || 'Custom Token'} ($${tokenInfo?.symbol || 'CUSTOM'
                       })`
                     )}
                     <ClickToCopy
@@ -411,12 +412,12 @@ export const AuctionView = () => {
               </div>
             </Col>
           </Row>
-
-          {!auction && <Skeleton paragraph={{ rows: 6 }} />}
-          {auction && (
-            <AuctionCard auctionView={auction} hideDefaultAction={false} />
-          )}
-          <AuctionBids auctionView={auction} />
+          {/* {auctionData[id] && (
+            <>
+              <h6>About this Auction</h6>
+              <p>{auctionData[id].description.split('\n').map((t: string) => <div>{t}</div>)}</p>
+            </>
+          )} */}
         </Col>
       </Row>
     );
