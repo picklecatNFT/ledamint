@@ -298,10 +298,10 @@ export const AuctionView = () => {
             <AuctionCard auctionView={auction} hideDefaultAction={false} />
           )}
           <AuctionBids auctionView={auction} />
-          <h6 className={'about-nft-collection'}>
-            ABOUT THIS {nftCount === 1 ? 'NFT' : 'COLLECTION'}
-          </h6>
-          <p className={'about-nft-collection a-description'}>
+          <div className={'about-nft-collection'}>
+            About this {nftCount === 1 ? 'NFT' : 'COLLECTION'}
+          </div>
+          <p className={'a-description'}>
             {hasDescription && <Skeleton paragraph={{ rows: 3 }} />}
             {description ||
               (winnerCount !== undefined && (
@@ -311,8 +311,8 @@ export const AuctionView = () => {
               ))}
           </p>
           {attributes && (
-            <div className={'about-nft-collection a-attributes'}>
-              <h6>Attributes</h6>
+            <div className={'a-attributes'}>
+              Attributes
               <List grid={{ column: 4 }}>
                 {attributes.map((attribute, index) => (
                   <List.Item key={`${attribute.value}-${index}`}>
