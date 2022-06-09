@@ -275,7 +275,7 @@ export const AuctionView = () => {
   } else {
     return (
       <Row justify="center" ref={ref} gutter={[48, 0]}>
-        <Col span={24} md={10} className={'img-cont-500'} style={{placeSelf:'center'}}>
+        <Col span={24} md={10} className={'img-cont-500'} style={{ placeSelf: 'center' }}>
           <div className="auction-view" style={{ minHeight: 300 }}>
             <Carousel
               autoplay={false}
@@ -310,18 +310,29 @@ export const AuctionView = () => {
                 </div>
               ))}
           </p>
-          {attributes && (
-            <div className={'a-attributes'}>
-              Attributes
-              <List grid={{ column: 4 }}>
-                {attributes.map((attribute, index) => (
-                  <List.Item key={`${attribute.value}-${index}`}>
-                    <Card title={attribute.trait_type}>{attribute.value}</Card>
-                  </List.Item>
-                ))}
-              </List>
-            </div>
-          )}
+          <Row>
+            <Col span="12">
+              {attributes && (
+                <div className={'a-attributes'}>
+                  Attributes
+                  <div style={{ display: 'flex', fontSize:13,marginTop:15 }}>
+                  {attributes.map((attribute, index) => (
+                    <>
+                      <div style={{ display: 'block', margin: 3, border: '1px solid #00000030', padding: '6px 14px', borderRadius: '11px' }}>
+                        <div style={{ color: 'black' }}>{attribute.trait_type}</div>
+                        <div style={{ color: 'black', fontWeight: 600 }}>{attribute.value}</div>
+                        {/*<Card title={attribute.trait_type}>
+                          {attribute.value}
+                    </Card>*/}
+                      </div>
+                      <div style={{ width: 15 }}></div>
+                    </>
+                  ))}
+                  </div>
+                </div>
+              )}
+            </Col>
+          </Row>
           <Row gutter={[44, 0]}>
             <Col span={12} md={16}>
               <div className={'info-container'}>
