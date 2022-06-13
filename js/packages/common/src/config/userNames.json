@@ -1,4 +1,28 @@
 {
+  "EDshWM3jBy2YUszMiFLAFLx3WkbtqR9An7JZzvg22R1P": {
+    "name": "Deployer Admin",
+    "image": "https://pbs.twimg.com/profile_images/1393399819213983746/2a8l5muc_400x400.png",
+    "description": "",
+    "background": ""
+  },
+  "CduMjFZLBeg3A9wMP3hQCoU1RQzzCpgSvQNXfCi1GCSB": {
+    "name": "Bartosz Lipinski",
+    "image": "https://pbs.twimg.com/profile_images/1393353972371623938/ZMWvvptg_400x400.jpg",
+    "description": "",
+    "background": ""
+  },
+  "44kiGWWsSgdqPMvmqYgTS78Mx2BKCWzduATkfY4biU97": {
+    "name": "Jordan Prince",
+    "image": "https://pbs.twimg.com/profile_images/1393399819213983746/2a8l5muc_400x400.png",
+    "description": "",
+    "background": ""
+  },
+  "HGDqwnf3SUzcya43ubsibZRjbFWY3mVZjtFWr7BxQD9Q": {
+    "name": "Jonnyboi",
+    "image": "https://pbs.twimg.com/profile_images/1393353972371623938/ZMWvvptg_400x400.jpg",
+    "description": "Safecoin dev",
+    "background": "electrical engineer by trade, programmer by choice"
+  },
   "24n6hzEPP69hX2kg168APr7nWLsWM4sbeY6zS2vYFSh1": {
     "name": "Jonnyboi",
     "image": "https://pbs.twimg.com/profile_images/1393353972371623938/ZMWvvptg_400x400.jpg",
@@ -10,17 +34,5 @@
     "image": "https://pbs.twimg.com/profile_images/1423609847275216899/94A6kE1x_400x400.jpg",
     "description": "Safecoin dev",
     "background": "https://images.unsplash.com/photo-1654522040644-c71d7c7730da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80"
-  },
-  "3aHEKicGmWiTgcNifFkJjpJ3BCxgf5AqFnJrJfYqJUax": {
-    "name": "Martin",
-    "image": "https://github.com/Fair-Exchange/safecoinwiki/raw/master/Logos/SafeCoin/256.png",
-    "description": "",
-    "background": "https://github.com/Fair-Exchange/safecoinwiki/raw/master/Logos/SafeCoin/256.png"
-  },
-  "24mY5cYbr9vwNLR8V96kDX2CdwWmFLUkD7shsCgPuJ2m": {
-    "name": "Madz",
-    "image": "https://github.com/Fair-Exchange/safecoinwiki/raw/master/Logos/SafeCoin/256.png",
-    "description": "",
-    "background": "https://github.com/Fair-Exchange/safecoinwiki/raw/master/Logos/SafeCoin/256.png"
   }
 }
