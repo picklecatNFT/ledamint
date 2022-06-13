@@ -85,9 +85,6 @@ const VideoArtContent = ({
 }) => {
   const [playerApi, setPlayerApi] = useState<StreamPlayerApi>();
 
-  console.log("URI ", uri)
-  console.log("files ", files)
-
   const playerRef = useCallback(
     ref => {
       setPlayerApi(ref);
