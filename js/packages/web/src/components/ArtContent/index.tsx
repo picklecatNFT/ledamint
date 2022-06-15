@@ -198,24 +198,24 @@ const AudioArtContent = ({
   })?.[0] as string;
 
   const content =
-      <div className={`${className} square`}>
-        <audio
-          playsInline={true}
-          autoPlay={true}
-          muted={true}
-          controls={true}
-          controlsList="nodownload"
-          style={style}
-          loop={true}
-         // poster={uri}
-        >
-          {files
-            ?.filter(f => typeof f !== 'string')
-            .map((f: any, index: number) => (
-              <source key={index} src={f.uri} type={f.type} style={style} />
-            ))}
-        </audio>
-      </div>
+    <div style={{ backgroundImage: `url(${uri})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className={`${className} square`}>
+      <audio
+        playsInline={true}
+        autoPlay={true}
+        muted={true}
+        controls={true}
+        controlsList="nodownload"
+        style={{width:'80%'}}
+        loop={true}
+      // poster={uri}
+      >
+        {files
+          ?.filter(f => typeof f !== 'string')
+          .map((f: any, index: number) => (
+            <source key={index} src={f.uri} type={f.type} style={{width:'80%'}} />
+          ))}
+      </audio>
+    </div>
 
   return content;
 };
@@ -440,6 +440,6 @@ export const ArtContent = ({
         style={style}
       />
     );
-  
+
   return <ArtContentWrapper ref={ref as any}>{content}</ArtContentWrapper>;
 };
