@@ -56,6 +56,10 @@ export const ArtCard = (props: ArtCardProps) => {
   creators = art?.creators || creators || [];
   name = art?.title || name || ' ';
 
+  console.log("ArtCard category", category)
+  console.log("ArtCard image", image)
+  console.log("ArtCard animationURL", animationURL)
+
   let badge = '';
   if (art.type === ArtType.NFT) {
     badge = 'Unique';
@@ -88,18 +92,19 @@ export const ArtCard = (props: ArtCardProps) => {
         <MetaAvatar creators={creators} size={32} />
         <div className="edition-badge">{badge}</div>
       </div>
-      <div className="art-content__wrapper">
-        <ArtContent
-          pubkey={pubkey}
-          uri={image}
-          animationURL={animationURL}
-          category={category}
-          preview={preview}
-          height={height}
-          width={width}
-          artView={artView}
-        />
-      </div>
+
+      <ArtContent
+        className='custom-art-card tt'
+        pubkey={pubkey}
+        uri={image}
+        animationURL={animationURL}
+        category={category}
+        preview={preview}
+        height={height}
+        width={width}
+        artView={artView}
+      />
+
       <Meta
         title={`${name}`}
         description={

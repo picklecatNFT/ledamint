@@ -85,9 +85,6 @@ const VideoArtContent = ({
 }) => {
   const [playerApi, setPlayerApi] = useState<StreamPlayerApi>();
 
-  console.log("URI ", uri)
-  console.log("files ", files)
-
   const playerRef = useCallback(
     ref => {
       setPlayerApi(ref);
@@ -112,7 +109,7 @@ const VideoArtContent = ({
 
   const content =
     likelyVideo &&
-    likelyVideo.startsWith('https://watch.videodelivery.net/') ? (
+      likelyVideo.startsWith('https://watch.videodelivery.net/') ? (
       <div className={`${className} square`}>
         <Stream
           // @ts-ignore
@@ -161,7 +158,67 @@ const VideoArtContent = ({
 
   return content;
 };
+const AudioArtContent = ({
+  className,
+  style,
+  files,
+  uri,
+  animationURL,
+  active,
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+  files?: (MetadataFile | string)[];
+  uri?: string;
+  animationURL?: string;
+  active?: boolean;
+}) => {
+  const [playerApi, setPlayerApi] = useState<StreamPlayerApi>();
 
+  const playerRef = useCallback(
+    ref => {
+      setPlayerApi(ref);
+    },
+    [setPlayerApi],
+  );
+
+  useEffect(() => {
+    if (playerApi) {
+      playerApi.currentTime = 0;
+    }
+  }, [active, playerApi]);
+
+  const likelyVideo = (files || []).filter((f, index, arr) => {
+    if (typeof f !== 'string') {
+      return false;
+    }
+
+    // TODO: filter by fileType
+    return arr.length >= 2 ? index === 1 : index === 0;
+  })?.[0] as string;
+
+  const content =
+      <div className={`${className} square`}>
+        <audio
+          playsInline={true}
+          autoPlay={true}
+          muted={true}
+          controls={true}
+          controlsList="nodownload"
+          style={style}
+          loop={true}
+         // poster={uri}
+        >
+          {files
+            ?.filter(f => typeof f !== 'string')
+            .map((f: any, index: number) => (
+              <source key={index} src={f.uri} type={f.type} style={style} />
+            ))}
+        </audio>
+      </div>
+
+  return content;
+};
 const HTMLWrapper = styled.div`
   padding-top: 100%;
   position: relative;
@@ -231,6 +288,7 @@ const HTMLContent = ({
   );
 };
 
+
 const ArtContentWrapper = styled.div`
   display: flex;
   alignitems: center;
@@ -281,6 +339,8 @@ export const ArtContent = ({
 
   const { ref, data } = useExtendedArt(id);
 
+
+
   useEffect(() => {
     setUriState(uri);
   }, [uri]);
@@ -313,6 +373,11 @@ export const ArtContent = ({
     getLast((animationURLState || '').split('?')),
   ).get('ext');
 
+  console.log("category : ", categoryState)
+  console.log("uri : ", uriState)
+  console.log("animationURL : ", animationURLState)
+  console.log("files : ", filesState)
+
   if (
     allowMeshRender &&
     (categoryState === 'vr' ||
@@ -328,6 +393,19 @@ export const ArtContent = ({
         files={filesState}
       />
     );
+  }
+
+  if (categoryState === 'audio') {
+    return (
+      <AudioArtContent
+        className={className}
+        style={style}
+        files={filesState}
+        uri={uriState}
+        animationURL={animationURLState}
+        active={active}
+      />
+    )
   }
 
   if (categoryState === 'html' || animationUrlExt === 'html') {
@@ -362,6 +440,6 @@ export const ArtContent = ({
         style={style}
       />
     );
-
+  
   return <ArtContentWrapper ref={ref as any}>{content}</ArtContentWrapper>;
 };

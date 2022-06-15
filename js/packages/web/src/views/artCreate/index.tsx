@@ -806,7 +806,7 @@ const InfoStep = (props: {
                       <Form.Item name={[name, 'display_type']} hasFeedback>
                         <Input placeholder="display_type (Optional)" />
                       </Form.Item>
-                      <MinusCircleOutlined onClick={() => remove(name)} />
+                      <MinusCircleOutlined style={{color:'black'}} onClick={() => remove(name)} />
                     </Space>
                   ))}
                   <Form.Item>
