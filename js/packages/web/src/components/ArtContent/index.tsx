@@ -8,6 +8,7 @@ import { Stream, StreamPlayerApi } from '@cloudflare/stream-react';
 import { PublicKey } from '@safecoin/web3.js';
 import { getLast } from '../../utils/utils';
 import styled from 'styled-components';
+import { HashRouter, Route, Switch, useLocation } from 'react-router-dom';
 
 const MeshArtContent = ({
   uri,
@@ -158,6 +159,8 @@ const VideoArtContent = ({
 
   return content;
 };
+
+
 const AudioArtContent = ({
   className,
   style,
@@ -174,7 +177,7 @@ const AudioArtContent = ({
   active?: boolean;
 }) => {
   const [playerApi, setPlayerApi] = useState<StreamPlayerApi>();
-
+  const location = useLocation();
   const playerRef = useCallback(
     ref => {
       setPlayerApi(ref);
@@ -196,27 +199,35 @@ const AudioArtContent = ({
     // TODO: filter by fileType
     return arr.length >= 2 ? index === 1 : index === 0;
   })?.[0] as string;
-
+  const areWeAuctionPage = location.pathname;
+  
+//console.log("location : ", location.pathname)
+//console.log("areWeAuctionPage : ", areWeAuctionPage.includes('auction'))
   const content =
-    <div style={{ backgroundImage: `url(${uri})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className={`${className} square`}>
-      <audio
-        playsInline={true}
-        autoPlay={true}
-        muted={true}
-        controls={true}
-        controlsList="nodownload"
-        style={{width:'80%'}}
-        loop={true}
-      // poster={uri}
-      >
-        {files
-          ?.filter(f => typeof f !== 'string')
-          .map((f: any, index: number) => (
-            <source key={index} src={f.uri} type={f.type} style={{width:'80%'}} />
-          ))}
-      </audio>
+    <div>
+      <div style={areWeAuctionPage.includes('auction') ? 
+      { backgroundImage: `url(${uri})`, backgroundPosition: 'center', backgroundSize: 'cover', minHeight:500 } :
+      { backgroundImage: `url(${uri})`, backgroundPosition: 'center', backgroundSize: 'cover' } 
+    } className={`${className} square test-effect`}>
+        <audio
+          playsInline={true}
+          autoPlay={true}
+          muted={true}
+          controls={true}
+          controlsList="nodownload"
+          style={{ width: '80%' }}
+          loop={true}
+        // poster={uri}
+        >
+          {files
+            ?.filter(f => typeof f !== 'string')
+            .map((f: any, index: number) => (
+              <source key={index} src={f.uri} type={f.type} style={{ width: '80%' }} />
+            ))}
+        </audio>
+      </div>
+      
     </div>
-
   return content;
 };
 const HTMLWrapper = styled.div`

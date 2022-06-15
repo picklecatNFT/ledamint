@@ -661,6 +661,7 @@ export const AuctionCard = ({
                   </Button>
                 ) : (
                   !showPlaceBid && (
+                    !auctionView.isInstantSale ? 
                     <Button
                       className="secondary-btn"
                       onClick={() => {
@@ -670,6 +671,7 @@ export const AuctionCard = ({
                     >
                       Place Bid
                     </Button>
+                    : <></>
                   )
                 ))}
             </div>
