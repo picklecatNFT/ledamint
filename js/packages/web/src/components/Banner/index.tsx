@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
+import { SpotlightCard } from '../SpotlightCard';
 
 export const Banner = (props: {
   src: string;
@@ -47,10 +48,13 @@ export const Banner = (props: {
       >
         <span id={'gradient-banner'}></span>
         <div id="banner-inner">
-          <div id={'message-container'}>
-            <div id={'main-heading'}>{props.headingText}</div>
-            <div id={'sub-heading'}>{props.subHeadingText}</div>
-            {props.actionComponent}
+          <div style={{display:'flex', height:'-webkit-fill-available'}}>
+            <div id={'message-container'}>
+              <div id={'main-heading'}>{props.headingText}</div>
+              <div id={'sub-heading'}>{props.subHeadingText}</div>
+              {props.actionComponent}
+            </div>
+            <div style={{width:'100%', margin:'auto', placeItems:'center', textAlign:'center'}}><SpotlightCard/></div>
           </div>
           {props.children}
           <div className="powered-by">

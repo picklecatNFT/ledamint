@@ -27,7 +27,8 @@ export const SalesListView = (props: { collectionMintFilter?: string }) => {
   const { isLoading } = useMeta();
   const { connected } = useWallet();
   const { auctions, hasResaleAuctions } = useAuctionsList(activeKey);
-
+  console.log("activeKey ", activeKey)
+  console.log("auctions ", auctions)
   const filteredAuctions = useMemo(() => {
     if (props.collectionMintFilter) {
       return auctions.filter(
@@ -43,7 +44,7 @@ export const SalesListView = (props: { collectionMintFilter?: string }) => {
     <>
       {!props.collectionMintFilter && (
         <Banner
-          src="/main-banner.svg"
+          src=""
           headingText="The amazing world of Ledamint."
           subHeadingText="Buy exclusive Ledamint NFTs."
           actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
