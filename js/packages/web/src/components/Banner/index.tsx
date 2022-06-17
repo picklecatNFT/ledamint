@@ -47,22 +47,22 @@ export const Banner = (props: {
         style={{ backgroundImage: `url(${props.src})` }}
       >
         <span id={'gradient-banner'}></span>
-        <div id="banner-inner">
-          <div style={{display:'flex', height:'-webkit-fill-available'}}>
+        <div id="banner-inner" style={{ display: 'flex' }}>
+          
             <div id={'message-container'}>
               <div id={'main-heading'}>{props.headingText}</div>
               <div id={'sub-heading'}>{props.subHeadingText}</div>
               {props.actionComponent}
             </div>
-            <div style={{width:'100%', margin:'auto', placeItems:'center', textAlign:'center'}}><SpotlightCard/></div>
-          </div>
+            <div style={{ width: '100%', margin: 'auto', placeItems: 'center', textAlign: 'center',display:'none' }}><SpotlightCard /></div>
+          
           {props.children}
-          <div className="powered-by">
-            <span>
-              POWERED BY <b>LEDAMINT</b> & <b>SAFECOIN</b>
-            </span>
-          </div>
         </div>
+      </div>
+      <div className="powered-by" style={{marginLeft:'auto'}}>
+        <span>
+          POWERED BY <b>LEDAMINT</b> & <b>SAFECOIN</b>
+        </span>
       </div>
     </>
   );

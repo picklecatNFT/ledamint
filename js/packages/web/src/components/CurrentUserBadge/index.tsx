@@ -210,7 +210,7 @@ export const CurrentUserBadge = (props: {
   const solPrice = useSolPrice();
   const [showAddFundsModal, setShowAddFundsModal] = useState<Boolean>(false);
   const tokenList = useTokenList();
-  console.log('useTokenList ', tokenList);
+  //console.log('useTokenList ', tokenList);
   if (!wallet || !publicKey) {
     return null;
   }

@@ -58,6 +58,7 @@ export default class MetaplexDocument extends Document {
             src="https://platform.twitter.com/widgets.js"
             charSet="utf-8"
           />
+          {/*// what is it below ?*/}
           <script
             type="text/javascript"
             dangerouslySetInnerHTML={{

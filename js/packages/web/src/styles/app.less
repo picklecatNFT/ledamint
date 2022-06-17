@@ -238,6 +238,23 @@ h1 {
 .ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title {
   color: rgb(22, 87, 82);
 }
+.ant-steps-item-process .ant-steps-item-icon > .ant-steps-icon .ant-steps-icon-dot {
+  background: #90f5c5;
+}
+.ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon .ant-steps-icon-dot {
+  background: #000000;
+}
+.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-tail::after {
+  background-color: #090909;
+}
+.ant-btn-primary {
+  background: -webkit-gradient(linear, left top, left bottom, from(#90f5c5), to(#90f5c5))!important;
+  background: linear-gradient(180deg, #90f5c5 0%, #90f5c5 100%)!important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: #000000!important;
+  border-radius: 30px!important;
+  border: 0px!important;
+}
 .ant-card {
   background: #ffffff;
 }
@@ -270,7 +287,7 @@ h1 {
     &:focus {
       background: transparent !important;
       border-color: @metaplex-primary-color !important;
-      color: @metaplex-primary-color !important;
+      color: rgba(0, 0, 0, 0.664) !important;
     }
 
     &:disabled,
@@ -310,7 +327,15 @@ h1 {
     }
   }
 }
-
+.ant-btn-primary[disabled], .ant-btn-primary[disabled]:hover, .ant-btn-primary[disabled]:focus, .ant-btn-primary[disabled]:active {
+  color: rgba(0, 0, 0, 0.25)!important;
+ // border-color: 1px solid red;
+  //background: transparent!important;
+  border: 1px solid #90f5c5!important;
+  text-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 model-viewer {
   --poster-color: transparent;
 }

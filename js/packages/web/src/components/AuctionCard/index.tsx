@@ -701,7 +701,7 @@ export const AuctionCard = ({
                   fontSize: '14px',
                   lineHeight: '14px',
                   textTransform: 'uppercase',
-                  color: 'rgba(255, 255, 255, 0.7)',
+                  color: 'rgba(0, 0, 0, 0.7)',
                 }}
               >
                 your bid
