@@ -39,7 +39,7 @@ export const SalesListView = (props: { collectionMintFilter?: string }) => {
     }
     return auctions;
   }, [auctions, props.collectionMintFilter]);
-
+  console.log("filtered acutions ", filteredAuctions)
   return (
     <>
       {!props.collectionMintFilter && (
