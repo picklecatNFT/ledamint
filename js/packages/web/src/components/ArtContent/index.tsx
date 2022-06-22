@@ -319,6 +319,7 @@ export const ArtContent = ({
   animationURL,
   files,
   artView,
+  isSpotlight,
 }: {
   category?: MetadataCategory;
   className?: string;
@@ -334,6 +335,7 @@ export const ArtContent = ({
   animationURL?: string;
   files?: (MetadataFile | string)[];
   artView?: boolean;
+  isSpotlight?:boolean;
 }) => {
   const [uriState, setUriState] = useState<string | undefined>();
   const [animationURLState, setAnimationURLState] = useState<
@@ -384,10 +386,10 @@ export const ArtContent = ({
     getLast((animationURLState || '').split('?')),
   ).get('ext');
 
-  console.log("category : ", categoryState)
+ /* console.log("category : ", categoryState)
   console.log("uri : ", uriState)
   console.log("animationURL : ", animationURLState)
-  console.log("files : ", filesState)
+  console.log("files : ", filesState)*/
 
   if (
     allowMeshRender &&
@@ -454,3 +456,4 @@ export const ArtContent = ({
 
   return <ArtContentWrapper ref={ref as any}>{content}</ArtContentWrapper>;
 };
+

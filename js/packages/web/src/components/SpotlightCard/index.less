@@ -1,0 +1,18 @@
+.spotlight-wrapper {
+ // transform: scale(1.05);
+  transition: all 100ms ease-in-out;
+}
+.spotlight-wrapper:hover { transform: scale(1.02); }
+.grow { 
+  
+  animation: leaves 5s ease-in-out infinite alternate;
+
+}
+@keyframes leaves {
+  0% {
+      transform: scale(1.0);
+  }
+  100% {
+      transform: scale(2.0);
+  }
+}

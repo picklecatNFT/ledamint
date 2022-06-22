@@ -13,7 +13,19 @@
 .section {
   padding: 1px;
 }
+.grow { 
+  
+  animation: leaves 3s ease-in-out alternate;
 
+}
+@keyframes leaves {
+  0% {
+      transform: scale(2.0);
+  }
+  100% {
+      transform: scale(1.0);
+  }
+}
 .action-btn:disabled {
   color: rgba(126, 57, 57, 0.5);
   &:hover, &:focus {
