@@ -1248,7 +1248,7 @@ const WaitingStep = (props: {
         alignItems: 'center',
       }}
     >
-      <Spin size="large" />
+      {/* <Spin size="large" /> */ }
       <Card>
         <Steps direction="vertical" current={props.step}>
           <Step

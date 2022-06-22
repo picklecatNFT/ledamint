@@ -332,6 +332,55 @@ h1 {
   border-color: @metaplex-primary-color;
   background: #fff;
 }
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+  border-color: #9ef6cc;
+  border-right-width: 0px!important;
+  z-index: 1;
+}
+.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper, .ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover {
+  background: #f0f0f0!important; 
+  border-color: #ff4d4f;
+}
+.ant-input-affix-wrapper:focus, .ant-input-affix-wrapper-focused {
+  border-color: #9ef6cc;
+  -webkit-box-shadow: 0 0 0 2px rgb(144 245 197);
+  box-shadow: 0 0 0 2px rgb(144 245 197);
+}
+.ant-input:focus, .ant-input-focused {
+  border-color: #9ef6cc;
+  -webkit-box-shadow: 0 0 0 2px rgb(144 245 197);
+  box-shadow: 0 0 0 2px rgb(144 245 197);
+}
+.ant-input:hover {
+  border-color: #9ef6cc;
+  border-right-width: 0px!important;
+}
+.ant-input-number:hover {
+  border-color: #9ef6cc;
+  border-right-width: 0px!important;
+}
+.ant-input-number:focus, .ant-input-number-focused {
+  border-color: #9ef6cc;
+  -webkit-box-shadow: 0 0 0 2px rgba(144, 245, 196, 0.507);
+  box-shadow: 0 0 0 2px rgba(144, 245, 196, 0.473);
+}
+
+.ant-steps-item-custom.ant-steps-item-process .ant-steps-item-icon > .ant-steps-icon {
+  color: #90f5c5;
+}
+.ant-steps-item-finish .ant-steps-item-icon {
+  background-color: #000;
+  border-color: #000000;
+}
+.ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
+  color: #90f5c5;
+}
+.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title {
+  color: #000000;
+}
+.ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title {
+  color: hsl(151deg 83% 76%);
+}
 .ant-input-prefix, .ant-input-suffix {
   color: rgb(0 0 0);
   display: -webkit-flex;
