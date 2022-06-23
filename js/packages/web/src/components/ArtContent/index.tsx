@@ -48,11 +48,13 @@ export const CachedImageContent = ({
   className,
   preview,
   style,
+  isWrapperLarger,
 }: {
   uri?: string;
   className?: string;
   preview?: boolean;
   style?: React.CSSProperties;
+  isWrapperLarger?: boolean;
 }) => {
   const { cachedBlob } = useCachedImage(uri || '');
 
@@ -64,7 +66,7 @@ export const CachedImageContent = ({
       wrapperClassName={className}
       loading="lazy"
       wrapperStyle={{ ...style }}
-      placeholder={<ThreeDots />}
+      placeholder={<ThreeDots isWrapperLarger={isWrapperLarger} />}
     />
   );
 };
@@ -451,6 +453,7 @@ export const ArtContent = ({
         className={className}
         preview={preview}
         style={style}
+        isWrapperLarger={isSpotlight}
       />
     );
 

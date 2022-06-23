@@ -17,6 +17,7 @@ import { ArtContent } from '../ArtContent';
 //import { ArtThumb } from '../ArtContent';
 import { useAuctionCountdown } from '../../hooks/useAuctionCountdown';
 import { useAuctionStatus } from '../AuctionRenderCard/hooks/useAuctionStatus';
+import { MetaAvatar } from '../MetaAvatar';
 
 const filterAuctionList = (sales) => {
   console.log("auctions from filterAuctionList ", sales)
@@ -123,13 +124,11 @@ const SpotlightCardRender = (props: {
     return (
       <>
         <div style={{
-          // width: 'fit-content',
           margin: 'auto'
         }}>
           <div style={{
             textAlign: 'left', alignItems: 'center',
             fontSize: 55,
-            // lineHeight: 16,
             fontWeight: 600,
             paddingBottom: 13,
             color: 'white',
@@ -138,10 +137,27 @@ const SpotlightCardRender = (props: {
             right: 0,
             top: 0,
             filter: 'opacity(0.5)',
-            display:'none'
+            display: 'none'
           }}>Live auction</div>
+
           <Link to={`/auction/${spotlightView.auction.pubkey}`}>
+            <div style={{
+              textAlign: 'left', alignItems: 'center',
+              fontSize: 18,
+              fontWeight: 600,
+              maxWidth: 400,
+              margin: 'auto',
+              paddingBottom: 13,
+              color: 'white',
+              textTransform: 'uppercase',
+            }}>
+
+              <div className='hot-sale-wrapper-fx'>
+                <div className='hot-sale-fx'>Hot auction</div>
+              </div>
+            </div>
             <div className='spotlight-wrapper' style={{ borderRadius: '6px', margin: 'auto', height: 380, maxWidth: 400, backgroundColor: 'white', boxShadow: 'rgb(0 0 0 / 29%) 0px 8px 24px' }}>
+
               <div style={{ height: '80%', overflow: 'hidden', borderTopLeftRadius: '6px', borderTopRightRadius: '6px' }}>
                 <ArtContent
                   style={{
@@ -159,7 +175,13 @@ const SpotlightCardRender = (props: {
                 <div style={{ display: 'flex', height: '100%', padding: '10px 30px 10px 30px' }}>
                   <div style={{ width: '50%', textAlign: 'left', alignSelf: 'center', color: 'black' }}>
                     <div style={{ fontSize: 'smaller' }}>ARTIST</div>
-                    <div style={{ fontSize: 'larger', fontWeight: '600' }}>{crea[0]?.name}</div>
+                    <div style={{ fontSize: 'larger', fontWeight: '600', display: 'flex', alignItems: 'center' }}>
+                      <MetaAvatar
+                        size={25}
+                        creators={crea.length ? [crea[0]] : undefined}
+                      />
+                      <span style={{ paddingLeft: '8  px' }}>{crea[0]?.name}</span>
+                    </div>
                   </div>
                   <div style={{ width: '50%', textAlign: 'left', alignSelf: 'center', color: 'black' }}>
                     <div style={{ fontSize: 'smaller' }}>AUCTION ENDS</div>
