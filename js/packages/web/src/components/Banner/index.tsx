@@ -56,8 +56,8 @@ export const Banner = (props: {
           position:'relative',
           borderRadius:'12px',
           transform: 'scaleX(-1)',
-          opacity:'0.6',
-          filter: 'saturate(1.5)'
+          opacity:'0.5',
+          filter: 'brightness(0.5) saturate(0.7)',
         }}></div>
         {/* <div style={{ backdropFilter: 'blur(9px) saturate(70%) contrast(80%) brightness(140%)', height: '100%' }}></div> */}
         <span id={'gradient-banner'}></span>
