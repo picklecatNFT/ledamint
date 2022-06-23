@@ -29,11 +29,28 @@ const filterAuctionList = (sales) => {
       //check the bids array
       Object.keys(sale.auction.info.bidState.bids).length > 0
   );
+  const filteredISales = sales.filter(
+    sale =>
+      sale.isInstantSale === true
+      //for now will only render
+  );
+  console.log("filteredAuctions ", filteredAuctions)
+  // filter by bid count OK
+  // filter by latest bid amount NOK
+
   const highestBid = filteredAuctions.reduce(
     (acc, state) =>
+      // bid count
       acc = acc > Object.keys(state.auction.info.bidState.bids).length ? acc : state, 0);
+  // bid highest >  state.auction.info.bidState.bids["lastest"]
+  console.log("highestBid ", highestBid)
   if (highestBid.auctionDataExtended != undefined) {
-    return highestBid;
+    if (highestBid === undefined) {
+      // no highest
+      return filteredISales[0];
+    } else {
+      return highestBid;
+    }
   }
 }
 
@@ -159,6 +176,7 @@ const SpotlightCardRender = (props: {
             <div className='spotlight-wrapper' style={{ borderRadius: '6px', margin: 'auto', height: 380, maxWidth: 400, backgroundColor: 'white', boxShadow: 'rgb(0 0 0 / 29%) 0px 8px 24px' }}>
 
               <div style={{ height: '80%', overflow: 'hidden', borderTopLeftRadius: '6px', borderTopRightRadius: '6px' }}>
+                <div className='spotlight-gradient-info' ></div>
                 <ArtContent
                   style={{
                     minWidth: '150%',
