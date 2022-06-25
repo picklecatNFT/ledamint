@@ -56,8 +56,8 @@
     "start:prod": "next start",
     "test": "jest --passWithNoTests",
     "deploy:ar": "yarn export && arweave deploy-dir  ../../build/web --key-file ",
-    "deploy:gh": "yarn export && gh-pages -d ../../build/web --repo https://github.com/ledamint-IO/ledamint -t true",
-    "deploy": "cross-env ASSET_PREFIX=/ledamint/ yarn build && yarn deploy:gh",
+    "deploy:gh": "yarn export && gh-pages -d ../../build/web --repo https://github.com/picklecatNFT/ledamint/ -t true",
+    "deploy": "yarn build && yarn deploy:gh",
     "format:fix": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|css|md)\""
   },
   "browserslist": {
@@ -74,9 +74,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ledamint-IO/ledamint"
+    "url": "https://github.com/picklecatNFT/ledamint/"
   },
-  "homepage": ".",
+  "homepage": "http://picklecatNFT.github.io/ledamint/",
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
