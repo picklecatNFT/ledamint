@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { highestBidThumb, SpotlightCard } from '../SpotlightCard';
+import { spotLightThumb, SpotlightCard } from '../SpotlightCard';
 
 export const Banner = (props: {
   src: string;
@@ -48,7 +48,7 @@ export const Banner = (props: {
 
       >
         <div style={{
-          backgroundImage: `url(${highestBidThumb()})`,
+          backgroundImage: `url(${spotLightThumb()})`,
           height:'100%',
           backgroundPosition: 'center',
           backgroundSize: '1435px 150%',
@@ -61,7 +61,7 @@ export const Banner = (props: {
         }}></div>
         {/* <div style={{ backdropFilter: 'blur(9px) saturate(70%) contrast(80%) brightness(140%)', height: '100%' }}></div> */}
         <span id={'gradient-banner'}></span>
-        <div id="banner-inner" style={{ display: 'flex' }}>
+        <div id="banner-inner" style={{ display: 'flex', backdropFilter: 'blur(6px)', borderRadius:12}}>
 
           <div id={'message-container'} style={{ flexDirection: 'column', width: '50%' }}>
             <div id={'main-heading'} style={{color:'white'}}>{props.headingText}</div>

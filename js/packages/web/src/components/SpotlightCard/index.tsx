@@ -18,6 +18,7 @@ import { ArtContent } from '../ArtContent';
 import { useAuctionCountdown } from '../../hooks/useAuctionCountdown';
 import { useAuctionStatus } from '../AuctionRenderCard/hooks/useAuctionStatus';
 import { MetaAvatar } from '../MetaAvatar';
+import { ThreeDots } from '../MyLoader';
 
 const filterAuctionList = (sales) => {
   console.log("auctions from filterAuctionList ", sales)
@@ -32,9 +33,9 @@ const filterAuctionList = (sales) => {
   const filteredISales = sales.filter(
     sale =>
       sale.isInstantSale === true
-      //for now will only render
+    //for now will only render
   );
-  console.log("filteredAuctions ", filteredAuctions)
+  console.log("filteredISales ", filteredISales)
   // filter by bid count OK
   // filter by latest bid amount NOK
 
@@ -46,11 +47,13 @@ const filterAuctionList = (sales) => {
   console.log("highestBid ", highestBid)
   if (highestBid.auctionDataExtended != undefined) {
     if (highestBid === undefined) {
-      // no highest
-      return filteredISales[0];
+      // no highest 
+      console.log("**** highestBid === undefined : ", highestBid)
     } else {
       return highestBid;
     }
+  } else {
+    return filteredISales[0]
   }
 }
 
@@ -93,21 +96,23 @@ const Countdown = ({ state }: { state?: CountdownState }) => {
   );
 };
 
-export const highestBidThumb = () => {
+export const spotLightThumb = () => {
   // will return thumbnail url (safestore)
   const [activeKey, setActiveKey] = useState(LiveAuctionViewState.All);
   const { auctions } = useAuctionsList(activeKey);
   const mostBidded = filterAuctionList(auctions);
   const [Pubkey, setPubkey] = useState();
-  console.log("mostbidden from highest ", mostBidded)
-
   useEffect(() => {
 
     if (mostBidded != undefined) {
       if (Pubkey != undefined) {
       } else {
-        var id = mostBidded.thumbnail.metadata.pubkey;
-        setPubkey(id)
+        try {
+          var id = mostBidded.thumbnail.metadata.pubkey;
+          setPubkey(id)
+        } catch (e) {
+          console.log("id err ", e)
+        }
       }
     }
   }, [mostBidded])
@@ -115,6 +120,7 @@ export const highestBidThumb = () => {
   const { data } = useExtendedArtNoRef(Pubkey);
 
   if (data?.image != undefined) {
+    //console.log("data?.image : ", data?.image)
     return data?.image;
   }
 }
@@ -127,16 +133,34 @@ const SpotlightCardRender = (props: {
   if (Object.prototype.toString.call(spotlightView) != '[object Object]') {
     // had to make this condition, at first load this prop is not an object, could lead to unknown
     return (
-      <div style={{ borderRadius: '6px', margin: 'auto', height: 380, maxWidth: 400, backgroundColor: 'white' }}>
-        <>loading</>
-      </div>
+      <>
+        <div style={{
+          textAlign: 'left', alignItems: 'center',
+          fontSize: 18,
+          fontWeight: 600,
+          maxWidth: 400,
+          margin: 'auto',
+          paddingBottom: 13,
+          color: 'white',
+          textTransform: 'uppercase',
+        }}>
+          <div className='hot-sale-wrapper-fx'>
+            <div style={{ visibility: 'hidden' }}>Hot auction</div>
+          </div>
+        </div>
+        <div style={{ borderRadius: '6px', margin: 'auto', height: 380, maxWidth: 400, backgroundColor: 'white' }}>
+          <ThreeDots />
+        </div>
+      </>
     )
   } else {
     //const { status, amount } = useAuctionStatus(spotlightView);
     const state = useAuctionCountdown(spotlightView);
     const crea = useCreators(spotlightView)
-    console.log("useCreators  ", crea)
+    //console.log("useCreators  ", crea)
     const id = spotlightView.thumbnail.metadata.pubkey;
+    const isInstantSale = spotlightView.isInstantSale;
+    console.log("isInstantSale", spotlightView)
     // the wholes data are ditributed to <ArtContent> comp
     return (
       <>
@@ -170,7 +194,7 @@ const SpotlightCardRender = (props: {
             }}>
 
               <div className='hot-sale-wrapper-fx'>
-                <div className='hot-sale-fx'>Hot auction</div>
+                <div className='hot-sale-fx'>Hot {isInstantSale ? <> sale</> : <>auction</>}</div>
               </div>
             </div>
             <div className='spotlight-wrapper' style={{ borderRadius: '6px', margin: 'auto', height: 380, maxWidth: 400, backgroundColor: 'white', boxShadow: 'rgb(0 0 0 / 29%) 0px 8px 24px' }}>
@@ -180,7 +204,8 @@ const SpotlightCardRender = (props: {
                 <ArtContent
                   style={{
                     minWidth: '150%',
-                    left: '-20%'
+                    left: '-25%',
+                    alignSelf:'center'
                   }}
                   className="spotlight no-events"
                   preview={true}
@@ -201,12 +226,17 @@ const SpotlightCardRender = (props: {
                       <span style={{ paddingLeft: '8  px' }}>{crea[0]?.name}</span>
                     </div>
                   </div>
-                  <div style={{ width: '50%', textAlign: 'left', alignSelf: 'center', color: 'black' }}>
-                    <div style={{ fontSize: 'smaller' }}>AUCTION ENDS</div>
-                    <div>
-                      <Countdown state={state} />
-                    </div>
-                  </div>
+                  {isInstantSale ?
+                    <>
+                    </>
+                    :
+                      <div style={{ width: '50%', textAlign: 'left', alignSelf: 'center', color: 'black' }}>
+                        <div style={{ fontSize: 'smaller' }}>AUCTION ENDS</div>
+                        <div>
+                          <Countdown state={state} />
+                        </div>
+                      </div>
+                    }
                 </div>
               </div>
             </div>
@@ -223,7 +253,7 @@ export const SpotlightCard = () => {
   const [activeKey, setActiveKey] = useState(LiveAuctionViewState.All);
   const { auctions } = useAuctionsList(activeKey);
   const mostBidded = filterAuctionList(auctions);
-  console.log('mostBidded ', mostBidded)
+  console.log('mostBidded from SpotlightCard ', mostBidded)
   // if mostbidden = undefined = show loader
   return (<SpotlightCardRender spotlightView={mostBidded} />)
 }
