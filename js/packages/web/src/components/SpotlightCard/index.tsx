@@ -223,7 +223,7 @@ const SpotlightCardRender = (props: {
                         size={25}
                         creators={crea.length ? [crea[0]] : undefined}
                       />
-                      <span style={{ paddingLeft: '8  px' }}>{crea[0]?.name}</span>
+                      <span style={{ paddingLeft: 8 }}>{crea[0]?.name}</span>
                     </div>
                   </div>
                   {isInstantSale ?
