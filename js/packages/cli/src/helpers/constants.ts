@@ -13,14 +13,14 @@ export const MAX_SYMBOL_LENGTH = 10;
 export const MAX_CREATOR_LEN = 32 + 1 + 1;
 export const MAX_CREATOR_LIMIT = 5;
 export const ARWEAVE_PAYMENT_WALLET = new PublicKey(
-  'HBShEqqNHyWwaw2WFKyVKvvGxWMsxEvsivm5pCL9fHFp',
+  'es7DKe3NyR1u8MJNuv6QV6rbhmZQkyYUpgKpGJNuTTc',
 );
 export const CANDY_MACHINE_PROGRAM_ID = new PublicKey(
   'KMQvpFxDaFt58rsPeLc1kPSYbdAHUrpETiBiNUb8SGT',
 );
 
 export const CANDY_MACHINE_PROGRAM_V2_ID = new PublicKey(
-  'cndy3Z4yapfJBmL3ShUp5exZKqR3z33thTzeNMm2gRZ',
+  'CaNucwHEE2Mc7CPMSbNkrqPEx2iDoMs1uCDtS4mPdDq7',
 );
 export const TOKEN_METADATA_PROGRAM_ID = new PublicKey(
   'WbMTNyvtk8vSMu2AmXV7mKuYrADRNw9GSkNtWKsZ7qe',
