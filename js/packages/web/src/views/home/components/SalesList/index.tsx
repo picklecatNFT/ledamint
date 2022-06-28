@@ -10,6 +10,8 @@ import { HowToBuyModal } from '../../../../components/HowToBuyModal';
 
 import { useAuctionsList } from './hooks/useAuctionsList';
 import { AuctionRenderCard } from '../../../../components/AuctionRenderCard';
+/*import { ArtworksView } from '../../../artworks';
+import { ArtworksViewRw } from '../../../artworksReworked';*/
 
 const { TabPane } = Tabs;
 const { Content } = Layout;
@@ -47,7 +49,7 @@ export const SalesListView = (props: { collectionMintFilter?: string }) => {
           src=""
           headingText="The amazing world of Ledamint."
           subHeadingText="Buy exclusive Ledamint NFTs."
-          actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
+          actionComponent={<HowToBuyModal buttonClassName="secondary-btn bannerbutton" />}
           useBannerBg
         />
       )}
@@ -104,6 +106,7 @@ export const SalesListView = (props: { collectionMintFilter?: string }) => {
               </div>
             </Row>
           </Col>
+          {/*<ArtworksViewRw />*/}
         </Content>
       </Layout>
     </>

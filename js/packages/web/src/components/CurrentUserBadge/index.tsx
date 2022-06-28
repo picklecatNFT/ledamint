@@ -298,23 +298,23 @@ export const CurrentUserBadge = (props: {
                     marginBottom: 10,
                   }}
                 >
-                  <Button
+                  {/*<Button
                     className="metaplex-button-default"
                     onClick={() => setShowAddFundsModal(true)}
                     style={btnStyle}
                   >
                     Add Funds
-                  </Button>
-                  &nbsp;&nbsp;
-                  <Button
+                  </Button>*/}
+
+                </div>
+                <UserActions />
+                <Button
                     className="metaplex-button-default"
                     onClick={disconnect}
                     style={btnStyle}
                   >
                     Disconnect
                   </Button>
-                </div>
-                <UserActions />
               </div>
             }
           />

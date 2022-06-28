@@ -30,7 +30,7 @@
     "format:fix": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|css|md)\""
   },
   "dependencies": {
-    "@j0nnyboi/arweave-cost": "^2.0.0",
+    "@j0nnyboi/arweave-cost": "^2.0.1",
     "@j0nnyboi/serum": "^0.1.1",
     "@safecoin/safe-token": "^0.1.7-b",
     "@j0nnyboi/safe-token-registry": "0.1.3",

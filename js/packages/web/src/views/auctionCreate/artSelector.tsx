@@ -63,7 +63,7 @@ export const ArtSelector = (props: ArtSelectorProps) => {
             style={{ width: 200, height: 300, display: 'flex' }}
             onClick={open}
           >
-            <span className="text-center">Add an NFT</span>
+            <span className="text-center" style={{color:'black'}}>Add an NFT</span>
           </div>
         )}
       </div>
