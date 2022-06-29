@@ -1980,7 +1980,6 @@ const ReviewStep = (props: {
     });
     props.confirm();
   };
-
   return (
     <>
       <Row className="call-to-action">
@@ -2004,13 +2003,16 @@ const ReviewStep = (props: {
             }
           />
           {cost ? (
-            <AmountLabel
-              title="Cost to Create"
-              amount={cost}
-              tokenInfo={useTokenList().tokenMap.get(
+            <div>
+              <AmountLabel
+                title="Cost to list"
+                amount={(cost + 0.01).toFixed(5)}
+                tokenInfo={useTokenList().tokenMap.get(
                 WRAPPED_SAFE_MINT.toString(),
-              )}
-            />
+                )}
+              />
+              <div style={{fontStyle:'italic', opacity:0.5, fontSize:'smaller'}}>including 0.01 platform fees</div>
+          </div>
           ) : (
             <Spin />
           )}

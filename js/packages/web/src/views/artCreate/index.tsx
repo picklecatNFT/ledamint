@@ -1191,13 +1191,16 @@ const LaunchStep = (props: {
             suffix="%"
           />
           {cost ? (
-            <AmountLabel
-              title="Cost to Create"
-              amount={cost.toFixed(5)}
-              tokenInfo={useTokenList().tokenMap.get(
+            <div>
+              <AmountLabel
+                title="Cost to Create"
+                amount={(cost + 0.01).toFixed(5)}
+                tokenInfo={useTokenList().tokenMap.get(
                 WRAPPED_SAFE_MINT.toString(),
-              )}
-            />
+                )}
+              />
+              <div style={{fontStyle:'italic', opacity:0.5, fontSize:'smaller'}}>including 0.01 platform fees</div>
+            </div>
           ) : (
             <Spin />
           )}
@@ -1248,7 +1251,7 @@ const WaitingStep = (props: {
         alignItems: 'center',
       }}
     >
-      {/* <Spin size="large" /> */ }
+      <Spin size="large" />
       <Card>
         <Steps direction="vertical" current={props.step}>
           <Step
@@ -1347,6 +1350,7 @@ const Congrats = (props: {
       <div className="congrats-button-container">
         <Button
           className="metaplex-button"
+          style={{margin:7}}
           onClick={() => window.open(newTweetURL(), '_blank')}
         >
           <span>Share it on Twitter</span>
@@ -1354,6 +1358,7 @@ const Congrats = (props: {
         </Button>
         <Button
           className="metaplex-button"
+          style={{margin:7}}
           onClick={() =>
             history.push(`/art/${props.nft?.metadataAccount.toString()}`)
           }
@@ -1363,6 +1368,7 @@ const Congrats = (props: {
         </Button>
         <Button
           className="metaplex-button"
+          style={{margin:7}}
           onClick={() => history.push('/auction/create')}
         >
           <span>Sell it via auction</span>
