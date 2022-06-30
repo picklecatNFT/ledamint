@@ -39,3 +39,6 @@ traits
 traits-configuration.json
 js/packages/cli/test/assets
 *.lock
+js/packages/web/.env.production
+js/packages/common/src/config/userNames.json
+js/yarn.lock
