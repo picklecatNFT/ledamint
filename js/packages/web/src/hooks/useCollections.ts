@@ -58,5 +58,6 @@ export const useCollections = () => {
     setCollections(endedAuctions, setEndedCollections, liveCollections);
   }, [endedAuctions, liveCollections]);
 
+  console.log('Live Collections : ', liveCollections)
   return { liveCollections, endedCollections };
 };

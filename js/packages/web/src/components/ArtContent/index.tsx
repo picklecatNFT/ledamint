@@ -60,7 +60,7 @@ export const CachedImageContent = ({
 
   return (
     <Image
-      fallback="image-placeholder.svg"
+      fallback="logo_only.svg"
       src={cachedBlob}
       preview={preview}
       wrapperClassName={className}
