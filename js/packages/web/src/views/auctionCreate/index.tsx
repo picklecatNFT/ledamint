@@ -1964,8 +1964,15 @@ const ReviewStep = (props: {
     const rentCall = Promise.all([
       props.connection.getMinimumBalanceForRentExemption(MintLayout.span),
       props.connection.getMinimumBalanceForRentExemption(MAX_METADATA_LEN),
-    ]);
+    ]).then((rentPromise) => {
+      if (cost === 0) {
+        const totalRenting = rentPromise[0] + rentPromise[1];
+        setCost(totalRenting / LAMPORTS_PER_SAFE)
+      }
+      
+    });
     // TODO: add
+
   }, [setCost]);
 
   const balance = (account?.lamports || 0) / LAMPORTS_PER_SAFE;
