@@ -1964,8 +1964,15 @@ const ReviewStep = (props: {
     const rentCall = Promise.all([
       props.connection.getMinimumBalanceForRentExemption(MintLayout.span),
       props.connection.getMinimumBalanceForRentExemption(MAX_METADATA_LEN),
-    ]);
+    ]).then((rentPromise) => {
+      if (cost === 0) {
+        const totalRenting = rentPromise[0] + rentPromise[1];
+        setCost(totalRenting / LAMPORTS_PER_SAFE)
+      }
+      
+    });
     // TODO: add
+
   }, [setCost]);
 
   const balance = (account?.lamports || 0) / LAMPORTS_PER_SAFE;
@@ -1980,7 +1987,6 @@ const ReviewStep = (props: {
     });
     props.confirm();
   };
-
   return (
     <>
       <Row className="call-to-action">
@@ -2004,13 +2010,16 @@ const ReviewStep = (props: {
             }
           />
           {cost ? (
-            <AmountLabel
-              title="Cost to Create"
-              amount={cost}
-              tokenInfo={useTokenList().tokenMap.get(
+            <div>
+              <AmountLabel
+                title="Cost to list"
+                amount={(cost + 0.01).toFixed(5)}
+                tokenInfo={useTokenList().tokenMap.get(
                 WRAPPED_SAFE_MINT.toString(),
-              )}
-            />
+                )}
+              />
+              <div style={{fontStyle:'italic', opacity:0.5, fontSize:'smaller'}}>including 0.01 platform fees</div>
+          </div>
           ) : (
             <Spin />
           )}
@@ -2111,7 +2120,7 @@ const WaitingStep = (props: {
     >
       <Progress type="circle" percent={progress} />
       <div className="waiting-title">
-        Your creation is being listed with Metaplex...
+        Your creation is being listed with Ledamint...
       </div>
       <div className="waiting-subtitle">This can take up to 30 seconds.</div>
     </div>

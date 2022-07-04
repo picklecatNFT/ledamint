@@ -6,7 +6,7 @@ import { useCollections } from '../../hooks/useCollections';
 
 export const CollectionsView = () => {
   const { liveCollections } = useCollections();
-
+console.log('liveCollections ', liveCollections)
   return (
     <Layout style={{ margin: 0, marginTop: 30, alignItems: 'center' }}>
       <span className={'collections-title'}>Collections</span>

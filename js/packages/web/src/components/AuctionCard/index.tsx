@@ -661,17 +661,17 @@ export const AuctionCard = ({
                   </Button>
                 ) : (
                   !showPlaceBid && (
-                    !auctionView.isInstantSale ? 
-                    <Button
-                      className="secondary-btn"
-                      onClick={() => {
-                        if (wallet.connected) setShowPlaceBid(true);
-                        else connect();
-                      }}
-                    >
-                      Place Bid
-                    </Button>
-                    : <></>
+                    !auctionView.isInstantSale ?
+                      <Button
+                        className="secondary-btn"
+                        onClick={() => {
+                          if (wallet.connected) setShowPlaceBid(true);
+                          else connect();
+                        }}
+                      >
+                        Place Bid
+                      </Button>
+                      : <></>
                   )
                 ))}
             </div>
@@ -721,7 +721,7 @@ export const AuctionCard = ({
                     value={value}
                     onChange={setValue}
                     precision={4}
-                    style={{ fontSize: 16, lineHeight: '16px', color:'black' }}
+                    style={{ fontSize: 16, lineHeight: '16px', color: 'black' }}
                     formatter={value =>
                       value
                         ? `◎ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
@@ -857,28 +857,31 @@ export const AuctionCard = ({
 
       <MetaplexOverlay visible={showBidPlaced}>
         <Confetti />
-        <h1
-          className="title"
-          style={{
-            fontSize: '3rem',
-            marginBottom: 20,
-          }}
-        >
-          Nice bid!
-        </h1>
-        <p
-          style={{
-            color: 'white',
-            textAlign: 'center',
-            fontSize: '2rem',
-          }}
-        >
-          Your bid of ◎ {formatTokenAmount(lastBid?.amount, mintInfo)} was
-          successful
-        </p>
-        <Button onClick={() => setShowBidPlaced(false)} className="overlay-btn">
-          Got it
-        </Button>
+        <div style={{backgroundColor:'white',padding:'20px', borderRadius:20}}>
+          <h1
+            className="title"
+            style={{
+              color:'black',
+              fontSize: '3rem',
+              marginBottom: 20,
+            }}
+          >
+            Nice bid!
+          </h1>
+          <p
+            style={{
+              color: 'black',
+              textAlign: 'center',
+              fontSize: '2rem',
+            }}
+          >
+            Your bid of ◎ {formatTokenAmount(lastBid?.amount, mintInfo)} was
+            successful
+          </p>
+          <Button onClick={() => setShowBidPlaced(false)} className="overlay-btn">
+            Got it
+          </Button>
+        </div>
       </MetaplexOverlay>
 
       <MetaplexOverlay visible={showEndingBidModal}>
@@ -947,7 +950,7 @@ export const AuctionCard = ({
           alignItems: 'start',
         }}
       >
-        <h3 style={{ color: 'white' }}>
+        <h3 >
           Warning: There may be some items in this auction that still are
           required by the auction for printing bidders&apos; limited or open
           edition NFTs. If you wish to withdraw them, you are agreeing to foot

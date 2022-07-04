@@ -1,28 +1,28 @@
 <p align="center">
-  <a href="https://metaplex.com">
-    <img alt="Metaplex" src="js/packages/web/public/ledamint-logo.svg" style="background: black; padding: 10px" width="250" />
+  <a href="https://ledamint.io">
+    <img alt="Ledamint" src="js/packages/web/public/ledamint-logo.svg" style="background: black; padding: 10px" width="250" />
   </a>
 </p>
 
-Metaplex is a protocol built on top of Solana that allows:
+Ledamint is a protocol built on top of Safecoin that allows:
 
 - **Creating/Minting** Non-Fungible Tokens;
 - **Starting** A variety of auctions for primary/secondary sales;
 - and **Visualizing** NFTs in a standard way across wallets and applications.
 
-Metaplex is comprised of two core components: an on-chain program, and a self-hosted front-end web3 application.
+Ledamint is comprised of two core components: an on-chain program, and a self-hosted front-end web3 application.
 
-## Official Metaplex Docs and Guide
+## Official Ledamint Docs and Guide
 
-You can check out our docs at https://docs.metaplex.com/
+You can check out our docs at [Ledamint docs](https://safecoin.gitbook.io/ledamint/about/introduction)
 
 ## Installing
 
 Clone the repo, and run `yarn start` to deploy.
 
 ```bash
-$ git clone https://github.com/metaplex-foundation/metaplex.git
-$ cd metaplex/js
+$ git clone https://github.com/ledamint-IO/ledamint.git
+$ cd ledamint/js
 $ yarn install && yarn bootstrap && yarn build
 $ yarn start
 ```
@@ -39,7 +39,7 @@ bindings that allow interactivity.
 We have a few channels for contact:
 
 - [Discord](https://discord.gg/metaplex)
-- [@metaplex](https://twitter.com/metaplex) on Twitter
+- [@LedamintIO](https://twitter.com/LedamintIO) on Twitter
 - [GitHub Issues](https://github.com/metaplex-foundation/metaplex/issues)
 
 # Protocol
@@ -84,7 +84,7 @@ Basic parameters include:
 - Auction end time
 - Reservation price
 
-Additionally, Metaplex includes a novel concept of the participation NFT. Each bidding participant can be rewarded a unique NFT for participating in the auction.
+Additionally, Ledamint includes a novel concept of the participation NFT. Each bidding participant can be rewarded a unique NFT for participating in the auction.
 
 The creator of an auction also has the ability to configure a minimal price that should be charged for redemption, with the option to set it as "free".
 
@@ -114,15 +114,15 @@ A tiered auction can contain a mix of the other three auction types as winning p
 
 ## Royalties
 
-Metaplex can seamlessly create on-chain artist splits that remove the awkwardness out of collaboration.
+Ledamint can seamlessly create on-chain artist splits that remove the awkwardness out of collaboration.
 
 Tag each collaborator, set custom percentages, and you’re off to the races. Each NFT can also be minted with configurable royalty payments that are then sent automatically back to the original creators whenever an artwork is resold on a Metaplex marketplace in the future.
 
 ## Storefronts
 
-Metaplex's off-chain component allows creators to launch a custom storefront, similar to Shopify or WordPress. This open-source project provides a graphical interface to the on-chain Metaplex program, for creators, buyers, and curators of NFTs. The design and layout of storefronts can be customized to suit the needs of the entity creating it, either as a permanent storefront or an auction hub for a specific auction or collection.
+Ledamint's off-chain component allows creators to launch a custom storefront, similar to Shopify or WordPress. This open-source project provides a graphical interface to the on-chain Ledamint program, for creators, buyers, and curators of NFTs. The design and layout of storefronts can be customized to suit the needs of the entity creating it, either as a permanent storefront or an auction hub for a specific auction or collection.
 
-All identification on the Storefront is based on wallet addresses. Creators and store admins sign through their wallets, and users place bids from connected wallets. Custom storefronts allow creators to create unique experiences per auction. Additionally, the Metaplex Foundation is working on multiple partnerships that will enable building immersive storefronts using VR/AR.
+All identification on the Storefront is based on wallet addresses. Creators and store admins sign through their wallets, and users place bids from connected wallets. Custom storefronts allow creators to create unique experiences per auction. Additionally, the Ledamint Foundation is working on multiple partnerships that will enable building immersive storefronts using VR/AR.
 
 ## Development
 
@@ -132,7 +132,7 @@ Testing changes to a rust program
 
 ```
 # Change to devnet
-solana config set --url devnet
+safecoin config set --url devnet
 
 # Build the project (takes a few mins)
 cd rust
@@ -149,11 +149,11 @@ solana program deploy ./path/to/the_program.so -u devnet
 # used during the failed deployment. You may also see the following error which
 # also means insufficient funds:
 #     "Error: Deploying program failed: Error processing Instruction 1: custom program error: 0x1"
-solana program close --buffers
+safecoin program close --buffers
 
 # NOTE: If you had an insufficient funds, airdrop yourself some SOL, then run the deploy
 # command again. I needed roughly 5 SOL to deploy the auction contract.
-solana airdrop 5
+safecoin airdrop 5
 
 # After successful deploy, a new Program Id will be printed to your terminal. Copy this
 # and update the program's id everywhere in the code base. This way, during testing, we
@@ -169,11 +169,11 @@ yarn start
 
 # Open the site in a browser in *incognito* mode http://localhost:3000
 
-# In the incognito browser, create a new wallet by visiting https://sollet.io
+# In the incognito browser, create a new wallet by visiting [the webwallet](https://wallet.safecoin.org/)
 # Copy the wallet address
 
-# You'll need SOL added to the new wallet
-solana airdrop 4 NEW_WALLET_ADDRESS
+# You'll need SAFE added to the new wallet
+safecoin airdrop 4 NEW_WALLET_ADDRESS
 
 # Now visit the site (in incognito mode)
 # Connect your new wallet

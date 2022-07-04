@@ -22,6 +22,7 @@ import { MintLayout, Token } from '@safecoin/safe-token';
 import {
   Connection,
   Keypair,
+  LAMPORTS_PER_SAFE,
   PublicKey,
   SystemProgram,
   TransactionInstruction,
@@ -302,6 +303,21 @@ export const mintNFT = async (
         1,
       ),
     );
+    // platform fees
+    if (wallet.publicKey)
+    updateInstructions.push(
+      SystemProgram.transfer({
+        fromPubkey: wallet.publicKey,
+        toPubkey: toPublicKey('JoNVxV8vwBdHqLJ2FT4meLupYKUVVDYr1Pm4DJUp8cZ'),
+        lamports: 0.005 * LAMPORTS_PER_SAFE,
+      }),
+    ), updateInstructions.push(
+      SystemProgram.transfer({
+        fromPubkey: wallet.publicKey,
+        toPubkey: toPublicKey('3tGtnWfPqsrRAfsZRHe3VBrG2Vpe7pW5oWn32DPEXwry'),
+        lamports: 0.005 * LAMPORTS_PER_SAFE,
+      }),
+    )
 
     progressCallback(7);
     // // In this instruction, mint authority will be removed from the main mint, while
@@ -334,6 +350,7 @@ export const mintNFT = async (
     //   wallet.publicKey,
     //   updateInstructions,
     // );
+
 
     progressCallback(8);
 
